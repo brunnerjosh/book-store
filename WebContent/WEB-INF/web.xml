@@ -4,7 +4,7 @@
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.htm</welcome-file>
-    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>admin.jsp</welcome-file>
     <welcome-file>default.html</welcome-file>
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
@@ -13,17 +13,17 @@
     <description>Location to store uploaded file</description>
     <param-name>file-upload</param-name>
     <param-value>
-  		/Users/joshbrunner/Dropbox/UW/CSS 490 (Web Dev)/web_dev/css490_web_app/WebContent/uploadFiles/
+  		/Users/tazzledazzle/Documents/workspace/online-book-store/WebContent/uploadFiles/
   	</param-value>
   </context-param>
-  
-  <servlet> 
-  	<servlet-name>computeServlet</servlet-name> 
-  	<servlet-class>exercise.servlet.computeServlet</servlet-class> 
+    <servlet>
+    <description></description>
+    <display-name>UserController</display-name>
+    <servlet-name>UserController</servlet-name>
+    <servlet-class>controller.UserController</servlet-class>
   </servlet>
-  <servlet-mapping> 
-  	<servlet-name>computeServlet</servlet-name> 
-  	<url-pattern>/computeServlet</url-pattern>
+  <servlet-mapping>
+    <servlet-name>UserController</servlet-name>
+    <url-pattern>/UserController</url-pattern>
   </servlet-mapping>
-  
 </web-app>
