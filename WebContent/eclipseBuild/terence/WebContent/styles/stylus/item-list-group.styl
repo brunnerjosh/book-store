@@ -1,0 +1,19 @@
+.item-list-group
+  display block
+  position relative
+  width 100%
+  .side
+    &-left,
+    &-right
+      display inline-block
+      a
+        &:last-of-type
+          margin-right 0
+    &-right
+      position absolute
+      top 0
+      right 0
+  div
+    a
+      &.list-item
+        margin-right 15px

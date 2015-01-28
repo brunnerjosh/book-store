@@ -1,0 +1,33 @@
+body
+  background-color #EAEAEA
+  font-family 'NTR', sans-serif
+  font-size 18px
+
+a
+  text-decoration none
+  color #929090
+  &:hover
+    color #80B9E5
+    cursor pointer
+
+.clearfix
+  overflow auto
+
+.container
+  width 1200px
+  margin 0 auto
+
+button
+  height 38px
+
+  &:hover
+    cursor pointer
+
+  &.s-small
+    height 28px
+  &.s-large
+    height 48px
+
+for $i in (1)..(100)
+  .width-{$i}
+    width ($i) + 0% !important
