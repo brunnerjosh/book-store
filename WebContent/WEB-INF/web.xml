@@ -14,7 +14,7 @@
     <description>Location to store uploaded file</description>
     <param-name>file-upload</param-name>
     <param-value>
-  		/Users/tazzledazzle/Documents/workspace/online-book-store/WebContent/uploadFiles/
+  		/Users/joshbrunner/Dropbox/UW/CSS 490 (Web Dev)/web_dev/css490_web_app/WebContent/uploadFiles/
   	</param-value>
   </context-param>
 
