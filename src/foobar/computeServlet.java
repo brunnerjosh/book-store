@@ -1,4 +1,4 @@
-package exercise.servlet;
+package foobar;
 
 import java.io.IOException;
 import java.io.PrintWriter;
