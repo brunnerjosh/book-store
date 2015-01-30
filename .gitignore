@@ -3,3 +3,4 @@ WebContent/WEB-INF/web.xml
 .settings/*
 .project
 .classpath
+config.codekit
