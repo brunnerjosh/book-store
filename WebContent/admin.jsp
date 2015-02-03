@@ -7,8 +7,8 @@
 </head>
 <body>
 <jsp:forward page="/UserController?action=listUser" />
+<br><%-- 
 <br>
-<br>
-<jsp:forward page="/BookController?action=listBook"/>
+<jsp:forward page="/BookController?action=listBook"/> --%>
 </body>
 </html>

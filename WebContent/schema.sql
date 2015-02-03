@@ -24,17 +24,6 @@ CREATE TABLE `Bookstore`.`books` (
 	`reviewRating` INT NULL , 
 	PRIMARY KEY (`bookId`) ) 
 ENGINE = InnoDB;
-
-CREATE TABLE 'transactions'(
-	'transactionId' INT UNSIGNED NOT NULL AUTO_INCREMENT ,
-	'transactionDate' DATE NULL DEFAULT NULL , 
-	'bookId' INT NULL ,
-	'userId' INT NULL ,
-	'transactionAmount' DOUBLE NULL ,
-	PRIMARY KEY ('transactionId', 'userId')
-	)
-	ENGINE = InnoDB;
-
  
 CREATE TABLE `Bookstore`.`transactions` ( 
 	`transactionId` INT UNSIGNED NOT NULL AUTO_INCREMENT , 
@@ -44,9 +33,9 @@ CREATE TABLE `Bookstore`.`transactions` (
 	`transactionAmount` DOUBLE NULL , 
 	PRIMARY KEY (`transactionId`) ) 
 ENGINE = InnoDB;
-ALTER TABLE `transaction` ADD INDEX(`userId`);
+ALTER TABLE `transactions` ADD INDEX(`userId`);
 ALTER TABLE `transactions` ADD CONSTRAINT FOREIGN KEY (`userId`) REFERENCES `Bookstore`.`users`(`userId`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-ALTER TABLE `transaction` ADD INDEX(`bookId`);
+ALTER TABLE `transactions` ADD INDEX(`bookId`);
 ALTER TABLE `transactions` ADD CONSTRAINT FOREIGN KEY (`bookId`) REFERENCES `Bookstore`.`books`(`bookId`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 CREATE TABLE `Bookstore`.`rating` ( 
