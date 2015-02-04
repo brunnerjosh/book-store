@@ -10,8 +10,6 @@ import java.util.List;
 import model.User;
 import util.DbUtil;
 
-
-
 public class UserDao {
 	
 	private Connection connection;
