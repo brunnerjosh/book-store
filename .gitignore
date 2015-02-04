@@ -1,1 +1,6 @@
 WebContent/WEB-INF/web.xml
+.settings
+.settings/*
+.project
+.classpath
+config.codekit
