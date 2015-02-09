@@ -28,8 +28,8 @@ ENGINE = InnoDB;
 CREATE TABLE `Bookstore`.`transactions` ( 
 	`transactionId` INT UNSIGNED NOT NULL AUTO_INCREMENT , 
 	`transactionDate` DATE NULL , 
-	`bookId` INT NULL , 
-	`userId` INT NULL , 
+	`bookId` INT NULL UNSIGNED, 
+	`userId` INT NULL UNSIGNED, 
 	`transactionAmount` DOUBLE NULL , 
 	PRIMARY KEY (`transactionId`) ) 
 ENGINE = InnoDB;
@@ -40,8 +40,8 @@ ALTER TABLE `transactions` ADD CONSTRAINT FOREIGN KEY (`bookId`) REFERENCES `Boo
 
 CREATE TABLE `Bookstore`.`rating` ( 
 	`ratingId` INT UNSIGNED NOT NULL AUTO_INCREMENT , 
-	`userId` INT NOT NULL , 
-	`bookId` INT NOT NULL , 
+	`userId` INT UNSIGNED NOT NULL , 
+	`bookId` INT UNSIGNED NOT NULL , 
 	`ratingDate` DATE NOT NULL , 
 	`rating` INT NOT NULL , 
 	PRIMARY KEY (`ratingId`) ) 
