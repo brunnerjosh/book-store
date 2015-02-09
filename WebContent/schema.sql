@@ -28,8 +28,8 @@ ENGINE = InnoDB;
 CREATE TABLE `Bookstore`.`transactions` ( 
 	`transactionId` INT UNSIGNED NOT NULL AUTO_INCREMENT , 
 	`transactionDate` DATE NULL , 
-	`bookId` INT NULL UNSIGNED, 
-	`userId` INT NULL UNSIGNED, 
+	`bookId` INT UNSIGNED NULL , 
+	`userId` INT UNSIGNED NULL , 
 	`transactionAmount` DOUBLE NULL , 
 	PRIMARY KEY (`transactionId`) ) 
 ENGINE = InnoDB;
