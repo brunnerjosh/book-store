@@ -1,7 +1,6 @@
-
 CREATE DATABASE Bookstore;
-USE Bookstore;
 
+USE Bookstore;
 CREATE TABLE `Bookstore`.`users` (
 	`userId` INT UNSIGNED NOT NULL AUTO_INCREMENT ,
 	`firstName` VARCHAR(200) NULL ,
@@ -12,6 +11,7 @@ CREATE TABLE `Bookstore`.`users` (
 	PRIMARY KEY (`userId`) )
 ENGINE = InnoDB;
 
+USE Bookstore;
 CREATE TABLE `Bookstore`.`books` (
 	`bookId` INT UNSIGNED NOT NULL AUTO_INCREMENT ,
 	`title` VARCHAR(200) NULL ,
@@ -25,39 +25,33 @@ CREATE TABLE `Bookstore`.`books` (
 	PRIMARY KEY (`bookId`) )
 ENGINE = InnoDB;
 
-CREATE TABLE 'transactions'(
-	'transactionId' INT UNSIGNED NOT NULL AUTO_INCREMENT ,
-	'transactionDate' DATE NULL DEFAULT NULL ,
-	'bookId' INT NULL ,
-	'userId' INT NULL ,
-	'transactionAmount' DOUBLE NULL ,
-	PRIMARY KEY ('transactionId', 'userId')
-	)
-	ENGINE = InnoDB;
-
-
+USE Bookstore;
 CREATE TABLE `Bookstore`.`transactions` (
 	`transactionId` INT UNSIGNED NOT NULL AUTO_INCREMENT ,
 	`transactionDate` DATE NULL ,
-	`bookId` INT NULL ,
-	`userId` INT NULL ,
+	`bookId` INT UNSIGNED NULL ,
+	`userId` INT UNSIGNED NULL ,
 	`transactionAmount` DOUBLE NULL ,
 	PRIMARY KEY (`transactionId`) )
 ENGINE = InnoDB;
-ALTER TABLE `transaction` ADD INDEX(`userId`);
+
+USE Bookstore;
+ALTER TABLE `transactions` ADD INDEX(`userId`);
 ALTER TABLE `transactions` ADD CONSTRAINT FOREIGN KEY (`userId`) REFERENCES `Bookstore`.`users`(`userId`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-ALTER TABLE `transaction` ADD INDEX(`bookId`);
+ALTER TABLE `transactions` ADD INDEX(`bookId`);
 ALTER TABLE `transactions` ADD CONSTRAINT FOREIGN KEY (`bookId`) REFERENCES `Bookstore`.`books`(`bookId`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
+USE Bookstore;
 CREATE TABLE `Bookstore`.`rating` (
 	`ratingId` INT UNSIGNED NOT NULL AUTO_INCREMENT ,
-	`userId` INT NOT NULL ,
-	`bookId` INT NOT NULL ,
+	`userId` INT UNSIGNED NOT NULL ,
+	`bookId` INT UNSIGNED NOT NULL ,
 	`ratingDate` DATE NOT NULL ,
 	`rating` INT NOT NULL ,
 	PRIMARY KEY (`ratingId`) )
 ENGINE = InnoDB;
 
+USE Bookstore;
 ALTER TABLE `rating` ADD INDEX(`userId`);
 ALTER TABLE `rating` ADD CONSTRAINT FOREIGN KEY (`userId`) REFERENCES `Bookstore`.`users`(`userId`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 ALTER TABLE `rating` ADD INDEX(`bookId`);
