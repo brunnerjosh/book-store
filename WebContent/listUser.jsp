@@ -24,3 +24,4 @@
     </tbody>
 </table>
 <p><a href="UserController?action=insert">Add User</a></p>
+<p><a href="UserController?action=listUser">List Users</a></p>

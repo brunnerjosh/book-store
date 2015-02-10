@@ -16,13 +16,8 @@
 			<div class="item-list-group">
 				<div class="side-left">
 					<div class="side-left">
-						<a onclick="openAddBooks()" id="add-books" class="list-item">Add Books</a>
-						<a onclick="openAddUsers()" id="add-users" class="list-item">Add Users</a>
-						<!-- <a class="list-item">Item 3</a>
-						<a class="list-item">Item 4</a>
-						<a class="list-item">Item 5</a>
-						<a class="list-item">Item 6</a>
-						<a class="list-item">Item 7</a> -->
+						<a onclick="openAddBooks()" id="add-books" class="list-item">Books</a>
+						<a onclick="openAddUsers()" id="add-users" class="list-item">Users</a>
 					</div>
 				</div>
 			</div>
