@@ -2,17 +2,16 @@
 CREATE DATABASE Bookstore;
 USE Bookstore;
 
-CREATE TABLE `Bookstore`.`users` ( 
-	`userId` INT UNSIGNED NOT NULL AUTO_INCREMENT , 
-	`firstName` VARCHAR(200) NULL , 
-	`lastName` VARCHAR(200) NULL , 
-	`email` VARCHAR(200) NULL , 
-	`password` VARCHAR(100) NULL , 
-	`dob` DATE NULL , 
-	PRIMARY KEY (`userId`) ) 
-ENGINE = InnoDB;
+	CREATE TABLE `bookstore`.`users` ( 
+		`userId` INT UNSIGNED NOT NULL AUTO_INCREMENT , 
+		`firstName` VARCHAR(200) NULL , 
+		`lastName` VARCHAR(200) NULL , 
+		`email` VARCHAR(200) NULL , 
+		`password` VARCHAR(100) NULL , 
+		`dob` DATE NULL , 
+		PRIMARY KEY (`userId`) ) ;
 
-CREATE TABLE `Bookstore`.`books` ( 
+CREATE TABLE `bookstore`.`books` ( 
 	`bookId` INT UNSIGNED NOT NULL AUTO_INCREMENT , 
 	`title` VARCHAR(200) NULL , 
 	`author` VARCHAR(200) NULL , 
@@ -22,33 +21,27 @@ CREATE TABLE `Bookstore`.`books` (
 	`category` VARCHAR(200) NULL , 
 	`price` DOUBLE NULL , 
 	`reviewRating` INT NULL , 
-	PRIMARY KEY (`bookId`) ) 
-ENGINE = InnoDB;
+	PRIMARY KEY (`bookId`) ) ;
  
-CREATE TABLE `Bookstore`.`transactions` ( 
+CREATE TABLE `bookstore`.`transactions` ( 
 	`transactionId` INT UNSIGNED NOT NULL AUTO_INCREMENT , 
 	`transactionDate` DATE NULL , 
-	`bookId` INT UNSIGNED NULL , 
-	`userId` INT UNSIGNED NULL , 
+	`bookId` INT UNSIGNED NOT NULL , 
+	`userId` INT UNSIGNED NOT NULL , 
 	`transactionAmount` DOUBLE NULL , 
-	PRIMARY KEY (`transactionId`) ) 
-ENGINE = InnoDB;
-ALTER TABLE `transactions` ADD INDEX(`userId`);
-ALTER TABLE `transactions` ADD CONSTRAINT FOREIGN KEY (`userId`) REFERENCES `Bookstore`.`users`(`userId`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-ALTER TABLE `transactions` ADD INDEX(`bookId`);
-ALTER TABLE `transactions` ADD CONSTRAINT FOREIGN KEY (`bookId`) REFERENCES `Bookstore`.`books`(`bookId`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+	PRIMARY KEY (`transactionId`) );
 
-CREATE TABLE `Bookstore`.`rating` ( 
+ALTER TABLE `transactions` ADD CONSTRAINT FOREIGN KEY (`userId`) REFERENCES `Bookstore`.`users`(`userId`);
+ALTER TABLE `transactions` ADD CONSTRAINT FOREIGN KEY (`bookId`) REFERENCES `Bookstore`.`books`(`bookId`);
+
+CREATE TABLE `bookstore`.`rating` ( 
 	`ratingId` INT UNSIGNED NOT NULL AUTO_INCREMENT , 
 	`userId` INT UNSIGNED NOT NULL , 
 	`bookId` INT UNSIGNED NOT NULL , 
 	`ratingDate` DATE NOT NULL , 
 	`rating` INT NOT NULL , 
-	PRIMARY KEY (`ratingId`) ) 
-ENGINE = InnoDB;
+	PRIMARY KEY (`ratingId`) ) ;
 
-ALTER TABLE `rating` ADD INDEX(`userId`);
-ALTER TABLE `rating` ADD CONSTRAINT FOREIGN KEY (`userId`) REFERENCES `Bookstore`.`users`(`userId`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-ALTER TABLE `rating` ADD INDEX(`bookId`);
-ALTER TABLE `rating` ADD CONSTRAINT FOREIGN KEY (`bookId`) REFERENCES `Bookstore`.`books`(`bookId`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE `rating` ADD CONSTRAINT FOREIGN KEY (`userId`) REFERENCES `Bookstore`.`users`(`userId`);
+ALTER TABLE `rating` ADD CONSTRAINT FOREIGN KEY (`bookId`) REFERENCES `Bookstore`.`books`(`bookId`);
 
