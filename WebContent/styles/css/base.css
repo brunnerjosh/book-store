@@ -7,7 +7,8 @@ a {
   text-decoration: none;
   color: #929090;
 }
-a:hover {
+a:hover,
+a.is-active {
   color: #80b9e5;
   cursor: pointer;
 }
@@ -16,6 +17,7 @@ a:hover {
 }
 .container {
   width: 1200px;
+  position: relative;
   margin: 0 auto;
 }
 button {

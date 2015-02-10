@@ -5,8 +5,9 @@
 			<a class="list-item">About</a>
 		</div>
 		<div class="side-right">
-			<a class="list-item">Sign In</a>
+			<a class="list-item" id="signin" onclick="toggleLogIn()">Sign In</a>
 			<a class="list-item">Bag</a>
 		</div>
 	</div>
+	<%@ include file="signin.jsp" %>
 </div>

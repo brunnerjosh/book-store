@@ -16,8 +16,8 @@ import model.User;
 
 public class UserController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	public static String INSERT_OR_EDIT = "/user.jsp";
-	public static String LIST_USER = "/listUser.jsp";
+	public static String INSERT_OR_EDIT = "/admin-dashboard.jsp";
+	public static String LIST_USER = "/admin-dashboard.jsp";
 	private UserDao dao;
 	
 	public UserController() {
@@ -25,8 +25,7 @@ public class UserController extends HttpServlet {
 		dao = new UserDao();
 	}
 	
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
-			throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String forward="";
 		String action = request.getParameter("action");
 		
