@@ -44,19 +44,11 @@
 			
 			<div id="add-user-details" class="add-entity as-user-entry">
 				<h3>Enter user details:</h3>
-				<form method="post">
-					<input type="text" placeholder="First Name" required/>
-					<input type="text" placeholder="Last Name" required/>
-					<input type="text" placeholder="Date of Birth" required/>
-					<input type="text" placeholder="Phone Number" required/>
-					<input type="text" placeholder="Email Address" required/>
-					<input type="text" placeholder="Password" required/>
-					<input type="text" placeholder="Confirm Password" required/>
-					<input type="file" name="profile-pic" id="profile-pic"/>
-					<button type="submit">Add User</button>
-				</form>
+				<%@ include file = "user.jsp" %>
 			</div>
 			
+			<%@ include file = "listUser.jsp" %>
+						
 		</div>
 	</div>
 
