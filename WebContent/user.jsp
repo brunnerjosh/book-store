@@ -10,6 +10,6 @@
     <input type="text" name="lastName" placeholder="Last Name" value="<c:out value="${user.lastName}" />" />
     <input type="text" name="dob" placeholder="Date of Birth (MM/DD/YYYY)" value="<fmt:formatDate pattern="MM/dd/yyyy" value="${user.dob}" />" /> 
     <input type="text" name="email" placeholder="Email Address" value="<c:out value="${user.email}" />" />
-    <input type="submit" value="Submit" />
+    <button type="submit">Add User</button>
 </form>
 
