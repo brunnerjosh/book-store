@@ -20,6 +20,12 @@ a.is-active {
   position: relative;
   margin: 0 auto;
 }
+.visible {
+  visibility: visible;
+}
+.invisible {
+  visibility: hidden;
+}
 button {
   height: 38px;
 }
@@ -331,4 +337,13 @@ button.s-large {
 }
 .width-100 {
   width: 100% !important;
+}
+.pane-left {
+  width: 30%;
+  display: inline-block;
+}
+.pane-right {
+  width: 70%;
+  float: right;
+  display: inline-block;
 }

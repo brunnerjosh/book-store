@@ -19,6 +19,12 @@ a
   position relative
   margin 0 auto
 
+.visible
+  visibility visible
+
+.invisible
+  visibility hidden
+
 button
   height 38px
 
@@ -33,3 +39,12 @@ button
 for $i in (1)..(100)
   .width-{$i}
     width ($i) + 0% !important
+
+.pane-left
+  width 30%
+  display inline-block
+
+.pane-right
+  width 70%
+  float right
+  display inline-block

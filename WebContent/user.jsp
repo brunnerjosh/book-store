@@ -9,6 +9,7 @@
     <input type="text" name="firstName" placeholder="First Name" value="<c:out value="${user.firstName}" />" /> <br /> 
     <input type="text" name="lastName" placeholder="Last Name" value="<c:out value="${user.lastName}" />" /> <br />
     <input type="text" name="dob" placeholder="Date of Birth (MM/DD/YYYY)" value="<fmt:formatDate pattern="MM/dd/yyyy" value="${user.dob}" />" /> <br /> 
-    <input type="text" name="email" placeholder="Emaill Address" value="<c:out value="${user.email}" />" /> <br /> 
+    <input type="text" name="email" placeholder="Email Address" value="<c:out value="${user.email}" />" /> <br /> 
     <input type="submit" value="Submit" />
 </form>
+

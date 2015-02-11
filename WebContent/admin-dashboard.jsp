@@ -9,15 +9,14 @@
 	<%@ include file = "/partials/navigation.jsp" %>
 
 	<!-- MAIN BODY CONTENT -->
-	<div class="container">
-		<div>
-			<h1>Admin Dashboard</h1>
-
+	<div class="container clearfix">
+		<h1>Admin Dashboard</h1>
+		<div class="pane-left">
 			<div class="item-list-group">
 				<div class="side-left">
 					<div class="side-left">
-						<a onclick="openAddBooks()" id="add-books" class="list-item">Books</a>
-						<a onclick="openAddUsers()" id="add-users" class="list-item">Users</a>
+						<a onclick="openAddBooks()" id="add-books" class="list-item">Add Books</a>
+						<a onclick="openAddUsers()" id="add-users" class="list-item">Add Users</a>
 					</div>
 				</div>
 			</div>
@@ -39,11 +38,12 @@
 			
 			<div id="add-user-details" class="add-entity as-user-entry">
 				<h3>Enter user details:</h3>
-				<%@ include file = "user.jsp" %>
+				<%@ include file="user.jsp" %>
 			</div>
-			
-			<%@ include file = "listUser.jsp" %>
-						
+
+		</div>
+		<div class="pane-right">
+			<%@ include file="listUser.jsp" %>
 		</div>
 	</div>
 
