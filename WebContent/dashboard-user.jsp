@@ -7,7 +7,7 @@
 <body>
 	<!-- NAVIGATION BAR -->
 	<%@ include file = "/partials/navigation.jsp" %>
-
+	
 	<!-- MAIN BODY CONTENT -->
 	<div class="container clearfix">
 		<h1>Dashboard: 
@@ -23,7 +23,7 @@
 			</div> -->
 			
 			<div id="add-user-details" class="add-entity as-user-entry">
-				<h3>Enter user details:</h3>
+				<p class="as-header">Enter user details:</p>
 				<%@ include file="user.jsp" %>
 			</div>
 

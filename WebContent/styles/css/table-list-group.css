@@ -9,6 +9,9 @@
   text-align: left;
   background: #bfbcbc;
 }
+.table-list-group table td {
+  background: #fafafa;
+}
 .table-list-group table th,
 .table-list-group table td {
   padding: 0px 10px;
