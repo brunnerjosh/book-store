@@ -20,11 +20,17 @@ a.is-active {
   position: relative;
   margin: 0 auto;
 }
+input {
+  padding: 4px;
+}
 .visible {
   visibility: visible;
 }
 .invisible {
   visibility: hidden;
+}
+muted {
+  color: #929090;
 }
 button {
   height: 38px;
