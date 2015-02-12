@@ -1,7 +1,7 @@
 <div class="container">
 	<div class="main-nav item-list-group clearfix">
 		<div class="side-left">
-			<a class="list-item">Products</a>
+			<a href="/" class="list-item">Products</a>
 			<a class="list-item">About</a>
 		</div>
 		<div class="side-right">

@@ -20,17 +20,42 @@ a.is-active {
   position: relative;
   margin: 0 auto;
 }
+input {
+  padding: 4px;
+  box-sizing: border-box;
+}
+.visible {
+  visibility: visible;
+}
+.invisible {
+  visibility: hidden;
+}
+muted {
+  color: #929090;
+}
 button {
   height: 38px;
 }
 button:hover {
   cursor: pointer;
 }
+button:hover,
+button:focus {
+  text-decoration: none;
+  outline: 0;
+}
 button.s-small {
   height: 28px;
 }
 button.s-large {
   height: 48px;
+}
+button.s-green {
+  background: #29ba83;
+  color: #fff;
+}
+button.s-green:hover {
+  background: #25a776;
 }
 .width-1 {
   width: 1% !important;
@@ -331,4 +356,202 @@ button.s-large {
 }
 .width-100 {
   width: 100% !important;
+}
+.pane-left {
+  width: 30%;
+  display: inline-block;
+}
+.pane-right {
+  width: 70%;
+  float: right;
+  display: inline-block;
+}
+.main-nav {
+  background-color: transparent;
+}
+.signin-dropdown {
+  position: absolute;
+  display: none;
+  background: #dedede;
+  top: 30px;
+  right: 0px;
+  z-index: 1;
+  padding: 10px;
+  border: 1px solid #bdbbbb;
+}
+.signin-dropdown input,
+.signin-dropdown button {
+  display: block;
+  font-size: 14px;
+}
+.signin-dropdown button {
+  width: 100%;
+}
+.signin-dropdown input {
+  margin-bottom: 10px;
+}
+.item-list-group {
+  display: block;
+  position: relative;
+  width: 100%;
+}
+.item-list-group .side-left,
+.item-list-group .side-right {
+  display: inline-block;
+}
+.item-list-group .side-left a:last-of-type,
+.item-list-group .side-right a:last-of-type {
+  margin-right: 0;
+}
+.item-list-group .side-right {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.item-list-group div a.list-item {
+  margin-right: 15px;
+}
+.footer {
+  margin-top: 50px;
+  padding-top: 10px;
+  border-top: 1px solid #bdbbbb;
+}
+.products {
+  width: 100%;
+}
+.products .product {
+  display: inline-block;
+  position: relative;
+  margin: 10px;
+  -webkit-transition: all 250ms ease;
+          transition: all 250ms ease;
+  cursor: pointer;
+}
+.products .product .product-name {
+  font-size: 1.25em;
+  line-height: 1.125;
+}
+.products .product .product-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  padding: 15px;
+  box-sizing: border-box;
+  background: rgba(0,0,0,0.8);
+  opacity: 0;
+  -webkit-transition: opacity 250ms ease;
+          transition: opacity 250ms ease;
+  color: #fff;
+}
+.products .product .product-title {
+  line-height: 1;
+  position: absolute;
+  top: 6px;
+  right: 10px;
+  left: 10px;
+}
+.products .product .product-price {
+  text-align: right;
+  bottom: 6px;
+  position: absolute;
+  line-height: 1;
+  height: auto;
+  right: 10px;
+}
+.products .product .product-purchase {
+  position: absolute;
+  top: 67px;
+  left: 10px;
+  height: 24px;
+  border: none;
+  width: 48%;
+}
+.products .product .product-rating {
+  position: absolute;
+  bottom: 43px;
+  left: 10px;
+  width: 70%;
+}
+.products .product .product-rating .rating-title {
+  font-size: 12px;
+  color: #bdbbbb;
+  line-height: 1.2;
+}
+.products .product .product-rating .rating-bar {
+  background-color: #eaeaea;
+  position: relative;
+  height: 12px;
+  width: 100%;
+  overflow: hidden;
+}
+.products .product .product-rating .rating-bar .rating-value {
+  background-color: #80b9e5;
+  height: 12px;
+}
+.products .product:hover {
+  box-shadow: 0 0 16px 0 rgba(0,0,0,0.2);
+  -webkit-transform: scale(1.25);
+      -ms-transform: scale(1.25);
+          transform: scale(1.25);
+  z-index: 10;
+}
+.products .product:hover .product-info {
+  opacity: 1;
+}
+.products .product img {
+  height: 262px;
+}
+.add-entity {
+  width: 90%;
+}
+.add-entity h3 {
+  margin: 0;
+}
+.add-entity input,
+.add-entity button {
+  font-size: 16px;
+}
+.add-entity input {
+  width: 100%;
+  margin-bottom: 10px;
+}
+.add-entity button {
+  width: 100%;
+}
+.add-entity p.as-header {
+  font-size: 18px;
+  margin: 0;
+}
+.table-list-group table {
+  margin: 0px;
+  padding: 0px;
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid $black;
+}
+.table-list-group table th {
+  text-align: left;
+  background: #fafafa;
+}
+.table-list-group table td {
+  background: #fafafa;
+}
+.table-list-group table th,
+.table-list-group table td {
+  padding: 0px 10px;
+  border-right: 1px solid $black;
+  border-left: 1px solid $black;
+}
+.table-list-group table th:first-child,
+.table-list-group table td:first-child {
+  border-left: 1px solid $black;
+}
+.table-list-group table th:last-child,
+.table-list-group table td:last-child {
+  border-right: 1px solid $black;
+}
+.table-list-group table tr {
+  border: 1px solid $black;
 }

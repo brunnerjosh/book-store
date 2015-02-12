@@ -4,4 +4,10 @@ WebContent/WEB-INF/web.xml
 .project
 .classpath
 config.codekit
+<<<<<<< HEAD
 
+=======
+gulpfile.js
+node_modules/*
+package.json
+>>>>>>> 076b07620ad24d898de824f8672665073dfc62c9
