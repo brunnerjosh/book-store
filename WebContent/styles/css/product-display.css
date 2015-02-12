@@ -5,7 +5,8 @@
   display: inline-block;
   position: relative;
   margin: 10px;
-  transition: all 250ms ease;
+  -webkit-transition: all 250ms ease;
+          transition: all 250ms ease;
   cursor: pointer;
 }
 .products .product .product-name {
@@ -22,7 +23,8 @@
   box-sizing: border-box;
   background: rgba(0,0,0,0.8);
   opacity: 0;
-  transition: opacity 250ms ease;
+  -webkit-transition: opacity 250ms ease;
+          transition: opacity 250ms ease;
   color: #fff;
 }
 .products .product .product-title {
@@ -63,7 +65,9 @@
 }
 .products .product:hover {
   box-shadow: 0 0 16px 0 rgba(0,0,0,0.2);
-  transform: scale(1.25);
+  -webkit-transform: scale(1.25);
+      -ms-transform: scale(1.25);
+          transform: scale(1.25);
   z-index: 10;
 }
 .products .product:hover .product-info {
