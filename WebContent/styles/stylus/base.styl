@@ -1,14 +1,14 @@
 body
-  background-color #EAEAEA
+  background-color $main-bg
   font-family 'NTR', sans-serif
   font-size 18px
 
 a
   text-decoration none
-  color #929090
+  color $link-color
   &:hover,
   &.is-active
-    color #80B9E5
+    color $blue-hover
     cursor pointer
 
 .clearfix
@@ -30,7 +30,7 @@ input
   visibility hidden
 
 muted
-  color #929090
+  color $link-color
 
 button
   height 38px
@@ -38,10 +38,23 @@ button
   &:hover
     cursor pointer
 
+  &:hover,
+  &:focus
+    // background $blue-hover
+    // border-color $blue-hover
+    text-decoration: none
+    outline: 0
+
   &.s-small
     height 28px
   &.s-large
     height 48px
+
+  &.s-green
+    background $green
+    color $white
+    &:hover
+      background darken($green, 10%)
 
 for $i in (1)..(100)
   .width-{$i}

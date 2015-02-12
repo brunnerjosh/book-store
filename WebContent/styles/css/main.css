@@ -39,11 +39,23 @@ button {
 button:hover {
   cursor: pointer;
 }
+button:hover,
+button:focus {
+  text-decoration: none;
+  outline: 0;
+}
 button.s-small {
   height: 28px;
 }
 button.s-large {
   height: 48px;
+}
+button.s-green {
+  background: #29ba83;
+  color: #fff;
+}
+button.s-green:hover {
+  background: #25a776;
 }
 .width-1 {
   width: 1% !important;
@@ -448,14 +460,23 @@ button.s-large {
   height: auto;
   right: 10px;
 }
+.products .product .product-purchase {
+  position: absolute;
+  top: 67px;
+  left: 10px;
+  height: 24px;
+  border: none;
+  width: 48%;
+}
 .products .product .product-rating {
   position: absolute;
-  bottom: 10px;
+  bottom: 43px;
   left: 10px;
-  width: 86px;
+  width: 70%;
 }
 .products .product .product-rating .rating-title {
   font-size: 12px;
+  color: #bdbbbb;
   line-height: 1.2;
 }
 .products .product .product-rating .rating-bar {
@@ -508,11 +529,11 @@ button.s-large {
   padding: 0px;
   width: 100%;
   border-collapse: collapse;
-  border: 1px solid #000;
+  border: 1px solid $black;
 }
 .table-list-group table th {
   text-align: left;
-  background: #bfbcbc;
+  background: #fafafa;
 }
 .table-list-group table td {
   background: #fafafa;
@@ -520,17 +541,17 @@ button.s-large {
 .table-list-group table th,
 .table-list-group table td {
   padding: 0px 10px;
-  border-right: 1px solid #000;
-  border-left: 1px solid #000;
+  border-right: 1px solid $black;
+  border-left: 1px solid $black;
 }
 .table-list-group table th:first-child,
 .table-list-group table td:first-child {
-  border-left: 1px solid #000;
+  border-left: 1px solid $black;
 }
 .table-list-group table th:last-child,
 .table-list-group table td:last-child {
-  border-right: 1px solid #000;
+  border-right: 1px solid $black;
 }
 .table-list-group table tr {
-  border: 1px solid #000;
+  border: 1px solid $black;
 }
