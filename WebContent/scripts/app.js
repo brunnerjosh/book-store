@@ -26,7 +26,7 @@ var toggleLogIn = function(){
 //}
 
 $(document).ready(function(){
-  console.log("App is loaded :)");
+  console.log("App is loaded :) Enjoy!");
   
 
 
