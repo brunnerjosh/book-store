@@ -9,8 +9,8 @@
 <title>Show All Users</title>
 </head>
 <body>
-    <table border=1>
-        <thead>
+    <table border=1 class="userTable">
+        <thead class="row-title">
             <tr>
                 <th>User Id</th>
                 <th>First Name</th>
@@ -22,12 +22,12 @@
         </thead>
         <tbody>
             <c:forEach items="${users}" var="user">
-                <tr>
-                    <td><c:out value="${user.userid}" /></td>
-                    <td><c:out value="${user.firstName}" /></td>
-                    <td><c:out value="${user.lastName}" /></td>
-                    <td><fmt:formatDate pattern="yyyy-MMM-dd" value="${user.dob}" /></td>
-                    <td><c:out value="${user.email}" /></td>
+                <tr id="${user.userid}">
+                    <td id="${user.userid}"><c:out value="${user.userid}" /></td>
+                    <td id="${user.firstName}"><c:out value="${user.firstName}" /></td>
+                    <td id="${user.lastName}"><c:out value="${user.lastName}" /></td>
+                    <td id="${user.dob}"><fmt:formatDate pattern="yyyy-MMM-dd" value="${user.dob}" /></td>
+                    <td id="${user.email}"><c:out value="${user.email}" /></td>
                     <td><a href="UserController?action=edit&userId=<c:out value="${user.userid}"/>">Update</a></td>
                     <td><a href="UserController?action=delete&userId=<c:out value="${user.userid}"/>">Delete</a></td>
                 </tr>

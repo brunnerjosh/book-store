@@ -9,6 +9,8 @@ import java.util.List;
 import java.sql.PreparedStatement;
 
 import model.Transaction;
+import model.Book;
+import model.User;
 import util.DbUtil;
 
 public class TransactionDao {

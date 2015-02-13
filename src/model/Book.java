@@ -4,7 +4,7 @@ public class Book {
 	private int bookId;
 	private String title;
 	private String author;
-	private int inventory;
+	private int inventoryAmount;
 	private double price;
 	private String category;
 	private String publisher;
@@ -36,11 +36,11 @@ public class Book {
 	}
 	
 	public int getInventory(){
-		return inventory;
+		return inventoryAmount;
 	}
 	
 	public void setInventory(int inventory){
-		this.inventory = inventory;
+		this.inventoryAmount = inventory;
 	}
 	
 	public double getPrice(){
@@ -88,7 +88,7 @@ public class Book {
 		return "Book [ bookId="+ bookId +
 					 " title=" + title +
 					 " author=" + author +
-					 " inventory=" + inventory +
+					 " inventory=" + inventoryAmount +
 					 " price=" + price +
 					 " category=" + category +
 					 " publisher=" + publisher +

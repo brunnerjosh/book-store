@@ -22,7 +22,7 @@ public class BookDao {
 	public void addBook(Book book){
 		try{
 			PreparedStatement preparedStatement = connection
-					.prepareStatement("insert into books(title, author, inventory, price, category, publisher, publicationYear, reviewRating)"
+					.prepareStatement("insert into books(title, author, inventoryAmount, price, category, publisher, publicationYear, reviewRating)"
 							+ "values(?,?,?,?,?,?,?,?)");
 			
 			preparedStatement.setString(1, book.getTitle());
@@ -53,7 +53,7 @@ public class BookDao {
 	public void updateBook(Book book){
 		try{
 			PreparedStatement preparedStatement = connection
-					.prepareStatement("update books set title=?, author=?, inventory=?, price=?, category=?,"
+					.prepareStatement("update books set title=?, author=?, inventoryAmount=?, price=?, category=?,"
 							+ "publisher=?, publicationYear=?, reviewRating=? where bookId=?");
 					
 			preparedStatement.setString(1, book.getTitle());
@@ -83,17 +83,18 @@ public class BookDao {
 				book.setBookId(rs.getInt("bookId"));
 				book.setTitle(rs.getString("title"));
 				book.setAuthor(rs.getString("author"));
-				book.setInventory(rs.getInt("inventory"));
+				book.setInventory(rs.getInt("inventoryAmount"));
 				book.setPrice(rs.getDouble("price"));
 				book.setCategory(rs.getString("category"));
+				book.setPublisher(rs.getString("publisher"));
 				book.setYearPublished(rs.getString("publicationYear"));
 				book.setReviewRating(rs.getInt("reviewRating"));
+				books.add(book);
 			}
 		} catch(SQLException e){
 			e.printStackTrace();
 		}
-		
-		
+	
 		return books;
 	}
 	public Book getBookById(int bookId){
@@ -104,9 +105,10 @@ public class BookDao {
 			ResultSet rs = preparedStatement.executeQuery();
 			
 			if (rs.next()){
+				book.setBookId(bookId);
 				book.setTitle(rs.getString("title"));
 				book.setAuthor(rs.getString("author"));
-				book.setInventory(rs.getInt("inventory"));
+				book.setInventory(rs.getInt("inventoryAmount"));
 				book.setPublisher(rs.getString("publisher"));
 				book.setYearPublished(rs.getString("publicationYear"));
 				book.setCategory(rs.getString("category"));
