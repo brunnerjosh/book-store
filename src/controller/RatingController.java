@@ -76,9 +76,17 @@ public class RatingController extends HttpServlet {
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
-		///TODO:
-		rating.setRating()
-		rating.setRatingId
+		
+		int rating = Integer.parseInt(request.getParameter("rating"));
+		rating.setRating(rating);
+		String ratingId = request.getParameter("ratingId");
+		if (ratingId == null || ratingId.isEmpty()){
+			dao.addRating(rating);
+		}
+		else {
+			rating.setRatingId(Integer.parseInt(ratingId));
+			dao.updateRating(rating);
+		}
 
 		RequestDispatcher view = request.getRequestDispatcher(LIST_TRANSACTION);
         request.setAttribute("transactions", dao.getAllTransactions());
