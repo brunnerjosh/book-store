@@ -1,6 +1,6 @@
 <a onclick="toggleElement('table-list-group')" href="UserController?action=listUser">List Users</a>
 
-<div class="table-list-group">	
+<div class="table-list-group">
 	<table>
 	    <thead>
 	        <tr>
