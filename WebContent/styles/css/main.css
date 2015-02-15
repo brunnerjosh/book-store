@@ -421,6 +421,36 @@ button.s-green:hover {
   padding-top: 10px;
   border-top: 1px solid #bdbbbb;
 }
+.rating-1 {
+  width: 10%;
+}
+.rating-2 {
+  width: 20%;
+}
+.rating-3 {
+  width: 30%;
+}
+.rating-4 {
+  width: 40%;
+}
+.rating-5 {
+  width: 50%;
+}
+.rating-6 {
+  width: 60%;
+}
+.rating-7 {
+  width: 70%;
+}
+.rating-8 {
+  width: 80%;
+}
+.rating-9 {
+  width: 90%;
+}
+.rating-10 {
+  width: 100%;
+}
 .products {
   width: 100%;
 }
