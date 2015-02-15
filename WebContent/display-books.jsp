@@ -26,17 +26,21 @@
 					</div>
 				</div>
 			</div>
-
-			<%--  BOOK COVER TEMPLATES --%>
-			<%-- <img src="images/girl-on-train.png" />
-			<img src="images/american-sniper.png" />
-			<img src="images/the-life-changing-magic.png" />
-			<img src="images/the-alchemist.png" /> --%>
-
-			<a href="BookController?action=bookDisplay">View Books</a>
+			<div class="products">
+				<c:forEach items="${books}" var="book">
+					<div class="product">
+						<img src="http://placehold.it/172x262" />
+						<div class="product-info">
+							<div class="product-title"><c:out value="${book.title}" /></div>
+							<div class="product-price">$<c:out value="${book.price}" /></div>
+							<button class="product-purchase s-green">Add To Cart</button>
+							<%@ include file = "/partials/product-rating.jsp" %>
+						</div>
+					</div>
+				</c:forEach>
+			</div>
 		</div>
 	</div>
-
 
 	<!-- FOOTER BAR -->
 	<%@ include file = "/partials/footer.jsp" %>

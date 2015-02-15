@@ -497,9 +497,9 @@ button.s-green:hover {
 }
 .products .product:hover {
   box-shadow: 0 0 16px 0 rgba(0,0,0,0.2);
-  -webkit-transform: scale(1.25);
-      -ms-transform: scale(1.25);
-          transform: scale(1.25);
+  -webkit-transform: scale(1.1);
+      -ms-transform: scale(1.1);
+          transform: scale(1.1);
   z-index: 10;
 }
 .products .product:hover .product-info {
