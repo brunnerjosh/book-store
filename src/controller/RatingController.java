@@ -13,8 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import dao.RatingDao;
 import model.Rating;
-import model.User;
-import model.Book;
+
 
 //ratingId
 //userId
@@ -40,7 +39,7 @@ public class RatingController extends HttpServlet {
 
 		if (action.equalsIgnoreCase("delete")) {
 			int ratingId = Integer.parseInt(request.getParameter("ratingId"));
-			dao.deleteRating(ratingId));
+			dao.deleteRating(ratingId);
 			forward = LIST_RATING;
 			request.setAttribute("ratings", dao.getAllRatings());
 		}
@@ -66,10 +65,25 @@ public class RatingController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 	throws ServletException, IOException {
 		Rating rating = new Rating();
-		int bookId = Integer.parseInt(request.getParameter("bookId"));
-		rating.setBookId(bookId);
-		int userId = Integer.parseInt(request.getParameter("userId"));
-		rating.setUserId(userId);
+		String strBookId = request.getParameter("bookId");
+		if(strBookId == null || strBookId.isEmpty()){
+			rating.setBookId(0);
+			dao.addRating(rating);
+		}
+		else
+		{
+			int bookId = Integer.parseInt(strBookId);
+			rating.setBookId(bookId);
+		}
+		String strUserId = request.getParameter("userId");
+		if(strUserId == null || strUserId.isEmpty()){
+			rating.setUserId(0);
+			dao.addRating(rating);
+		}
+		else{
+			int userId = Integer.parseInt(strUserId);
+			rating.setUserId(userId);
+		}
 		try {
 			Date ratingDate = new SimpleDateFormat("MM/dd/yyyy").parse(request.getParameter("ratingDate"));
 			rating.setRatingDate(ratingDate);
@@ -77,8 +91,18 @@ public class RatingController extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-		int rating = Integer.parseInt(request.getParameter("rating"));
-		rating.setRating(rating);
+//		String ratingString = request.getParameter("rating");
+//		if (ratingString == null || ratingString.isEmpty()){
+//			rating.setRating(0);
+//		}
+//		else{
+//			int r = Integer.parseInt(ratingString);
+//			rating.setRating(r);
+//		}
+//		
+		int ratingStr = Integer.parseInt(request.getParameter("rating"));
+		rating.setRating(ratingStr);
+		
 		String ratingId = request.getParameter("ratingId");
 		if (ratingId == null || ratingId.isEmpty()){
 			dao.addRating(rating);
@@ -88,8 +112,8 @@ public class RatingController extends HttpServlet {
 			dao.updateRating(rating);
 		}
 
-		RequestDispatcher view = request.getRequestDispatcher(LIST_TRANSACTION);
-        request.setAttribute("transactions", dao.getAllTransactions());
+		RequestDispatcher view = request.getRequestDispatcher(LIST_RATING);
+        request.setAttribute("ratings", dao.getAllRatings());
         view.forward(request, response);
 	}
 

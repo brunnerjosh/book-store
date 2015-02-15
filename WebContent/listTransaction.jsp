@@ -30,13 +30,13 @@
         <tbody>
             <c:forEach items="${transactions}" var="transaction">
                 <tr>
-                    <td><c:out value="${transaction.transactionid}" /></td>
+                    <td><c:out value="${transaction.transactionId}" /></td>
                     <td><fmt:formatDate pattern="yyyy-MMM-dd" value="${transaction.transactionDate}" /></td>
-                    <td><c:out value="${transaction.bookid}" /></td>
-                    <td><c:out value="${transaction.userid}" /></td>
+                    <td><c:out value="${transaction.bookId}" /></td>
+                    <td><c:out value="${transaction.userId}" /></td>
                     <td><c:out value="${transaction.transactionAmount}" /></td>
-                    <td><a href="TransactionController?action=edit&transactionId=<c:out value="${transaction.transactionid}"/>">Update</a></td>
-                    <td><a href="TransactionController?action=delete&transactionId=<c:out value="${transaction.transactionid}"/>">Delete</a></td>
+                    <td><a href="TransactionController?action=edit&transactionId=<c:out value="${transaction.transactionId}"/>">Update</a></td>
+                    <td><a href="TransactionController?action=delete&transactionId=<c:out value="${transaction.transactionId}"/>">Delete</a></td>
                 </tr>
             </c:forEach>
         </tbody>

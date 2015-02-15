@@ -13,8 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import dao.TransactionDao;
 import model.Transaction;
-import model.User;
-import model.Book;
+
 
 //transactionId
 //transactionDate
@@ -39,7 +38,7 @@ public class TransactionController extends HttpServlet {
 		String action = request.getParameter("action");
 
 		if (action.equalsIgnoreCase("delete")) {
-			int userId = Integer.parseInt(request.getParameter("transactionId"));
+			int transactionId = Integer.parseInt(request.getParameter("transactionId"));
 			dao.deleteTransaction(transactionId);
 			forward = LIST_TRANSACTION;
 			request.setAttribute("transactions", dao.getAllTransactions());
@@ -66,10 +65,8 @@ public class TransactionController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 	throws ServletException, IOException {
 		Transaction transaction = new Transaction();
-		int bookId = Integer.parseInt(request.getParameter("bookId"));
-		transaction.setBookId(bookId);
-		int userId = Integer.parseInt(request.getParameter("userId"));
-		transaction.setUserId(userId);
+		System.out.println(request.toString());	//TODO:
+		System.out.println(response.toString());	//TODO:
 		try{
 			Date transDate = new SimpleDateFormat("MM/dd/yyyy").parse(request.getParameter("transactionDate"));
 			transaction.setTransactionDate(transDate);
@@ -77,8 +74,39 @@ public class TransactionController extends HttpServlet {
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
-		transaction.setTransactionAmount(request.getParameter("transactionAmount"));
-		String transactionid = request.getParameter("transactionid");
+		
+		String strBookId = request.getParameter("bookId");
+		if(strBookId == null || strBookId.isEmpty()){
+			transaction.setBookId(0);
+			dao.addTransaction(transaction);
+		}
+		else
+		{
+			int bookId = Integer.parseInt(strBookId);
+			transaction.setBookId(bookId);
+		}
+		String strUserId = request.getParameter("userId");
+		if(strUserId == null || strUserId.isEmpty()){
+			transaction.setUserId(0);
+			dao.addTransaction(transaction);
+		}
+		else{
+			int userId = Integer.parseInt(strUserId);
+			transaction.setUserId(userId);
+		}
+		
+
+		String transAmt = request.getParameter("transactionAmount");
+		if (transAmt == null || transAmt.isEmpty()){
+			transaction.setTransactionAmount(0.0);
+		}
+		else {
+			Double transactionAmount = Double.parseDouble(transAmt);
+			transaction.setTransactionAmount(transactionAmount);
+		}
+		
+		
+		String transactionid = request.getParameter("transactionId");
 		if(transactionid == null || transactionid.isEmpty())
 		{
 			dao.addTransaction(transaction);	

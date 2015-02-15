@@ -28,15 +28,15 @@
             </tr>
         </thead>
         <tbody>
-            <c:forEach items="${ratings}" var="rating">
+            <c:forEach items="${ratings	}" var="rating">
                 <tr>
-                    <td><c:out value="${rating.ratingid}" /></td>
-                    <td><c:out value="${rating.userid}" /></td>
-                    <td><c:out value="${rating.bookid}" /></td>
+                    <td><c:out value="${rating.ratingId}" /></td>
+                    <td><c:out value="${rating.userId}" /></td>
+                    <td><c:out value="${rating.bookId}" /></td>
                     <td><fmt:formatDate pattern="yyyy-MMM-dd" value="${rating.ratingDate}" /></td>
                     <td><c:out value="${rating.rating}" /></td>
-                    <td><a href="RatingController?action=edit&ratingId=<c:out value="${rating.ratingid}"/>">Update</a></td>
-                    <td><a href="RatingController?action=delete&ratingId=<c:out value="${rating.ratingid}"/>">Delete</a></td>
+                    <td><a href="RatingController?action=edit&ratingId=<c:out value="${rating.ratingId}"/>">Update</a></td>
+                    <td><a href="RatingController?action=delete&ratingId=<c:out value="${rating.ratingId}"/>">Delete</a></td>
                 </tr>
             </c:forEach>
         </tbody>

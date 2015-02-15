@@ -24,13 +24,13 @@ public class RatingDao {
 	public void addRating(Rating rating){
 		try{
 			PreparedStatement preparedStatement = connection
-					.prepareStatement("insert into rating(ratingId, userId, bookId, ratingDate, rating) "
-							+ "values (?,?,?,?,?)");
-			preparedStatement.setInt(1, rating.getRatingId());
-			preparedStatement.setInt(2, rating.getUserId());
-			preparedStatement.setInt(3, rating.getBookId());
-			preparedStatement.setDate(4, new java.sql.Date(rating.getRatingDate().getTime()));
-			preparedStatement.setInt(5, rating.getRating());
+					.prepareStatement("insert into rating( userId, bookId, ratingDate, rating) "
+							+ "values (?,?,?,?)");
+			//preparedStatement.setInt(1, rating.getRatingId());
+			preparedStatement.setInt(1, rating.getUserId());
+			preparedStatement.setInt(2, rating.getBookId());
+			preparedStatement.setDate(3, new java.sql.Date(rating.getRatingDate().getTime()));
+			preparedStatement.setInt(4, rating.getRating());
 			preparedStatement.executeUpdate();
 		} catch (SQLException e){
 			e.printStackTrace();
@@ -51,13 +51,17 @@ public class RatingDao {
 	public void updateRating(Rating rating){
 		try{
 			PreparedStatement preparedStatement = connection
-					.prepareStatement("update rating set bookId=?, userId=?, ratingDate=?, rating=?"
-							+ "where ratingId=?");
+					.prepareStatement("update bookstore.rating set bookId=?, userId=?, ratingDate=?, rating=?"
+							+ " where rating.ratingId=?");
+			
 			preparedStatement.setInt(1, rating.getBookId());
 			preparedStatement.setInt(2, rating.getUserId());
 			preparedStatement.setDate(3, new java.sql.Date(rating.getRatingDate().getTime()));
 			preparedStatement.setInt(4, rating.getRating());
 			preparedStatement.setInt(5, rating.getRatingId());
+			System.out.println(preparedStatement.toString());
+			preparedStatement.executeUpdate();
+			
 		} catch (SQLException e){
 			e.printStackTrace();
 		}

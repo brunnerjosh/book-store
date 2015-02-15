@@ -9,8 +9,6 @@ import java.util.List;
 import java.sql.PreparedStatement;
 
 import model.Transaction;
-import model.Book;
-import model.User;
 import util.DbUtil;
 
 public class TransactionDao {
@@ -22,15 +20,15 @@ public class TransactionDao {
 	
 	public void addTransaction(Transaction transaction){
 		try{
-			PreparedStatement preparedStatement = connection
-		
-				.prepareStatement("insert into transactions(transactionId, transactionDate, bookId, userId, transactionAmount) "
-						+ "values(?,?,?,?,?)");
-		preparedStatement.setInt(1, transaction.getTransactionId());
-		preparedStatement.setDate(2, new java.sql.Date(transaction.getTransactionDate().getTime()));
-		preparedStatement.setInt(3, transaction.getBookId());
-		preparedStatement.setInt(4, transaction.getUserId());
-		preparedStatement.setDouble(5, transaction.getTransactionAmount());
+			PreparedStatement preparedStatement = connection		
+				.prepareStatement("insert into transactions( `transactionDate`, `bookId`, `userId`, `transactionAmount`) "
+						+ "values (?,?,?,?)");
+		//preparedStatement.setInt(1, transaction.getTransactionId());
+		preparedStatement.setDate(1, new java.sql.Date(transaction.getTransactionDate().getTime()));
+		preparedStatement.setInt(2, transaction.getBookId());
+		preparedStatement.setInt(3, transaction.getUserId());
+		preparedStatement.setDouble(4, transaction.getTransactionAmount());
+//		System.out.println(preparedStatement);
 		preparedStatement.executeUpdate();
 		
 		} catch (SQLException e){
