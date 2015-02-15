@@ -44,7 +44,7 @@ public class UserController extends HttpServlet {
 		}
 		else if (action.equalsIgnoreCase("listUser")){
 			forward = LIST_USER;
-			request.setAttribute("user", dao.getAllUsers());
+			request.setAttribute("users", dao.getAllUsers());
 		}
 		else {
 			forward = INSERT_OR_EDIT;
