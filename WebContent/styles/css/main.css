@@ -369,7 +369,8 @@ button.s-green:hover {
 .main-nav {
   background-color: transparent;
 }
-.signin-dropdown {
+.signin-dropdown,
+.bag-dropdown {
   position: absolute;
   display: none;
   background: #dedede;
@@ -380,14 +381,18 @@ button.s-green:hover {
   border: 1px solid #bdbbbb;
 }
 .signin-dropdown input,
-.signin-dropdown button {
+.bag-dropdown input,
+.signin-dropdown button,
+.bag-dropdown button {
   display: block;
   font-size: 14px;
 }
-.signin-dropdown button {
+.signin-dropdown button,
+.bag-dropdown button {
   width: 100%;
 }
-.signin-dropdown input {
+.signin-dropdown input,
+.bag-dropdown input {
   margin-bottom: 10px;
 }
 .item-list-group {

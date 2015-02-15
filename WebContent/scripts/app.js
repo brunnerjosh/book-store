@@ -1,7 +1,12 @@
 var toggleLogIn = function(){
 	$(".signin-dropdown").toggle();
 	$("#signin").toggleClass("is-active");
-} 
+};
+
+var viewShoppingBag = function(){
+	$(".bag-dropdown").toggle();
+	$("#shopping-bag").toggleClass("is-active");
+};
 
 //var openAddBooks = function(){
 //	$("#add-book-details").show();
@@ -9,7 +14,7 @@ var toggleLogIn = function(){
 //	$(".table-list-group").hide();
 //	$("#add-books").addClass("is-active");
 //	$("#add-users").removeClass("is-active");
-//} 
+//}
 //
 //var openAddUsers = function(){
 //	$("#add-user-details").show();
@@ -17,17 +22,17 @@ var toggleLogIn = function(){
 //	$("#add-book-details").hide();
 //	$("#add-users").addClass("is-active");
 //	$("#add-books").removeClass("is-active");
-//} 
+//}
 
 //var toggleElement = function(toggleThis) {
 //	console.log("To toggle: " + toggleThis);
 //	alert("Foobar");
-//	
+//
 //}
 
 $(document).ready(function(){
   console.log("App is loaded :) Enjoy!");
-  
+
 
 
 });

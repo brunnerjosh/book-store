@@ -7,19 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%
-	String driver="org.gjt.mm.mysql.Driver";
-	String url="jdbc:mysql://localhost:3306/UserDB";
-	String username="root";
-	String passwd="Boba04luba!";
-	
-	DBConnectionPool connPool = new DBConnectionPool(url, username, passwd);
-	Connection conn = connPool.getConnection();
-	if(conn != null){
-		out.println("Success");
-	} else {
-		out.println("Failed");
-	}
-%>
+<h1>
+I'm the SETTINGS page!
+</h1>
 </body>
 </html>

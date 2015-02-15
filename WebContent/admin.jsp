@@ -6,9 +6,10 @@
 <title>Users in List</title>
 </head>
 <body>
-<jsp:forward page="/UserController?action=listUser" />
-<br>
-<br>
-<jsp:forward page="/BookController?action=listBook"/>
+go to <a href="/UserController?action=listUser"> Users </a><br>
+go to <a href="/BookController?action=listBook"> Books </a><br>
+go to <a href="/TransactionController?action=listTransaction"> Transactions </a><br>
+go to <a href="/RatingController?action=listRating"> Ratings </a><br>
+
 </body>
 </html>

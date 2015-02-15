@@ -33,7 +33,7 @@
 					<div class="product-info">
 						<div class="product-title">Book Title</div>
 						<div class="product-price">$0.00</div>
-						<button class="product-purchase s-green">Buy Now</button>
+						<button class="product-purchase s-green">Add To Cart</button>
 						<%@ include file = "/partials/product-rating.jsp" %>
 					</div>
 				</div>
@@ -42,7 +42,7 @@
 					<div class="product-info">
 						<div class="product-title">Book Title</div>
 						<div class="product-price">$0.00</div>
-						<button class="product-purchase s-green">Buy Now</button>
+						<button class="product-purchase s-green">Add To Cart</button>
 						<%@ include file = "/partials/product-rating.jsp" %>
 					</div>
 				</div>
@@ -51,7 +51,7 @@
 					<div class="product-info">
 						<div class="product-title">Book Title</div>
 						<div class="product-price">$0.00</div>
-						<button class="product-purchase s-green">Buy Now</button>
+						<button class="product-purchase s-green">Add To Cart</button>
 						<%@ include file = "/partials/product-rating.jsp" %>
 					</div>
 				</div>
@@ -60,7 +60,7 @@
 					<div class="product-info">
 						<div class="product-title">Book Title</div>
 						<div class="product-price">$0.00</div>
-						<button class="product-purchase s-green">Buy Now</button>
+						<button class="product-purchase s-green">Add To Cart</button>
 						<%@ include file = "/partials/product-rating.jsp" %>
 					</div>
 				</div>
@@ -69,7 +69,7 @@
 					<div class="product-info">
 						<div class="product-title">Book Title</div>
 						<div class="product-price">$0.00</div>
-						<button class="product-purchase s-green">Buy Now</button>
+						<button class="product-purchase s-green">Add To Cart</button>
 						<%@ include file = "/partials/product-rating.jsp" %>
 					</div>
 				</div>
@@ -78,7 +78,7 @@
 					<div class="product-info">
 						<span class="product-title">Book Title</span>
 						<span class="product-price">$0.00</span>
-						<button class="product-purchase s-green">Buy Now</button>
+						<button class="product-purchase s-green">Add To Cart</button>
 						<%@ include file = "/partials/product-rating.jsp" %>
 					</div>
 				</div>
@@ -87,7 +87,7 @@
 					<div class="product-info">
 						<div class="product-title">Book Title</div>
 						<div class="product-price">$0.00</div>
-						<button class="product-purchase s-green">Buy Now</button>
+						<button class="product-purchase s-green">Add To Cart</button>
 						<%@ include file = "/partials/product-rating.jsp" %>
 					</div>
 				</div>
@@ -96,7 +96,7 @@
 					<div class="product-info">
 						<div class="product-title">Book Title</div>
 						<div class="product-price">$0.00</div>
-						<button class="product-purchase s-green">Buy Now</button>
+						<button class="product-purchase s-green">Add To Cart</button>
 						<%@ include file = "/partials/product-rating.jsp" %>
 					</div>
 				</div>
@@ -105,7 +105,7 @@
 					<div class="product-info">
 						<div class="product-title">Book Title</div>
 						<div class="product-price">$0.00</div>
-						<button class="product-purchase s-green">Buy Now</button>
+						<button class="product-purchase s-green">Add To Cart</button>
 						<%@ include file = "/partials/product-rating.jsp" %>
 					</div>
 				</div>
