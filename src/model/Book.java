@@ -1,21 +1,22 @@
 package model;
 
 public class Book {
-	private int productid;
+	private int bookId;
 	private String title;
 	private String author;
-	private int inventory;
+	private int inventoryAmount;
 	private double price;
 	private String category;
 	private String publisher;
-	private int yearPublished;
+	private String publicationYear;
+	private int reviewRating;
 	
-	public int getProductid(){
-		return productid;
+	public int getBookId(){
+		return bookId;
 	}
 	
-	public void setProductid(int productid){
-		this.productid = productid;
+	public void setBookId(int bookId){
+		this.bookId = bookId;
 	}
 	
 	public String getTitle(){
@@ -35,11 +36,11 @@ public class Book {
 	}
 	
 	public int getInventory(){
-		return inventory;
+		return inventoryAmount;
 	}
 	
 	public void setInventory(int inventory){
-		this.inventory = inventory;
+		this.inventoryAmount = inventory;
 	}
 	
 	public double getPrice(){
@@ -66,23 +67,33 @@ public class Book {
 		this.publisher = publisher;
 	}
 	
-	public int getYearPublished(){
-		return yearPublished;
+	public String getYearPublished(){
+		return publicationYear;
 	}
 	
-	public void setYearPublished(int yearPublished){
-		this.yearPublished = yearPublished;
+	public void setYearPublished(String publicationYear){
+		this.publicationYear = publicationYear;
 	}
+	
+	public void setReviewRating(int reviewRating){
+		this.reviewRating = reviewRating;
+	}
+	
+	public int getReviewRating(){
+		return reviewRating;
+	}
+	
 	@Override
 	public String toString() {
-		return "Book [productid="+ productid +
-					 "title=" + title +
-					 "author=" + author +
-					 "inventory=" + inventory +
-					 "price=" + price +
-					 "category=" + category +
-					 "publisher=" + publisher +
-					 "yearPublished=" + yearPublished +
+		return "Book [ bookId="+ bookId +
+					 " title=" + title +
+					 " author=" + author +
+					 " inventory=" + inventoryAmount +
+					 " price=" + price +
+					 " category=" + category +
+					 " publisher=" + publisher +
+					 " yearPublished=" + publicationYear +
+					 " reviewRating=" + reviewRating +
 					 "]";
 	}
 }
