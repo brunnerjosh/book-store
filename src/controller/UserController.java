@@ -18,6 +18,7 @@ public class UserController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	public static String INSERT_OR_EDIT = "/dashboard-user.jsp"; // user.jsp
 	public static String LIST_USER = "/dashboard-user.jsp"; // listUser.jsp
+	public static String TRANS_HIST = "/transaction-history.jsp"; 
 	private UserDao dao;
 	
 	public UserController() {
@@ -44,6 +45,13 @@ public class UserController extends HttpServlet {
 		else if (action.equalsIgnoreCase("listUser")){
 			forward = LIST_USER;
 			request.setAttribute("users", dao.getAllUsers());
+		}
+		else if (action.equalsIgnoreCase("transHist")){
+			forward = TRANS_HIST;
+			int userId = Integer.parseInt(request.getParameter("userId"));
+			System.out.println("This is a transaction history for User: " +userId);
+//			User user = dao.getUserHistById(userId);
+//			request.setAttribute("user", user);
 		}
 		else {
 			forward = INSERT_OR_EDIT;

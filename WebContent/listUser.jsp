@@ -9,7 +9,7 @@
 	            <th>Last Name</th>
 	            <th>DOB</th>
 	            <th>Email</th>
-	            <th colspan=2>Action</th>
+	            <th colspan=3>Action</th>
 	        </tr>
 	    </thead>
 	    <tbody>
@@ -22,6 +22,7 @@
 	                <td><c:out value="${user.email}" /></td>
 	                <td><a href="UserController?action=edit&userId=<c:out value="${user.userid}"/>">Update</a></td>
 	                <td><a href="UserController?action=delete&userId=<c:out value="${user.userid}"/>">Delete</a></td>
+	                <td><a href="UserController?action=transHist&userId=<c:out value="${user.userid}"/>">Transactions</a></td>
 	            </tr>
 	        </c:forEach>
 	    </tbody>
