@@ -25,13 +25,13 @@
       url="jdbc:mysql://localhost:3306/bookstore" 
       driver="com.mysql.jdbc.Driver"  
       user="root"
-      password="password"
+      password=""
       var="bookstoreData"/>  
       
-  	 <sql:query sql="SELECT * FROM bookstore.users" 
+  	 <sql:query sql="SELECT * FROM Bookstore.users" 
       dataSource="${bookstoreData}" 
       var="users"/> 
-     <sql:query sql="SELECT * FROM bookstore.books"
+     <sql:query sql="SELECT * FROM Bookstore.books"
      dataSource="${bookstoreData }"
      var="books" />
      
