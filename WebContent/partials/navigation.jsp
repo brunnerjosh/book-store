@@ -18,6 +18,7 @@
 			<c:set var="isSignedIn" value="<%=loggedIn %>" />
 			<c:choose>
 				<c:when test="${isSignedIn == true}">
+					<%=u_name %> : 
 					<a href="logOut.jsp" class="list-item">Log out</a>
 				</c:when>
 				<c:otherwise>
