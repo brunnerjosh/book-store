@@ -5,8 +5,12 @@
   <%@ include file = "/partials/header.jsp" %>
 
 <body>
+	
   <!-- NAVIGATION BAR -->
   <%@ include file = "/partials/navigation.jsp" %>
+
+  <!-- ADMIN ACCESS ONLY -->
+  <%@ include file = "/confirmAdmin.jsp" %>
 
   <!-- MAIN BODY CONTENT -->
   <div class="container">

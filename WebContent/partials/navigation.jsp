@@ -6,11 +6,11 @@
 		</div>
 		<div class="side-right">
 			<a class="list-item" id="shopping-bag" onclick="viewShoppingBag()">Bag</a>
+			
 			<%			
 			String u_name = (String) session.getAttribute("username");
 			boolean loggedIn = false;
 			if(u_name != null){
-				System.out.println(u_name);
 				loggedIn = true;
 			}
 			%>
