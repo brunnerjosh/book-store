@@ -107,5 +107,11 @@ public class UserDao {
 		
 		return user;
 	}
+	
+	public boolean authCreds(String uName, String uPassword){
+		System.out.println("uName: " + uName);
+		System.out.println("uPassword: " + uPassword);
+		return true;
+	}
 
 }

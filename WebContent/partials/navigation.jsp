@@ -6,7 +6,7 @@ boolean isAdmin = false;
 
 if(u_name != null){
 	loggedIn = true;
-	if(!user.isAdminName(u_name)){
+	if(user.isAdminName(u_name)){
 		isAdmin = true;
 	}
 }
@@ -16,7 +16,6 @@ if(u_name != null){
 <!-- VARIABLES -->
 <c:set var="userIsAdmin" value="<%=isAdmin %>" />
 <c:set var="isSignedIn" value="<%=loggedIn %>" />
-
 <div class="container">
 	<div class="main-nav item-list-group clearfix">
 		<div class="side-left">
