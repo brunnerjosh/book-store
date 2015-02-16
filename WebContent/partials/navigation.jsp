@@ -1,11 +1,12 @@
-<%			
+<jsp:useBean id="user" class="model.User"/>
+<%
 String u_name = (String) session.getAttribute("username");
 boolean loggedIn = false;
 boolean isAdmin = false;
 
 if(u_name != null){
 	loggedIn = true;
-	if(u_name.equals("admin")){
+	if(!user.isAdminName(u_name)){
 		isAdmin = true;
 	}
 }
@@ -29,11 +30,11 @@ if(u_name != null){
 		</div>
 		<div class="side-right">
 			<a class="list-item" id="shopping-bag" onclick="viewShoppingBag()">Bag</a>
-			
+
 			<c:set var="isSignedIn" value="<%=loggedIn %>" />
 			<c:choose>
 				<c:when test="${isSignedIn == true}">
-					<%=u_name %> : 
+					<%=u_name %> :
 					<a href="logOut.jsp" class="list-item">Log out</a>
 				</c:when>
 				<c:otherwise>

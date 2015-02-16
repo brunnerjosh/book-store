@@ -17,7 +17,7 @@ public class UserDao {
 	public UserDao() {
 		connection = DbUtil.getConnection();
 	}
-	
+		
 	public void addUser(User user){
 		try {
             PreparedStatement preparedStatement = connection
