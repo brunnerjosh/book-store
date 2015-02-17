@@ -29,7 +29,7 @@
 			<div class="products">
 				<c:forEach items="${books}" var="book">
 					<div class="product">
-						<img src="http://placehold.it/172x262" />
+						<img src="https://placekitten.com/g/172/262" />
 						<div class="product-info">
 							<div class="product-title"><c:out value="${book.title}" /></div>
 							<div class="product-price">$<c:out value="${book.price}" /></div>

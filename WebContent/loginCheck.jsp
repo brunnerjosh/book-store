@@ -11,8 +11,8 @@
     System.out.println("User is NOT authenticated");
   }
 
-  myUser = userDao.getUserById(60);
-  System.out.println(myUser.toString());
+  // myUser = userDao.getUserById(60);
+  // System.out.println(myUser.toString());
 
 	if (user.isAdmin(username, password)) {
 		session.setAttribute("username", username);

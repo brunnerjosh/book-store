@@ -12,9 +12,11 @@ public class User {
     private String ADMIN_NAME = "admin";
     private String ADMIN_PASS = "pass";
     public int getUserid() {
+    	System.out.println("Foo1: " + userid);
         return userid;
     }
     public void setUserid(int userid) {
+    	System.out.println("Foo2: " + userid);
         this.userid = userid;
     }
     public String getFirstName() {
