@@ -10,12 +10,7 @@
 		<muted>Add Books</muted>
 	</h1>
 	<%@ include file="listBook.jsp" %>
-<!-- 	<div class="pane-left">
 
-	</div>
-	<div class="pane-right">
-		
-	</div> -->
 </div>
 
 

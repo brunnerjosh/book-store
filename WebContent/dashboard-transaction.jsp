@@ -7,9 +7,10 @@
 <!-- MAIN BODY CONTENT -->
 <div class="container clearfix">
 	<h1>Dashboard: 
-		<muted>Add Users</muted>
+		<muted>Transactions</muted>
 	</h1>
-	<%@ include file="listUser.jsp" %>
+	<%@ include file="listTransaction.jsp" %>
+
 </div>
 
 
