@@ -31,18 +31,13 @@
 
 		<a href="BookController?action=bookDisplay">View Books</a>
 		<br>
-		   <%
-		      Cookie[] cookies= request.getCookies();
-		      for(int i = 0; i< cookies.length; i++){
-		    %>
-		        session name: <%=cookies[i].getName()%><br/>
-		        session value: <%=cookies[i].getValue()%><br/>
-		    <% } %>
-		
+			
+		<%-- DISPLAY COOKIES --%>
+		<%@ include file = "displayCookies.jsp" %>
+
 	</div>
 </div>
 
 
 <!-- FOOTER BAR -->
 <%@ include file = "/partials/footer.jsp" %>
-
