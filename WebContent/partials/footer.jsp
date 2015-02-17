@@ -4,6 +4,7 @@
 				<a class="list-item">Shipping/Returns</a>
 				<a class="list-item">T&amp;C</a>
 				<a class="list-item">Contact</a>
+				<a class="list-item">About</a>
 			</div>
 		</div>
 	</div>

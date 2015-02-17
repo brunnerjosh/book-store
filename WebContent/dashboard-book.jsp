@@ -7,7 +7,7 @@
 <!-- MAIN BODY CONTENT -->
 <div class="container clearfix">
 	<h1>Dashboard: 
-		<muted>Add Books</muted>
+		<muted>Books</muted>
 	</h1>
 	<%@ include file="listBook.jsp" %>
 
