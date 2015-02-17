@@ -30,6 +30,15 @@
 		<img src="images/the-alchemist.png" /> --%>
 
 		<a href="BookController?action=bookDisplay">View Books</a>
+		<br>
+		   <%
+		      Cookie[] cookies= request.getCookies();
+		      for(int i = 0; i< cookies.length; i++){
+		    %>
+		        session name: <%=cookies[i].getName()%><br/>
+		        session value: <%=cookies[i].getValue()%><br/>
+		    <% } %>
+		
 	</div>
 </div>
 

@@ -5,6 +5,8 @@
 <title>JSP Page</title>
 </head>
 <body>
+	<!-- DELETE COOKIES -->
+	<%@ include file = "/deleteCookies.jsp" %>
 	<%
 		session.removeAttribute("username");
 		session.removeAttribute("password");
