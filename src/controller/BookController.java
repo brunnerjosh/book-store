@@ -16,7 +16,7 @@ import model.Book;
 public class BookController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	public static String INSERT_OR_EDIT = "/book.jsp";
-	public static String LIST_BOOK = "/listBook.jsp";
+	public static String LIST_BOOK = "/dashboard-book.jsp";
 	public static String BOOK_DISPLAY= "/display-books.jsp";
 	private BookDao dao;
 	

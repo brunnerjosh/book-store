@@ -30,6 +30,12 @@ input {
 .invisible {
   visibility: hidden;
 }
+.s-left {
+  float: left;
+}
+.s-right {
+  float: right;
+}
 muted {
   color: #929090;
 }
@@ -539,7 +545,8 @@ button.s-green:hover {
   height: 262px;
 }
 .add-entity {
-  width: 90%;
+  width: 400px;
+  margin: 0 auto;
 }
 .add-entity h3 {
   margin: 0;
