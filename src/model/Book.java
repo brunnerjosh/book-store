@@ -1,5 +1,7 @@
 package model;
 
+import java.sql.Blob;
+
 public class Book {
 	private int bookId;
 	private String title;
@@ -10,6 +12,7 @@ public class Book {
 	private String publisher;
 	private String publicationYear;
 	private int reviewRating;
+	private Blob photo;
 	
 	public int getBookId(){
 		return bookId;
@@ -81,6 +84,13 @@ public class Book {
 	
 	public int getReviewRating(){
 		return reviewRating;
+	}
+	
+	public void setPhoto(Blob photo){
+		this.photo = photo;
+	}
+	public Blob getPhoto(){
+		return photo;
 	}
 	
 	@Override

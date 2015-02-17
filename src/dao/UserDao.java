@@ -23,12 +23,13 @@ public class UserDao {
 	public void addUser(User user){
 		try {
             PreparedStatement preparedStatement = connection
-                    .prepareStatement("insert into users(firstname,lastname,dob,email) values (?, ?, ?, ? )");
+                    .prepareStatement("insert into users(firstname,lastname,dob,email,password) values (?, ?, ?, ?, ? )");
             // Parameters start with 1
             preparedStatement.setString(1, user.getFirstName());
             preparedStatement.setString(2, user.getLastName());
            preparedStatement.setDate(3, new java.sql.Date(user.getDob().getTime()));
             preparedStatement.setString(4, user.getEmail());
+            preparedStatement.setString(5, user.getPassword());
             preparedStatement.executeUpdate();
 
         } catch (SQLException e) {
@@ -52,14 +53,15 @@ public class UserDao {
 	public void updateUser(User user){
 		try {
             PreparedStatement preparedStatement = connection
-                    .prepareStatement("update users set firstname=?, lastname=?, dob=?, email=?" +
+                    .prepareStatement("update users set firstname=?, lastname=?, dob=?, email=?, password=?" +
                             "where userid=?");
             // Parameters start with 1
             preparedStatement.setString(1, user.getFirstName());
             preparedStatement.setString(2, user.getLastName());
             preparedStatement.setDate(3, new java.sql.Date(user.getDob().getTime()));
             preparedStatement.setString(4, user.getEmail());
-            preparedStatement.setInt(5, user.getUserid());
+            preparedStatement.setString(5, user.getPassword());
+            preparedStatement.setInt(6, user.getUserid());
             preparedStatement.executeUpdate();
 
         } catch (SQLException e) {
@@ -79,6 +81,7 @@ public class UserDao {
                 user.setLastName(rs.getString("lastname"));
                 user.setDob(rs.getDate("dob"));
                 user.setEmail(rs.getString("email"));
+                user.setPassword("password");
                 users.add(user);
             }
 		} catch (SQLException e) {
@@ -102,6 +105,7 @@ public class UserDao {
 				user.setLastName(rs.getString("lastname"));
 				user.setDob(rs.getDate("dob"));
 				user.setEmail(rs.getString("email"));
+				user.setPassword(rs.getString("password"));
 			}
 		} catch (SQLException e){
 			e.printStackTrace();

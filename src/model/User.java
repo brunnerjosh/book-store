@@ -9,6 +9,8 @@ public class User {
     private String lastName;
     private Date dob;
     private String email;
+    private String password;
+    
     public int getUserid() {
         return userid;
     }
@@ -39,11 +41,19 @@ public class User {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    public String getPassword(){
+    	return password;
+    }
+    public void setPassword(String password){
+    	this.password = password;
+    }
+    
     @Override
     public String toString() {
         return "User [userid=" + userid + ", firstName=" + firstName
                 + ", lastName=" + lastName + ", dob=" + dob + ", email="
-                + email + "]";
+                + email + "password=" + password + "]";
     }    
 }
 
