@@ -31,8 +31,10 @@
             type="text" name="dob"
             value="<fmt:formatDate pattern="MM/dd/yyyy" value="${user.dob}" />" /> <br /> 
         Email : <input type="text" name="email"
-            value="<c:out value="${user.email}" />" /> <br /> <input
-            type="submit" value="Submit" />
+            value="<c:out value="${user.email}" />" /> <br />
+        Password : <input type="text" name="password"
+            value="<c:out value="${user.password}" />" /> <br />
+             <input type="submit" value="Submit" />
     </form>
 </body>
 </html>

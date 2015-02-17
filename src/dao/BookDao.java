@@ -23,7 +23,7 @@ public class BookDao {
 		try{
 			PreparedStatement preparedStatement = connection
 					.prepareStatement("insert into books(title, author, inventoryAmount, price, category, publisher, publicationYear, reviewRating)"
-							+ "values(?,?,?,?,?,?,?,?)");
+							+ "values(?,?,?,?,?,?,?,?,?)");
 			
 			preparedStatement.setString(1, book.getTitle());
 			preparedStatement.setString(2, book.getAuthor());
@@ -33,6 +33,7 @@ public class BookDao {
 			preparedStatement.setString(6, book.getPublisher());
 			preparedStatement.setString(7, book.getYearPublished());
 			preparedStatement.setInt(8, book.getReviewRating());
+			preparedStatement.setBlob(9, book.getPhoto());
 			preparedStatement.executeUpdate();
 		} catch (SQLException e){
 			e.printStackTrace();
@@ -54,7 +55,7 @@ public class BookDao {
 		try{
 			PreparedStatement preparedStatement = connection
 					.prepareStatement("update books set title=?, author=?, inventoryAmount=?, price=?, category=?,"
-							+ "publisher=?, publicationYear=?, reviewRating=? where bookId=?");
+							+ "publisher=?, publicationYear=?, reviewRating=?, photo=? where bookId=?");
 					
 			preparedStatement.setString(1, book.getTitle());
 			preparedStatement.setString(2, book.getAuthor());
@@ -64,7 +65,8 @@ public class BookDao {
 			preparedStatement.setString(6, book.getPublisher());
 			preparedStatement.setString(7, book.getYearPublished());
 			preparedStatement.setInt(8, book.getReviewRating());
-			preparedStatement.setInt(9, book.getBookId());
+			preparedStatement.setBlob(9, book.getPhoto());
+			preparedStatement.setInt(10, book.getBookId());
 			preparedStatement.executeUpdate();
 		} catch(SQLException e){
 			e.printStackTrace();
@@ -89,6 +91,7 @@ public class BookDao {
 				book.setPublisher(rs.getString("publisher"));
 				book.setYearPublished(rs.getString("publicationYear"));
 				book.setReviewRating(rs.getInt("reviewRating"));
+				book.setPhoto(rs.getBlob("photo"));
 				books.add(book);
 			}
 		} catch(SQLException e){
@@ -114,6 +117,7 @@ public class BookDao {
 				book.setCategory(rs.getString("category"));
 				book.setPrice(rs.getDouble("price"));
 				book.setReviewRating(rs.getInt("reviewRating"));
+				book.setPhoto(rs.getBlob("photo"));
 			}
 		} catch (SQLException e){
 			e.printStackTrace();

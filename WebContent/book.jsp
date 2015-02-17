@@ -33,6 +33,7 @@
             value="<c:out value="${book.price}" />" /> <br />
 		Review Rating : <input type="text" name="reviewRating"
             value="<c:out value="${book.reviewRating}" />" /> <br />
+        Photo : <input type="file" name="photoUrl" value="<c:out value="${book.photo }" />" />
             <input type="submit" value="Submit" />
 	</form>
 	</body>
