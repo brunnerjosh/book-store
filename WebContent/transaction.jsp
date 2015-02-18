@@ -1,5 +1,26 @@
- <!-- HEADER BAR -->
- <%@ include file = "/partials/header.jsp" %>
+<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+	<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+	<link type="text/css"
+	    href="css/ui-lightness/jquery-ui-1.8.18.custom.css" rel="stylesheet" />
+	<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+	<script type="text/javascript" src="js/jquery-ui-1.8.18.custom.min.js"></script>
+	<title>Add New/Edit Transactions</title>
+	</head>
+	<body>
+	<script>
+		//transactionId
+		//transactionDate
+		//bookId
+		//userId
+		//transactionAmount
+	</script>
 	  <sql:setDataSource 
       url="jdbc:mysql://localhost:3306/Bookstore" 
       driver="com.mysql.jdbc.Driver"  
@@ -8,11 +29,11 @@
       var="bookstoreData"/>  
       
   	 <sql:query sql="SELECT * FROM Bookstore.users" 
-      			dataSource="${bookstoreData}" 
-      			var="users"/> 
+      dataSource="${bookstoreData}" 
+      var="users"/> 
      <sql:query sql="SELECT * FROM Bookstore.books"
-     			dataSource="${bookstoreData }"
-     			var="books" />
+     dataSource="${bookstoreData }"
+     var="books" />
     
 	
 	<form method="POST" action='TransactionController' name="frmAddTransaction">
@@ -38,6 +59,5 @@
             value="<c:out value="${transaction.transactionAmount}" />" /> <br />
 		<input type="submit" value="Submit" />
 	</form>
-
-<!-- FOOTER BAR -->
-<%@ include file = "/partials/footer.jsp" %>
+	</body>
+</html>

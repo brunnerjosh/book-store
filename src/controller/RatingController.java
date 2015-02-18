@@ -24,7 +24,7 @@ import model.Rating;
 public class RatingController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	public static String INSERT_OR_EDIT = "/rating.jsp";
-	public static String LIST_RATING = "/dashboard-rating.jsp";	//check this
+	public static String LIST_RATING = "/listRating.jsp";	//check this
 	private RatingDao dao;
 
 	public RatingController(){
