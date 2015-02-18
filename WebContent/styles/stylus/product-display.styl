@@ -1,3 +1,8 @@
+// RATING WIDTH CALCULATIONS
+for $i in (1)..(10)
+  .rating-{$i}
+    width ($i) * 10%
+
 .products
   width 100%
   .product
@@ -69,7 +74,7 @@
 
     &:hover
       box-shadow 0 0 16px 0 rgba(0,0,0,.2)
-      transform scale(1.25)
+      transform scale(1.10)
       z-index 10
 
       .product-info
