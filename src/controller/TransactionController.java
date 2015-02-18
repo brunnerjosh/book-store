@@ -24,7 +24,7 @@ import model.Transaction;
 public class TransactionController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	public static String INSERT_OR_EDIT = "/transaction.jsp";
-	public static String LIST_TRANSACTION = "/dashboard-transaction.jsp";	//check this
+	public static String LIST_TRANSACTION = "/listTransaction.jsp";	//check this
 	private TransactionDao dao;
 
 	public TransactionController(){

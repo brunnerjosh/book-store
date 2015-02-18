@@ -1,5 +1,4 @@
-<a class="s-right" href="UserController?action=insert">Add User</a>
-<a href="UserController?action=listUser">List Users</a>
+<a onclick="toggleElement('table-list-group')" href="UserController?action=listUser">List Users</a>
 
 <div class="table-list-group">
 	<table>
