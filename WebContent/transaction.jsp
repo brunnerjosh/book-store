@@ -11,7 +11,7 @@
 	    href="css/ui-lightness/jquery-ui-1.8.18.custom.css" rel="stylesheet" />
 	<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
 	<script type="text/javascript" src="js/jquery-ui-1.8.18.custom.min.js"></script>
-	<title>Add new/Edit Transactions</title>
+	<title>Add New/Edit Transactions</title>
 	</head>
 	<body>
 	<script>
@@ -22,16 +22,16 @@
 		//transactionAmount
 	</script>
 	  <sql:setDataSource 
-      url="jdbc:mysql://localhost:3306/bookstore" 
+      url="jdbc:mysql://localhost:3306/Bookstore" 
       driver="com.mysql.jdbc.Driver"  
       user="root"
-      password="password"
+      password=""
       var="bookstoreData"/>  
       
-  	 <sql:query sql="SELECT * FROM bookstore.users" 
+  	 <sql:query sql="SELECT * FROM Bookstore.users" 
       dataSource="${bookstoreData}" 
       var="users"/> 
-     <sql:query sql="SELECT * FROM bookstore.books"
+     <sql:query sql="SELECT * FROM Bookstore.books"
      dataSource="${bookstoreData }"
      var="books" />
     

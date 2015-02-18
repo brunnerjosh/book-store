@@ -1,13 +1,14 @@
 body
-  background-color #EAEAEA
+  background-color $main-bg
   font-family 'NTR', sans-serif
   font-size 18px
 
 a
   text-decoration none
-  color #929090
-  &:hover
-    color #80B9E5
+  color $link-color
+  &:hover,
+  &.is-active
+    color $blue-hover
     cursor pointer
 
 .clearfix
@@ -15,7 +16,21 @@ a
 
 .container
   width 1200px
+  position relative
   margin 0 auto
+
+input
+  padding 4px
+  box-sizing border-box
+
+.visible
+  visibility visible
+
+.invisible
+  visibility hidden
+
+muted
+  color $link-color
 
 button
   height 38px
@@ -23,11 +38,33 @@ button
   &:hover
     cursor pointer
 
+  &:hover,
+  &:focus
+    // background $blue-hover
+    // border-color $blue-hover
+    text-decoration: none
+    outline: 0
+
   &.s-small
     height 28px
   &.s-large
     height 48px
 
+  &.s-green
+    background $green
+    color $white
+    &:hover
+      background darken($green, 10%)
+
 for $i in (1)..(100)
   .width-{$i}
     width ($i) + 0% !important
+
+.pane-left
+  width 30%
+  display inline-block
+
+.pane-right
+  width 70%
+  float right
+  display inline-block

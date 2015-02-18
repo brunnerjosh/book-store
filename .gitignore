@@ -1,1 +1,9 @@
 WebContent/WEB-INF/web.xml
+.settings
+.settings/*
+.project
+.classpath
+config.codekit
+gulpfile.js
+node_modules/*
+package.json

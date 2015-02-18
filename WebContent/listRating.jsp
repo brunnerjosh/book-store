@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>Show All Transactions</title>
+<title>Show All Ratings</title>
 </head>
 <body>
     <script>
