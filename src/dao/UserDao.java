@@ -54,7 +54,7 @@ public class UserDao {
 		System.out.println("UserDao: updateUser: " + user.toString());
 		try {
             PreparedStatement preparedStatement = connection
-                    .prepareStatement("update users set firstname=?, lastname=?, dob=?, email=?, password=?" +
+                    .prepareStatement("update users set firstname=?, lastname=?, dob=?, email=?, password=? " +
                             "where userid=?");
             // Parameters start with 1
             preparedStatement.setString(1, user.getFirstName());
@@ -82,7 +82,7 @@ public class UserDao {
                 user.setLastName(rs.getString("lastname"));
                 user.setDob(rs.getDate("dob"));
                 user.setEmail(rs.getString("email"));
-                user.setPassword("password");
+                user.setPassword(rs.getString("password"));
                 users.add(user);
             }
 		} catch (SQLException e) {
