@@ -17,8 +17,9 @@ public class UserDao {
 	public UserDao() {
 		connection = DbUtil.getConnection();
 	}
-	
+		
 	public void addUser(User user){
+		System.out.println("UserDao: addUser: " + user.toString());
 		try {
             PreparedStatement preparedStatement = connection
                     .prepareStatement("insert into users(firstname,lastname,dob,email) values (?, ?, ?, ? )");
@@ -35,6 +36,7 @@ public class UserDao {
 	}
 	
 	public void deleteUser(int userId){
+		System.out.println("UserDao: deleteUser: " + userId);
 		try {
             PreparedStatement preparedStatement = connection
                     .prepareStatement("delete from users where userid=?");
@@ -48,6 +50,7 @@ public class UserDao {
 	}
 	
 	public void updateUser(User user){
+		System.out.println("UserDao: updateUser: " + user.toString());
 		try {
             PreparedStatement preparedStatement = connection
                     .prepareStatement("update users set firstname=?, lastname=?, dob=?, email=?" +
@@ -106,6 +109,12 @@ public class UserDao {
 		}
 		
 		return user;
+	}
+	
+	public boolean authCreds(String uName, String uPassword){
+		System.out.println("uName: " + uName);
+		System.out.println("uPassword: " + uPassword);
+		return true;
 	}
 
 }
