@@ -33,7 +33,8 @@
 						<div class="product-info">
 							<div class="product-title"><c:out value="${book.title}" /></div>
 							<div class="product-price">$<c:out value="${book.price}" /></div>
-							<button class="product-purchase s-green">Add To Cart</button>
+							<%-- <button class="product-purchase s-green">View Detail</button> --%>
+							<a href="BookController?action=bookDetail&bookId=${book.bookId}" class="product-purchase s-green">View Detail</a>
 							<%@ include file = "/partials/product-rating.jsp" %>
 						</div>
 					</div>

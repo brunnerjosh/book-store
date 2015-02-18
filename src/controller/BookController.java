@@ -18,6 +18,7 @@ public class BookController extends HttpServlet {
 	public static String INSERT_OR_EDIT = "/book.jsp";
 	public static String LIST_BOOK = "/dashboard-book.jsp";
 	public static String BOOK_DISPLAY= "/display-books.jsp";
+	public static String BOOK_DETAIL= "/display-book-detail.jsp";
 	private BookDao dao;
 	
 	public BookController() {
@@ -48,6 +49,14 @@ public class BookController extends HttpServlet {
 		else if (action.equalsIgnoreCase("bookDisplay")){
 			forward = BOOK_DISPLAY;
 			request.setAttribute("books", dao.getAllBooks());
+		}
+		else if (action.equalsIgnoreCase("bookDetail")){
+			forward = BOOK_DETAIL;
+			int bookId = Integer.parseInt(request.getParameter("bookId"));
+		        System.out.println("bookId = " + bookId);
+			Book book = dao.getBookById(bookId);
+			request.setAttribute("book", book);
+		        System.out.println(book.toString());
 		}
 		else {
 			forward = INSERT_OR_EDIT;
