@@ -1,13 +1,17 @@
 package controller;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
-
+import java.io.InputStream;
+import java.sql.Blob;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 
 import dao.BookDao;
 import model.Book;
@@ -72,7 +76,7 @@ public class BookController extends HttpServlet {
 		}
 		String rating = request.getParameter("reviewRating");
 		if (rating == null || rating.isEmpty()){
-			book.setReviewRating(0);
+			book.setReviewRating(0);	
 		}
 		else{
 			int rate = Integer.parseInt(rating);
@@ -82,7 +86,29 @@ public class BookController extends HttpServlet {
 		book.setPrice(Double.parseDouble(request.getParameter("price"))); //TODO: may need validation
 		book.setYearPublished(request.getParameter("publicationYear"));
 		book.setPublisher(request.getParameter("publisher"));
-		
+		InputStream inputStream = null; // input stream of the upload file
+        
+        // obtains the upload file part in this multipart request
+        Part filePart = request.getPart("photoUrl");
+        if (filePart != null) {
+            // prints out some information for debugging
+            System.out.println(filePart.getName());
+            System.out.println(filePart.getSize());
+            System.out.println(filePart.getContentType());
+             
+            // obtains input stream of the upload file
+            inputStream = filePart.getInputStream();
+        }
+         
+		System.out.println(filePart);
+		if (filePart == null || filePart.toString().isEmpty()){
+			//do nothing
+		}
+		else {
+			//File file = new File("/Users/tazzledazzle/Pictures/"+photoUrl);
+//			FileInputStream inputStream = new FileInputStream(file);
+			book.setPhoto((Blob)inputStream);
+		}
 		String bookId = request.getParameter("bookId");
 		if(bookId == null || bookId.isEmpty()){
 			dao.addBook(book);

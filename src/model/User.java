@@ -9,8 +9,10 @@ public class User {
     private String lastName;
     private Date dob;
     private String email;
+    private String password;
     private String ADMIN_NAME = "admin";
     private String ADMIN_PASS = "pass";
+
     public int getUserid() {
     	System.out.println("Foo1: " + userid);
         return userid;
@@ -43,6 +45,13 @@ public class User {
     public void setEmail(String email) {
         this.email = email;
     }
+    public String getPassword(){
+    	return password;
+    }
+    public void setPassword(String password){
+    	this.password = password;
+    }
+    
     public boolean isAdminName(String username){
     	return username.equals(ADMIN_NAME);
     }
@@ -53,11 +62,12 @@ public class User {
     	System.out.println("uName: " + uName + "\n" + "uPass: " + uPass);
     	return isAdminName(uName) && isAdminPassword(uPass);
     }
+
     @Override
     public String toString() {
         return "User [userid=" + userid + ", firstName=" + firstName
                 + ", lastName=" + lastName + ", dob=" + dob + ", email="
-                + email + "]";
+                + email + "password=" + password + "]";
     }    
 }
 

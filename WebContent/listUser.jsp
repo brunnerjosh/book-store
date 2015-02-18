@@ -10,6 +10,7 @@
 	            <th>Last Name</th>
 	            <th>DOB</th>
 	            <th>Email</th>
+	            <th>Password</th>
 	            <th colspan=3>Action</th>
 	        </tr>
 	    </thead>
@@ -21,6 +22,7 @@
 	                <td><c:out value="${user.lastName}" /></td>
 	                <td><fmt:formatDate pattern="yyyy-MMM-dd" value="${user.dob}" /></td>
 	                <td><c:out value="${user.email}" /></td>
+	                <td id="${user.password }"><c:out value="${user.password }" /></td>
 	                <td><a href="UserController?action=edit&userId=<c:out value="${user.userid}"/>">Update</a></td>
 	                <td><a href="UserController?action=delete&userId=<c:out value="${user.userid}"/>">Delete</a></td>
 	                <td><a href="UserController?action=transHist&userId=<c:out value="${user.userid}"/>">Transactions</a></td>

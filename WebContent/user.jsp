@@ -15,6 +15,7 @@
 		    <input type="text" name="lastName" placeholder="Last Name" value="<c:out value="${user.lastName}" />" />
 		    <input type="text" name="dob" placeholder="Date of Birth (MM/DD/YYYY)" value="<fmt:formatDate pattern="MM/dd/yyyy" value="${user.dob}" />" />
 		    <input type="text" name="email" placeholder="Email Address" value="<c:out value="${user.email}" />" />
+		    <input type="text" name="password" placeholder="Password" value="<c:out value="${user.password}" />" />
 		    <button type="submit">Submit</button>
 		    <a href="UserController?action=listUser">Cancel</a>
 		</form>
@@ -23,3 +24,4 @@
 
 <!-- FOOTER BAR -->
 <%@ include file = "/partials/footer.jsp" %>
+

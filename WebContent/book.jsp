@@ -19,8 +19,10 @@
 			<input type="text" placeholder="Category" name="category" value="<c:out value="${book.category}" />" />
 			<input type="text" placeholder="Price" name="price" value="<c:out value="${book.price}" />" />
 			<input type="text" placeholder="Review Rating" name="reviewRating" value="<c:out value="${book.reviewRating}" />" />
+			<input type="file" placeholder="Photo URL" name="photoUrl" value="<c:out value="${book.photo }" />" />
 			<button type="submit">Submit</button>
 			<a href="BookController?action=listBook">Cancel</a>
+
 	</form>
 	</div>
 </div>
