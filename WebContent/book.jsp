@@ -1,8 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- HEADER BAR -->
+<%@ include file = "/partials/header.jsp" %>
 
+<<<<<<< HEAD
 <html>
 	<head>
 	<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
@@ -35,6 +34,31 @@
             value="<c:out value="${book.reviewRating}" />" /> <br />
         Photo : <input type="file" name="photoUrl" value="<c:out value="${book.photo }" />" />
             <input type="submit" value="Submit" />
+=======
+<div class="container">
+	<!-- <script>
+	    $(function() {
+	        $('input[name=dob]').datepicker();
+	    });
+	</script> -->
+	<div id="add-user-details" class="add-entity as-user-entry">
+		<p class="as-header">Enter book details:</p>
+		<form method="POST" action='BookController' name="frmAddBook">
+			<input type="text" placeholder="Book ID" readonly="readonly" name="bookId" value="<c:out value="${book.bookId}" />" />
+			<input type="text" placeholder="Book Title" name="title" value="<c:out value="${book.title}" />" />
+			<input type="text" placeholder="Author" name="author" value="<c:out value="${book.author}" />" />
+			<input type="text" placeholder="Inventory Amount" name="inventoryAmount" value="<c:out value="${book.inventory}" />" />
+			<input type="text" placeholder="Publisher" name="publisher" value="<c:out value="${book.publisher}" />" />
+			<input type="text" placeholder="Publication Year" name="publicationYear" value="<c:out value="${book.yearPublished}" />" />
+			<input type="text" placeholder="Category" name="category" value="<c:out value="${book.category}" />" />
+			<input type="text" placeholder="Price" name="price" value="<c:out value="${book.price}" />" />
+			<input type="text" placeholder="Review Rating" name="reviewRating" value="<c:out value="${book.reviewRating}" />" />
+			<button type="submit">Submit</button>
+			<a href="BookController?action=listBook">Cancel</a>
+>>>>>>> brunnerjosh/bookDisplay
 	</form>
-	</body>
-</html>
+	</div>
+</div>
+
+<!-- FOOTER BAR -->
+<%@ include file = "/partials/footer.jsp" %>
