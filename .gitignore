@@ -9,3 +9,5 @@ node_modules/*
 package.json
 src/data/dbConnect/DBConnectionPool.java
 build/classes/data/dbConnect/DBConnectionPool.class
+bin
+build/*
