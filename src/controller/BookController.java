@@ -22,22 +22,23 @@ public class BookController extends HttpServlet {
 	public static String INSERT_OR_EDIT = "/book.jsp";
 	public static String LIST_BOOK = "/dashboard-book.jsp";
 	public static String BOOK_DISPLAY= "/display-books.jsp";
+	public static String BOOK_DETAIL= "/display-book-detail.jsp";
 	private BookDao dao;
-	
+
 	public BookController() {
-		super(); 
+		super();
 		dao = new BookDao();
 	}
-	
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String forward = "";
 		String action = request.getParameter("action");
-		
+
 		if (action.equalsIgnoreCase("delete")) {
-				int bookId = Integer.parseInt(request.getParameter("bookId"));
-				dao.deleteBook(bookId);
-				forward = LIST_BOOK;
-				request.setAttribute("books", dao.getAllBooks());
+			int bookId = Integer.parseInt(request.getParameter("bookId"));
+			dao.deleteBook(bookId);
+			forward = LIST_BOOK;
+			request.setAttribute("books", dao.getAllBooks());
 		}
 		else if (action.equalsIgnoreCase("edit")) {
 			forward = INSERT_OR_EDIT;
@@ -53,14 +54,22 @@ public class BookController extends HttpServlet {
 			forward = BOOK_DISPLAY;
 			request.setAttribute("books", dao.getAllBooks());
 		}
+		else if (action.equalsIgnoreCase("bookDetail")){
+			forward = BOOK_DETAIL;
+			int bookId = Integer.parseInt(request.getParameter("bookId"));
+      System.out.println("bookId = " + bookId);
+			Book book = dao.getBookById(bookId);
+			request.setAttribute("book", book);
+      System.out.println(book.toString());
+		}
 		else {
 			forward = INSERT_OR_EDIT;
 		}
-		
+
 		RequestDispatcher view = request.getRequestDispatcher(forward);
 		view.forward(request, response);
 	}
-	
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Book book = new Book();
 		book.setAuthor(request.getParameter("author"));
@@ -76,18 +85,18 @@ public class BookController extends HttpServlet {
 		}
 		String rating = request.getParameter("reviewRating");
 		if (rating == null || rating.isEmpty()){
-			book.setReviewRating(0);	
+			book.setReviewRating(0);
 		}
 		else{
 			int rate = Integer.parseInt(rating);
 			book.setReviewRating(rate);
 		}
-		
+
 		book.setPrice(Double.parseDouble(request.getParameter("price"))); //TODO: may need validation
 		book.setYearPublished(request.getParameter("publicationYear"));
 		book.setPublisher(request.getParameter("publisher"));
 		InputStream inputStream = null; // input stream of the upload file
-        
+
         // obtains the upload file part in this multipart request
         Part filePart = request.getPart("photoUrl");
         if (filePart != null) {
@@ -95,11 +104,11 @@ public class BookController extends HttpServlet {
             System.out.println(filePart.getName());
             System.out.println(filePart.getSize());
             System.out.println(filePart.getContentType());
-             
+
             // obtains input stream of the upload file
             inputStream = filePart.getInputStream();
         }
-         
+
 		System.out.println(filePart);
 		if (filePart == null || filePart.toString().isEmpty()){
 			//do nothing
@@ -118,7 +127,7 @@ public class BookController extends HttpServlet {
 			book.setBookId(Integer.parseInt(bookId));
 			dao.updateBook(book);
 		}
-		
+
 		RequestDispatcher view = request.getRequestDispatcher(LIST_BOOK);
 		request.setAttribute("books", dao.getAllBooks());
 		view.forward(request, response);
