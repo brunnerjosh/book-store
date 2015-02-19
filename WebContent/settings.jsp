@@ -6,6 +6,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>I'm the SETTINGS page!
+<h1>
+I'm the SETTINGS page!
+</h1>
 </body>
 </html>
