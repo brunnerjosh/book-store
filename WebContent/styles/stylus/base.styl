@@ -34,7 +34,8 @@ input
 .s-right
   float right
 
-muted
+muted,
+.muted
   color $link-color
 
 button
@@ -57,6 +58,7 @@ button
 
   &.s-green
     background $green
+    border 1px solid $green
     color $white
     &:hover
       background darken($green, 10%)

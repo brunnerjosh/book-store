@@ -13,33 +13,46 @@ int intBook = Integer.parseInt(strBook);
 book = bookDao.getBookById(intBook);
 %>
 
-<html>
-	<head>
-		<title>View Book Detail</title>
-	</head>
-	
-	<body>
+<div class="container as-book-detail">
+	<h1>Book Information</h1>
+	<div class="book-detail-panel">
+		<div class="pane-left">
+			<img src="http://lorempixel.com/258/393/abstract/" />
+		</div>
+		<div class="pane-right">
+			<h2><%=book.getTitle() %></h1>
+			<p class="muted">by: <%=book.getAuthor() %></p>
 
-		<h1>Book Detail Information</h1>
+			<div class="book-details">
+				<h4>Book Details:</h4>
+				<p><strong><%=book.getInventory() %></strong> copies left</p>
+				<p>published in <strong><%=book.getYearPublished() %></strong> by <strong><%=book.getPublisher() %></strong></p>
+			</div>
+			<div class="purchase-section">
+				<button class="addToCart s-large s-green">Add To Cart</button>
+				<a href="BookController?action=bookDisplay" class="goBack">Go Back</a>
+			</div>
+		</div>
+	</div>
 
-		<div class="table-list-group">
-		<table> 
+<%-- 	<div class="table-list-group">
+		<table>
 			<tr>
    				<th>Item</th>
    				<th>Value</th>
-			</tr> 
+			</tr>
 			<tr>
    				<td>Book id</td>
    				<td><% out.print( book.getBookId()); %></td>
-			</tr> 
+			</tr>
 			<tr>
    				<td>Title</td>
    				<td><% out.print(book.getTitle()); %></td>
-			</tr> 
+			</tr>
 			<tr>
    				<td>Author</td>
    				<td><% out.print(book.getAuthor()); %></td>
-			</tr> 
+			</tr>
 			<tr>
    				<td>Inventory</td>
    				<td><% out.print(book.getInventory()); %></td>
@@ -47,15 +60,15 @@ book = bookDao.getBookById(intBook);
 			<tr>
    				<td>Price</td>
    				<td><% out.print( book.getPrice()); %></td>
-			</tr> 
+			</tr>
 			<tr>
    				<td>Category</td>
    				<td><% out.print(book.getCategory()); %></td>
-			</tr> 
+			</tr>
 			<tr>
    				<td>Publisher</td>
    				<td><% out.print(book.getPublisher()); %></td>
-			</tr> 
+			</tr>
 			<tr>
    				<td>Publication Year</td>
    				<td><% out.print(book.getYearPublished()); %></td>
@@ -63,11 +76,11 @@ book = bookDao.getBookById(intBook);
 			<tr>
    				<td>Review Rating</td>
    				<td><% out.print(book.getReviewRating()); %></td>
-			</tr>  
-		</table> 
-		</div>
-	</body>
-</html>
+			</tr>
+		</table>
+	</div> --%>
+</div>
+
 
 <!-- FOOTER BAR -->
 <%@ include file = "/partials/footer.jsp" %>
