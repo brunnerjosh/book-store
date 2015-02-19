@@ -24,7 +24,7 @@
 		response.sendRedirect("admin.jsp");
 	} else {
 	  System.out.println("User is NOT authenticated");
-	  response.sendRedirect("index.jsp"); /* Will redirect to a sign up page */
+	  response.sendRedirect("signUp.jsp"); /* Directs to a sign up page */
 	}
 
   // myUser = userDao.getUserById(60);

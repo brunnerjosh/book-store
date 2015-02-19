@@ -37,6 +37,7 @@ boolean isAdmin = false;
 				</c:when>
 				<c:otherwise>
 					<a class="list-item" id="signin" onclick="toggleLogIn()">Sign In</a>
+					<a href="signUp.jsp" class="list-item" id="singup">Sign Up</a>
 				</c:otherwise>
 			</c:choose>
 
