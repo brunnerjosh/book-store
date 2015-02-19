@@ -51,6 +51,18 @@ public class BookDao {
 		}
 	}
 	
+	public int calculateRating(int bookID){
+//		Get a list of all the users and sort them based upon 
+//		their rating for a certain book(bookID). Every time 
+//		you find a user that had a rating for a certain BookID, 
+//		add their rating to the running sum of ratings and increment 
+//		the count variable. Once you've iterated over all the users, 
+//		calculate the average rating for a specific book and return 
+//		that as the int.
+		
+		return 0;
+	}
+	
 	public void updateBook(Book book){
 		try{
 			PreparedStatement preparedStatement = connection

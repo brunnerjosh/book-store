@@ -1,8 +1,7 @@
-<!-- HEADER -->
-<%@ include file = "/partials/header.jsp" %>
+<%@ include file = "/partials/header.jsp" %> <!-- HEADER -->
+<%@ include file = "/partials/navigation.jsp" %> <!-- NAVIGATION BAR -->
 
-<!-- NAVIGATION BAR -->
-<%@ include file = "/partials/navigation.jsp" %>
+<%@ include file = "/confirmAdmin.jsp" %> <!-- ADMIN ACCESS ONLY -->
 
 <!-- MAIN BODY CONTENT -->
 <div class="container clearfix">

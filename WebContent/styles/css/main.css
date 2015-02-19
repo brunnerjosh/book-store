@@ -36,7 +36,8 @@ input {
 .s-right {
   float: right;
 }
-muted {
+muted,
+.muted {
   color: #929090;
 }
 button {
@@ -58,6 +59,7 @@ button.s-large {
 }
 button.s-green {
   background: #29ba83;
+  border: 1px solid #29ba83;
   color: #fff;
 }
 button.s-green:hover {
@@ -596,4 +598,32 @@ button.s-green:hover {
 }
 .table-list-group table tr {
   border: 1px solid $black;
+}
+.container.as-book-detail {
+  width: 800px;
+}
+.container.as-book-detail .book-detail-panel .pane-left {
+  width: 38%;
+}
+.container.as-book-detail .book-detail-panel .pane-right {
+  width: 62%;
+}
+.container.as-book-detail .book-detail-panel h2,
+.container.as-book-detail .book-detail-panel h3,
+.container.as-book-detail .book-detail-panel h4,
+.container.as-book-detail .book-detail-panel p {
+  margin-top: 6px;
+  margin-bottom: 0;
+  line-height: 1;
+}
+.container.as-book-detail .book-detail-panel .book-details {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.container.as-book-detail .book-detail-panel .purchase-section button.addToCart {
+  width: 200px;
+  font-size: 18px;
+}
+.container.as-book-detail .book-detail-panel .purchase-section a.goBack {
+  margin-left: 20px;
 }

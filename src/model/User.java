@@ -10,15 +10,14 @@ public class User {
     private Date dob;
     private String email;
     private String password;
+    private boolean isAdmin = true; // For now, all users are admins
     private String ADMIN_NAME = "admin";
     private String ADMIN_PASS = "pass";
 
     public int getUserid() {
-    	System.out.println("Foo1: " + userid);
         return userid;
     }
     public void setUserid(int userid) {
-    	System.out.println("Foo2: " + userid);
         this.userid = userid;
     }
     public String getFirstName() {
@@ -51,23 +50,23 @@ public class User {
     public void setPassword(String password){
     	this.password = password;
     }
-    
     public boolean isAdminName(String username){
     	return username.equals(ADMIN_NAME);
     }
     public boolean isAdminPassword(String password){
     	return password.equals(ADMIN_PASS);
     }
-    public boolean isAdmin(String uName, String uPass){
-    	System.out.println("uName: " + uName + "\n" + "uPass: " + uPass);
-    	return isAdminName(uName) && isAdminPassword(uPass);
+    public boolean isAdmin(){
+//    	System.out.println("uName: " + uName + " -- " + "uPass: " + uPass);
+//    	return isAdminName(uName) && isAdminPassword(uPass);
+    	return this.isAdmin;
     }
 
     @Override
     public String toString() {
         return "User [userid=" + userid + ", firstName=" + firstName
                 + ", lastName=" + lastName + ", dob=" + dob + ", email="
-                + email + "password=" + password + "]";
+                + email + ", password=" + password + "]";
     }    
 }
 
