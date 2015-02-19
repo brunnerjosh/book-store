@@ -1,13 +1,10 @@
 <jsp:useBean id="prospect" class="model.User"/>
 <%
-String nameStr = (String) session.getAttribute("username");
-
-if(nameStr != null && prospect.isAdminName(nameStr)){
+prospect = (model.User) session.getAttribute("loggedInUser");
+if(prospect != null && prospect.isAdmin()){
 	System.out.println("Admin credentials verified");
 } else {
 	System.out.println("Credentials NOT verified");
 	response.sendRedirect("index.jsp");
 }
-
-
 %>

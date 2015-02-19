@@ -10,6 +10,7 @@ public class User {
     private Date dob;
     private String email;
     private String password;
+    private boolean isAdmin = true; // For now, all users are admins
     private String ADMIN_NAME = "admin";
     private String ADMIN_PASS = "pass";
 
@@ -57,10 +58,10 @@ public class User {
     public boolean isAdminPassword(String password){
     	return password.equals(ADMIN_PASS);
     }
-    public boolean isAdmin(String uName, String uPass){
-    	System.out.println("uName: " + uName + "\n" + "uPass: " + uPass);
+    public boolean isAdmin(){
+//    	System.out.println("uName: " + uName + " -- " + "uPass: " + uPass);
 //    	return isAdminName(uName) && isAdminPassword(uPass);
-    	return true;
+    	return this.isAdmin;
     }
 
     @Override

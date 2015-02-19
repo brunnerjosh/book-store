@@ -116,24 +116,25 @@ public class UserDao {
 	}
 	
 	// Checks against the DB to verify that a user exists	
-	public boolean authCreds(String uEmail, String uPassword){
+	public User authCreds(String uEmail, String uPassword){
 		
 		// Get the list of users in the DB
 		List<User> users = getAllUsers();
-		
-		// Loop over list of users		
-		for(int i = 0; i < users.size(); i++){
-			
-			// Check credentials supplied against the DB
-			if(users.get(i).getEmail().equals(uEmail) && users.get(i).getPassword().equals(uPassword)){
-				System.out.println("User Found: " + users.get(i).getFirstName());
-				// User WAS FOUND
-				return true; 
+		if(users != null){
+			// Loop over list of users		
+			for(int i = 0; i < users.size(); i++){
+				
+				// Check credentials supplied against the DB
+				if(users.get(i).getEmail().equals(uEmail) && users.get(i).getPassword().equals(uPassword)){
+					System.out.println("User Found: " + users.get(i).getFirstName());
+					// User WAS FOUND, return that User
+					return users.get(i); 
+				}
 			}
 		}
 		System.out.println("User NOT FOUND: [u: " + uEmail + "] [p: " + uPassword + "]");
-		// User WAS NOT FOUND
-		return false; 
+		// User WAS NOT FOUND, return NULL
+		return null; 
 	}
 
 }
