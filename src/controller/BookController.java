@@ -57,10 +57,10 @@ public class BookController extends HttpServlet {
 		else if (action.equalsIgnoreCase("bookDetail")){
 			forward = BOOK_DETAIL;
 			int bookId = Integer.parseInt(request.getParameter("bookId"));
-      System.out.println("bookId = " + bookId);
+			System.out.println("bookId = " + bookId);
 			Book book = dao.getBookById(bookId);
 			request.setAttribute("book", book);
-      System.out.println(book.toString());
+			System.out.println(book.toString());
 		}
 		else {
 			forward = INSERT_OR_EDIT;
