@@ -20,6 +20,14 @@ a.is-active {
   position: relative;
   margin: 0 auto;
 }
+.container.as-medium {
+  width: 800px;
+  margin: 0 auto;
+}
+.container.as-small {
+  width: 400px;
+  margin: 0 auto;
+}
 input {
   padding: 4px;
   box-sizing: border-box;
@@ -64,6 +72,14 @@ button.s-green {
 }
 button.s-green:hover {
   background: #25a776;
+}
+button.s-blue {
+  background: #5a9dd1;
+  border: 1px solid #5a9dd1;
+  color: #fff;
+}
+button.s-blue:hover {
+  background: #438fca;
 }
 .width-1 {
   width: 1% !important;
@@ -399,6 +415,10 @@ button.s-green:hover {
 .bag-dropdown button {
   width: 100%;
 }
+.signin-dropdown button.as-checkout,
+.bag-dropdown button.as-checkout {
+  font-size: 18px;
+}
 .signin-dropdown input,
 .bag-dropdown input {
   margin-bottom: 10px;
@@ -567,6 +587,15 @@ button.s-green:hover {
 .add-entity p.as-header {
   font-size: 18px;
   margin: 0;
+}
+.add-to-cart input,
+.add-to-cart button {
+  display: block;
+  width: 100%;
+  font-size: 18px;
+}
+.add-to-cart input {
+  margin-bottom: 10px;
 }
 .table-list-group table {
   margin: 0px;
