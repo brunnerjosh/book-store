@@ -25,10 +25,13 @@ book = bookDao.getBookById(intBook);
 
 			<div class="book-details">
 				<h4>Book Details:</h4>
+				<p>category <strong><%=book.getCategory()%></strong></p>
 				<p><strong><%=book.getInventory() %></strong> copies left</p>
 				<p>published in <strong><%=book.getYearPublished() %></strong> by <strong><%=book.getPublisher() %></strong></p>
 			</div>
 			<div class="purchase-section">
+				<div class="rating">Rating <%=book.getReviewRating()%>/10</div>
+				<div class="price">$<%=book.getPrice() %></div>
 				<button class="addToCart s-large s-green">Add To Cart</button>
 				<a href="BookController?action=bookDisplay" class="goBack">Go Back</a>
 			</div>
