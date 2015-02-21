@@ -19,14 +19,14 @@ if(user != null) {
 	<div class="container as-small">
 		<div class="add-to-cart">
 			<h1>Item Added to Cart!</h1>
-	
+
 			<p><a href="index.jsp">Go Home</a></p>
-			<a href="BookController?action=bookDisplay">
+			<a href="BookController?action=bookDisplay&category=all">
 				<button>View More Books</button>
 			</a>
 		</div>
 	</div>
-<%	
+<%
 } else {
 %>
 
@@ -44,7 +44,7 @@ if(user != null) {
 	</div>
 </div>
 
-<%	
+<%
 }
 %>
 

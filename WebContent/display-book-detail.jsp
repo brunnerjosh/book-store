@@ -11,7 +11,7 @@
 <%
 int userID = 0;
 if(user != null){
-	userID = user.getUserid();	
+	userID = user.getUserid();
 }
 String strBook = request.getParameter("bookId");
 int intBook = Integer.parseInt(strBook);
@@ -41,7 +41,7 @@ book = bookDao.getBookById(intBook);
 				<form action="addToCart.jsp?bookId=<%=book.getBookId() %>" method="post">
 					<button type="submit" class="addToCart s-large s-green">Add To Cart</button>
 				</form>
-				<a href="BookController?action=bookDisplay" class="goBack">Go Back</a>
+				<a href="BookController?action=bookDisplay&category=all" class="goBack">Go Back</a>
 			</div>
 		</div>
 	</div>
