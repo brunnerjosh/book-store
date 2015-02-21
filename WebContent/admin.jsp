@@ -22,8 +22,7 @@
     <%-- DISPLAY COOKIES --%>
     <%@ include file = "displayCookies.jsp" %>
 
-    <a href="BookController?action=bookDisplay">View Books</a>
-
+    <a href="BookController?action=bookDisplay&category=all">View Books</a>
   </div>
 </div>
 
