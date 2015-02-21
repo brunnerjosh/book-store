@@ -132,6 +132,22 @@ public class UserDao {
 		return false; // Transaction failed
 	}
 	
+	// When a user clicks "Add to Cart" button, this function is 
+	//	called to add the item to the user's cart.	
+	public boolean removeFromCart(User customer, int bookID){
+		System.out.println("customer: " + customer.getFirstName() + " " + customer.getLastName());
+		
+		// If the bookID was successfully added to the user's 
+		// shopping bag, return true		
+		if(customer.removeBookFromBag(bookID)){
+			System.out.println("Book removed from shopping bag: SUCCESS: " + customer.getBooksInBag().size());
+			return true;
+		}
+		System.out.println("Book removed from shopping bag: FAILED");
+		return false; // Transaction failed
+	}	
+	
+	
 	// Checks against the DB to verify that a user exists	
 	public User authCreds(String uEmail, String uPassword){
 		

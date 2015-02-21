@@ -41,6 +41,15 @@ public class User {
     	}
     	return false; // Not a valid bookID
     }
+    public boolean removeBookFromBag(Integer bookID){
+    	// Check that we have a valid bookID
+    	if(bookID >= 0){
+    		this.booksInBag.remove(bookID);
+    		System.out.println("REMOVED book from bag: " + booksInBag.size());
+    		return true;
+    	}
+    	return false; // Not a valid bookID
+    }
     public String getFirstName() {
         return firstName;
     }

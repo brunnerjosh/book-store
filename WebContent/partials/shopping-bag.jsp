@@ -19,7 +19,9 @@ if(totalBooksInBag != null){
 		<%
 			if(totalBooksInBag.size() > 0){
 		%>
-				<button class="as-checkout s-large s-blue">Checkout</button>
+				<form method="post" action="checkout.jsp">
+					<button type="submit" class="as-checkout s-large s-blue">Checkout</button>
+				</form>
 		<%
 			}
 		%>

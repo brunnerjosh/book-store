@@ -21,6 +21,9 @@ if(user != null) {
 			<h1>Item Added to Cart!</h1>
 
 			<p><a href="index.jsp">Go Home</a></p>
+			<a href="checkout.jsp">
+				<button class="checkout s-blue">Checkout Now</button>
+			</a>
 			<a href="BookController?action=bookDisplay&category=all">
 				<button>View More Books</button>
 			</a>

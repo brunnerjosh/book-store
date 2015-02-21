@@ -62,6 +62,18 @@ public class BookDao {
 		}
 	}
 	
+	//	Returns a calculated total of all books in a user's bag
+	public double getTotalFor(List<Integer> booksInBag){
+		double totalAmt = 0.0;
+		System.out.println("GET TOTAL FOR:");
+		for (int i = 0; i < booksInBag.size(); i++){
+			Book tempBook = this.getBookById(booksInBag.get(i)); // Save a temp copy of a book
+			totalAmt += tempBook.getPrice();
+			System.out.println("totalAmt: " + totalAmt);
+		}
+		return totalAmt;
+	}
+	
 	public int calculateRating(int bookID){
 //		Get a list of all the users and sort them based upon 
 //		their rating for a certain book(bookID). Every time 

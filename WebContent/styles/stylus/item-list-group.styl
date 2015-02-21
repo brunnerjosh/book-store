@@ -17,3 +17,49 @@
     a
       &.list-item
         margin-right 15px
+
+  &.as-row-listing
+    ol
+      margin 0
+      li
+        line-height 1
+        position relative
+        border-top 1px solid gainsboro
+        &:first-of-type
+          border-top 0px
+    p
+      margin 12px 0px 8px 0px
+      &.product-name,
+      &.product-price
+        display inline-block
+      &.product-name
+        font-size 22px
+      &.product-price
+        float right
+        bottom -2px
+        position relative
+      muted
+        font-size 18px
+    button
+      margin-bottom 10px
+    a
+      &.product-remove
+          position absolute
+          right -40px
+          bottom 6px
+          font-size 24px
+          color $red
+          font-weight bold
+    .product-total
+      margin-top 10px
+      border-top 3px solid black
+      button
+        &.confirm-checkout
+          width 100%
+      p
+        &.total-amount
+            display inline-block
+            margin 0px
+            font-size 22px
+            bottom 4px
+            position relative
