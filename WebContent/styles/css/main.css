@@ -620,10 +620,27 @@ button.s-green:hover {
   margin-top: 20px;
   margin-bottom: 20px;
 }
+.container.as-book-detail .book-detail-panel .purchase-section {
+  position: relative;
+  width: 200px;
+}
 .container.as-book-detail .book-detail-panel .purchase-section button.addToCart {
   width: 200px;
+  display: block;
   font-size: 18px;
 }
 .container.as-book-detail .book-detail-panel .purchase-section a.goBack {
-  margin-left: 20px;
+  top: 4px;
+  position: relative;
+}
+.container.as-book-detail .book-detail-panel .purchase-section div.rating,
+.container.as-book-detail .book-detail-panel .purchase-section div.price {
+  display: inline-block;
+  position: relative;
+}
+.container.as-book-detail .book-detail-panel .purchase-section div.price {
+  right: -38px;
+  position: relative;
+  font-size: 28px;
+  line-height: 1;
 }
