@@ -112,6 +112,34 @@ public class BookDao {
 	
 		return books;
 	}
+	public List<Book> getAllBooksByCategory(String category) {
+		List<Book> books = new ArrayList<Book>();
+		try{
+			PreparedStatement preparedStatement = connection.prepareStatement("select * from books where category=?");
+			preparedStatement.setString(1, category);
+			ResultSet rs = preparedStatement.executeQuery();
+			
+			while(rs.next()){
+				Book book = new Book();
+				
+				book.setBookId(rs.getInt("bookId"));
+				book.setTitle(rs.getString("title"));
+				book.setAuthor(rs.getString("author"));
+				book.setInventory(rs.getInt("inventoryAmount"));
+				book.setPrice(rs.getDouble("price"));
+				book.setCategory(rs.getString("category"));
+				book.setPublisher(rs.getString("publisher"));
+				book.setYearPublished(rs.getString("publicationYear"));
+				book.setReviewRating(rs.getInt("reviewRating"));
+				book.setPhoto(rs.getBlob("photo"));
+				books.add(book);
+			}
+		} catch(SQLException e){
+			e.printStackTrace();
+		}
+	
+		return books;
+	}
 	public Book getBookById(int bookId){
 		Book book = new Book();
 		try{

@@ -15,14 +15,15 @@
 
 			<div class="item-list-group">
 				<div class="side-left">
+					Category:
 					<div class="side-left">
-						<a class="list-item">Item 1</a>
-						<a class="list-item">Item 2</a>
-						<a class="list-item">Item 3</a>
-						<a class="list-item">Item 4</a>
-						<a class="list-item">Item 5</a>
-						<a class="list-item">Item 6</a>
-						<a class="list-item">Item 7</a>
+						<a href="BookController?action=bookDisplay&category=fiction">Fiction</a>
+					    <a href="BookController?action=bookDisplay&category=children">Children's</a>
+					    <a href="BookController?action=bookDisplay&category=poetry">Poetry</a>
+					    <a href="BookController?action=bookDisplay&category=biography">Biography</a>
+					    <a href="BookController?action=bookDisplay&category=mystery">Mystery</a>
+					    <a href="BookController?action=bookDisplay&category=horror">Horror</a>
+					    <a href="BookController?action=bookDisplay&category=romance">Romance</a>
 					</div>
 				</div>
 			</div>
