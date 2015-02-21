@@ -1,50 +1,48 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-	<!-- HEADER -->
-	<%@ include file = "/partials/header.jsp" %>
+<jsp:useBean id="bookDao" class="dao.BookDao"/>
 
-<body>
-	<!-- NAVIGATION BAR -->
-	<%@ include file = "/partials/navigation.jsp" %>
+<!-- HEADER -->
+<%@ include file = "/partials/header.jsp" %>
 
-	<!-- MAIN BODY CONTENT -->
-	<div class="container">
-		<div>
-			<h1>Quest: An Online Bookstore</h1>
+<!-- NAVIGATION BAR -->
+<%@ include file = "/partials/navigation.jsp" %>
 
-			<div class="item-list-group">
+<!-- MAIN BODY CONTENT -->
+<div class="container">
+	<div>
+		<h1>Quest: An Online Bookstore</h1>
+
+		<div class="item-list-group">
+			<div class="side-left">
+				Category:
 				<div class="side-left">
-					Category:
-					<div class="side-left">
-						<a href="BookController?action=bookDisplay&category=fiction">Fiction</a>
-					    <a href="BookController?action=bookDisplay&category=children">Children's</a>
-					    <a href="BookController?action=bookDisplay&category=poetry">Poetry</a>
-					    <a href="BookController?action=bookDisplay&category=biography">Biography</a>
-					    <a href="BookController?action=bookDisplay&category=mystery">Mystery</a>
-					    <a href="BookController?action=bookDisplay&category=horror">Horror</a>
-					    <a href="BookController?action=bookDisplay&category=romance">Romance</a>
-					</div>
+					<%
+					int categoryLength = bookDao.bookCategories.length;
+					for(int i = 0; i < categoryLength; i++){
+					%>
+						<a href="BookController?action=bookDisplay&category=<%=bookDao.bookCategories[i]%>"><%=bookDao.bookCategories[i]%></a>
+					<%
+					}
+					%>
 				</div>
 			</div>
-			<div class="products">
-				<c:forEach items="${books}" var="book">
-					<div class="product">
-						<img src="http://lorempixel.com/172/262/abstract/" />
-						<div class="product-info">
-							<div class="product-title"><c:out value="${book.title}" /></div>
-							<div class="product-price">$<c:out value="${book.price}" /></div>
-							<%-- <button class="product-purchase s-green">View Detail</button> --%>
-							<a href="BookController?action=bookDetail&bookId=${book.bookId}" class="product-purchase s-green">View Detail</a>
-							<%@ include file = "/partials/product-rating.jsp" %>
-						</div>
+		</div>
+		<div class="products">
+			<c:forEach items="${books}" var="book">
+				<div class="product">
+					<img src="http://lorempixel.com/172/262/abstract/" />
+					<div class="product-info">
+						<div class="product-title"><c:out value="${book.title}" /></div>
+						<div class="product-price">$<c:out value="${book.price}" /></div>
+						<%-- <button class="product-purchase s-green">View Detail</button> --%>
+						<a href="BookController?action=bookDetail&bookId=${book.bookId}" class="product-purchase s-green">View Detail</a>
+						<%@ include file = "/partials/product-rating.jsp" %>
 					</div>
-				</c:forEach>
-			</div>
+				</div>
+			</c:forEach>
 		</div>
 	</div>
+</div>
 
-	<!-- FOOTER BAR -->
-	<%@ include file = "/partials/footer.jsp" %>
-</body>
-</html>
+<!-- FOOTER BAR -->
+<%@ include file = "/partials/footer.jsp" %>
+

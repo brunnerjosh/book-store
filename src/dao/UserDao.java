@@ -16,6 +16,7 @@ public class UserDao {
 	
 	public UserDao() {
 		connection = DbUtil.getConnection();
+		System.out.println("CREATED A USER DAO");
 	}
 		
 	public void addUser(User user){

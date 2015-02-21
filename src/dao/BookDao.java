@@ -15,6 +15,17 @@ public class BookDao {
 
 	private Connection connection;
 	
+	public String[] bookCategories = 
+	{
+		"Fiction",
+		"Children",
+		"Poetry",
+		"Biography",
+		"Mystery",
+		"Horror",
+		"Romance"
+	};
+
 	public BookDao(){
 		connection = DbUtil.getConnection();
 	}

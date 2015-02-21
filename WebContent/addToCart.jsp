@@ -49,6 +49,4 @@ if(user != null) {
 %>
 
 
-
-
 <%@ include file = "/partials/footer.jsp" %>

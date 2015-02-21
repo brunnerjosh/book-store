@@ -1,5 +1,4 @@
 <jsp:useBean id="customer" class="model.User"/>
-<%-- <jsp:useBean id="totalBooksInBag" class="List<E>"/> --%>
 <%@ page import = "java.util.*" %>
 <%
 customer = (model.User) session.getAttribute("loggedInUser");
