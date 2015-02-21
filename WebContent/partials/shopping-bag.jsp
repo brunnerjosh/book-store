@@ -4,6 +4,7 @@
 <%
 customer = (model.User) session.getAttribute("loggedInUser");
 List<Integer> totalBooksInBag = null;
+
 if(customer != null) {
 	System.out.println("Found customer");
 	totalBooksInBag = customer.getBooksInBag();
