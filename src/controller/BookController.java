@@ -52,7 +52,13 @@ public class BookController extends HttpServlet {
 		}
 		else if (action.equalsIgnoreCase("bookDisplay")){
 			forward = BOOK_DISPLAY;
-			request.setAttribute("books", dao.getAllBooks());
+			String category = request.getParameter("category");
+			System.out.println("category = " + category);
+			if (category.equalsIgnoreCase("all")) {
+				request.setAttribute("books", dao.getAllBooks());
+			} else {
+				request.setAttribute("books", dao.getAllBooksByCategory(category));				
+			}
 		}
 		else if (action.equalsIgnoreCase("bookDetail")){
 			forward = BOOK_DETAIL;
