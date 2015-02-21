@@ -6,11 +6,17 @@
 
 <jsp:useBean id="book" class="model.Book"/>
 <jsp:useBean id="bookDao" class="dao.BookDao"/>
+<jsp:useBean id="userDao" class="dao.UserDao"/>
 
 <%
+int userID = 0;
+if(user != null){
+	userID = user.getUserid();	
+}
 String strBook = request.getParameter("bookId");
 int intBook = Integer.parseInt(strBook);
 book = bookDao.getBookById(intBook);
+/* userDao.addToCart(userID, intBook); */
 %>
 
 <div class="container as-book-detail">
@@ -32,7 +38,9 @@ book = bookDao.getBookById(intBook);
 			<div class="purchase-section">
 				<div class="rating">Rating <%=book.getReviewRating()%>/10</div>
 				<div class="price">$<%=book.getPrice() %></div>
-				<button class="addToCart s-large s-green">Add To Cart</button>
+				<form action="addToCart.jsp?bookId=<%=book.getBookId() %>" method="post">
+					<button type="submit" class="addToCart s-large s-green">Add To Cart</button>
+				</form>
 				<a href="BookController?action=bookDisplay" class="goBack">Go Back</a>
 			</div>
 		</div>

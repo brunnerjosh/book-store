@@ -18,6 +18,12 @@ a
   width 1200px
   position relative
   margin 0 auto
+  &.as-medium
+    width 800px
+    margin 0 auto
+  &.as-small
+    width 400px
+    margin 0 auto
 
 input
   padding 4px
@@ -62,6 +68,13 @@ button
     color $white
     &:hover
       background darken($green, 10%)
+
+  &.s-blue
+    background $blue
+    border 1px solid $blue
+    color $white
+    &:hover
+      background darken($blue, 10%)
 
 for $i in (1)..(100)
   .width-{$i}

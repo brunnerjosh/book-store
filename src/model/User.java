@@ -1,10 +1,13 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class User {
 
     private int userid;
+    private List<Integer> booksInBag = new ArrayList<Integer>(); 
     private String firstName;
     private String lastName;
     private Date dob;
@@ -19,6 +22,24 @@ public class User {
     }
     public void setUserid(int userid) {
         this.userid = userid;
+    }
+    public List<Integer> getBooksInBag(){
+    	if(booksInBag != null){
+    		System.out.println("User: booksInBag: "+ booksInBag.size());
+    		return this.booksInBag;
+    	} else {
+    		System.out.println("booksInBag was NULL");
+    		return null;
+    	}
+    }
+    public boolean addBookToBag(Integer bookID){
+    	// Check that we have a valid bookID
+    	if(bookID >= 0){
+    		this.booksInBag.add(bookID);
+    		System.out.println("Added book to bag: " + booksInBag.size());
+    		return true;
+    	}
+    	return false; // Not a valid bookID
     }
     public String getFirstName() {
         return firstName;
