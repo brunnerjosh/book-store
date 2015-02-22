@@ -105,7 +105,6 @@ public class TransactionController extends HttpServlet {
 			transaction.setTransactionAmount(transactionAmount);
 		}
 		
-		
 		String transactionid = request.getParameter("transactionId");
 		if(transactionid == null || transactionid.isEmpty())
 		{

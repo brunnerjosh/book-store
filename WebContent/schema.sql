@@ -61,6 +61,6 @@ ALTER TABLE `rating` ADD CONSTRAINT FOREIGN KEY (`bookId`) REFERENCES `Bookstore
 ALTER TABLE `Bookstore`.`books`
 ADD COLUMN `photo` BLOB NULL AFTER `reviewRating`;
 
--- FURTHER ADDITIONS: 2/21/2015 @ 7:46pm
+-- FURTHER ADDITIONS: 2/21/2015 @ 7:54pm
 ALTER TABLE `Bookstore`.`transactions`
-ADD COLUMN `sharedTransID` INT(10) NOT NULL AFTER `transactionId`;
+ADD COLUMN `sharedTransID` INT(10) NULL DEFAULT NULL AFTER `transactionId`;
