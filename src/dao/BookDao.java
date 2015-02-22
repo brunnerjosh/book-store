@@ -31,9 +31,10 @@ public class BookDao {
 	}
 	
 	public void addBook(Book book){
+		System.out.println("BookDao: addBook: " + book.toString());
 		try{
 			PreparedStatement preparedStatement = connection
-					.prepareStatement("insert into books(title, author, inventoryAmount, price, category, publisher, publicationYear, reviewRating)"
+					.prepareStatement("insert into books(title, author, inventoryAmount, price, category, publisher, publicationYear, reviewRating, photo)"
 							+ "values(?,?,?,?,?,?,?,?,?)");
 			
 			preparedStatement.setString(1, book.getTitle());
@@ -87,6 +88,7 @@ public class BookDao {
 	}
 	
 	public void updateBook(Book book){
+		System.out.println("BookDao: updateBook");
 		try{
 			PreparedStatement preparedStatement = connection
 					.prepareStatement("update books set title=?, author=?, inventoryAmount=?, price=?, category=?,"
