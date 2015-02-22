@@ -99,14 +99,12 @@ public class BookController extends HttpServlet {
 			book.setReviewRating(rate);
 		}
 
-		// book.setPrice(Double.parseDouble(request.getParameter("price"))); //TODO: may need validation
 		String priceFromForm = request.getParameter("price");
 		System.out.println("Price from form: " + priceFromForm);
 		if(priceFromForm == null || priceFromForm.isEmpty()){
 			System.out.println("Price was null for Book Add");
 			book.setPrice(0.0);
 		} else {
-//			Double unconvertedPrice = Double.parseDouble(request.getParameter("price"));
 			book.setPrice(Double.parseDouble(request.getParameter("price")));
 			System.out.println("Price was valid!");
 		}
