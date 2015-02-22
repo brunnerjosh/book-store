@@ -106,7 +106,8 @@ public class BookController extends HttpServlet {
 			System.out.println("Price was null for Book Add");
 			book.setPrice(0.0);
 		} else {
-			Double unconvertedPrice = Double.parseDouble(request.getParameter("price"));
+//			Double unconvertedPrice = Double.parseDouble(request.getParameter("price"));
+			book.setPrice(Double.parseDouble(request.getParameter("price")));
 			System.out.println("Price was valid!");
 		}
 		

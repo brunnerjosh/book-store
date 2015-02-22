@@ -32,64 +32,33 @@ book = bookDao.getBookById(intBook);
 			<div class="book-details">
 				<h4>Book Details:</h4>
 				<p>category <strong><%=book.getCategory()%></strong></p>
-				<p><strong><%=book.getInventory() %></strong> copies left</p>
+				<%
+				if(book.getInventory() >= 1){
+					out.print("<p><strong>"+book.getInventory()+"</strong> copies left</p>");
+				} else {
+					out.print("<p class=\"s-red\"><strong>"+book.getInventory()+"</strong> copies left</p>");					
+				}
+				%>
+				
 				<p>published in <strong><%=book.getYearPublished() %></strong> by <strong><%=book.getPublisher() %></strong></p>
 			</div>
 			<div class="purchase-section">
 				<div class="rating">Rating <%=book.getReviewRating()%>/10</div>
 				<div class="price">$<%=book.getPrice() %></div>
 				<form action="addToCart.jsp?bookId=<%=book.getBookId() %>" method="post">
-					<button type="submit" class="addToCart s-large s-green">Add To Cart</button>
+					<%
+						if(book.getInventory() >= 1){
+							out.print("<button type=\"submit\" class=\"addToCart s-large s-green\">Add To Cart</button>");
+						} else {
+							out.print("<button type=\"submit\" disabled class=\"addToCart disabled s-large s-red\">Out of Stock</button>");					
+						}
+					%>
 				</form>
 				<a href="BookController?action=bookDisplay&category=all" class="goBack">Go Back</a>
 			</div>
 		</div>
 	</div>
 
-<%-- 	<div class="table-list-group">
-		<table>
-			<tr>
-   				<th>Item</th>
-   				<th>Value</th>
-			</tr>
-			<tr>
-   				<td>Book id</td>
-   				<td><% out.print( book.getBookId()); %></td>
-			</tr>
-			<tr>
-   				<td>Title</td>
-   				<td><% out.print(book.getTitle()); %></td>
-			</tr>
-			<tr>
-   				<td>Author</td>
-   				<td><% out.print(book.getAuthor()); %></td>
-			</tr>
-			<tr>
-   				<td>Inventory</td>
-   				<td><% out.print(book.getInventory()); %></td>
-			</tr>
-			<tr>
-   				<td>Price</td>
-   				<td><% out.print( book.getPrice()); %></td>
-			</tr>
-			<tr>
-   				<td>Category</td>
-   				<td><% out.print(book.getCategory()); %></td>
-			</tr>
-			<tr>
-   				<td>Publisher</td>
-   				<td><% out.print(book.getPublisher()); %></td>
-			</tr>
-			<tr>
-   				<td>Publication Year</td>
-   				<td><% out.print(book.getYearPublished()); %></td>
-			</tr>
-			<tr>
-   				<td>Review Rating</td>
-   				<td><% out.print(book.getReviewRating()); %></td>
-			</tr>
-		</table>
-	</div> --%>
 </div>
 
 

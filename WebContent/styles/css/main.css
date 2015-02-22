@@ -48,6 +48,12 @@ muted,
 .muted {
   color: #929090;
 }
+.s-red {
+  color: #a00d0d;
+}
+.disabled {
+  cursor: not-allowed !important;
+}
 button {
   height: 38px;
 }
