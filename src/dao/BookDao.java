@@ -19,19 +19,26 @@ public class BookDao {
 	}
 	public boolean decrementQuantity(int bookID){
 		Book book = this.getBookById(bookID);
-		int currValue = book.getInventory();
-		System.out.println("cuurVal: " + currValue);
-		int newValue = --currValue;
-		System.out.println("currVal: " + currValue + " newValue: " + newValue);
+		int bookInventory = book.getInventory();
+		int newBookInv = 0;
+		if(bookInventory > 0) {
+			newBookInv = --bookInventory;
+		} else {
+			return false;
+		}
+		
+		System.out.println("bookInventory: " + bookInventory + " newBookInv: " + newBookInv);
 		try{
 			PreparedStatement preparedStatement = connection.prepareStatement("update books set inventoryAmount=? where bookId=?");
-			preparedStatement.setInt(1, newValue);
+			preparedStatement.setInt(1, newBookInv);
 			preparedStatement.setInt(2, bookID);
 			preparedStatement.executeUpdate();
+			return true;
 		} catch(SQLException e){
 			e.printStackTrace();
-		}
 			return false;
+		}
+			
 	}
 	
 	public String[] bookCategories = 

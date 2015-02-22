@@ -30,12 +30,7 @@ public class TransactionDao {
 		preparedStatement.setDate(1, new java.sql.Date(transaction.getTransactionDate().getTime()));
 		preparedStatement.setInt(2, transaction.getBookId());
 		preparedStatement.setInt(3, transaction.getUserId());
-		preparedStatement.setDouble(4, transaction.getTransactionAmount());
-//		System.out.println(preparedStatement);
-		
-		// Decrease the quantity available for the given book		
-//		BookDao.decrementQuantity(transaction.getBookId());
-		
+		preparedStatement.setDouble(4, transaction.getTransactionAmount());		
 		preparedStatement.executeUpdate();
 		
 		} catch (SQLException e){

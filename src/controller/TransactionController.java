@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.TransactionDao;
+import model.Book;
 import model.Transaction;
 import dao.BookDao;
 
@@ -59,7 +60,6 @@ public class TransactionController extends HttpServlet {
 		else {
 			forward = INSERT_OR_EDIT;
 		}
-		
 
 		RequestDispatcher view = request.getRequestDispatcher(forward);
 		view.forward(request, response);
@@ -67,9 +67,9 @@ public class TransactionController extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String[] bookIDs = request.getParameterValues("bookId");
-		if(bookIDs != null || bookIDs.length != 0)
+		if(bookIDs != null)
 			for(int i = 0; i < bookIDs.length; i++){
-			
+				
 				Transaction transaction = new Transaction();
 				System.out.println(request.toString());	//TODO:
 				System.out.println(response.toString());	//TODO:
@@ -88,7 +88,10 @@ public class TransactionController extends HttpServlet {
 				} else {
 					int bookId = Integer.parseInt(bookIDs[i]);
 					transaction.setBookId(bookId);
-					bookDao.decrementQuantity(bookId);
+					if(!bookDao.decrementQuantity(bookId)){
+						System.out.println("BookID " + bookId + " is OUT OF STOCK");
+						continue; // Go back to top of For Loop
+					};
 				}
 		
 				String strUserId = request.getParameter("userId");
@@ -101,7 +104,7 @@ public class TransactionController extends HttpServlet {
 					transaction.setUserId(userId);
 				}
 				
-		
+				
 				String transAmt = request.getParameter("transactionAmount");
 				if (transAmt == null || transAmt.isEmpty()){
 					transaction.setTransactionAmount(0.0);
