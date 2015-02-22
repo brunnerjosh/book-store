@@ -6,7 +6,7 @@
 <!-- MAIN BODY CONTENT -->
 <div class="container">
   <div>
-    <h1>Quest: An Online Bookstore</h1>
+    <h1>Admin Dashboard</h1>
 
     <div class="item-list-group">
       <div class="side-left">

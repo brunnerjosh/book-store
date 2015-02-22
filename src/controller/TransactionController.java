@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import dao.TransactionDao;
 import model.Transaction;
+import dao.BookDao;
 
 
 //transactionId
@@ -26,10 +27,12 @@ public class TransactionController extends HttpServlet {
 	public static String INSERT_OR_EDIT = "/transaction.jsp";
 	public static String LIST_TRANSACTION = "/dashboard-transaction.jsp";	//check this
 	private TransactionDao dao;
+	private BookDao bookDao;
 
 	public TransactionController(){
 		super();
 		dao = new TransactionDao();
+		bookDao = new BookDao();
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -62,63 +65,65 @@ public class TransactionController extends HttpServlet {
 		view.forward(request, response);
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-	throws ServletException, IOException {
-		Transaction transaction = new Transaction();
-		System.out.println(request.toString());	//TODO:
-		System.out.println(response.toString());	//TODO:
-		try{
-			Date transDate = new SimpleDateFormat("MM/dd/yyyy").parse(request.getParameter("transactionDate"));
-			transaction.setTransactionDate(transDate);
-
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String[] bookIDs = request.getParameterValues("bookId");
+		if(bookIDs != null || bookIDs.length != 0)
+			for(int i = 0; i < bookIDs.length; i++){
+			
+				Transaction transaction = new Transaction();
+				System.out.println(request.toString());	//TODO:
+				System.out.println(response.toString());	//TODO:
+				try{
+					Date transDate = new SimpleDateFormat("MM/dd/yyyy").parse(request.getParameter("transactionDate"));
+					transaction.setTransactionDate(transDate);
 		
-		String strBookId = request.getParameter("bookId");
-		if(strBookId == null || strBookId.isEmpty()){
-			transaction.setBookId(0);
-			dao.addTransaction(transaction);
-		}
-		else
-		{
-			int bookId = Integer.parseInt(strBookId);
-			transaction.setBookId(bookId);
-		}
-		String strUserId = request.getParameter("userId");
-		if(strUserId == null || strUserId.isEmpty()){
-			transaction.setUserId(0);
-			dao.addTransaction(transaction);
-		}
-		else{
-			int userId = Integer.parseInt(strUserId);
-			transaction.setUserId(userId);
-		}
+				} catch (ParseException e) {
+					e.printStackTrace();
+				}
+				
+				if(bookIDs[i] == null || bookIDs[i].isEmpty()){
+					System.out.println("strBookId or strBookId was BAD");
+					transaction.setBookId(0);
+					dao.addTransaction(transaction);
+				} else {
+					int bookId = Integer.parseInt(bookIDs[i]);
+					transaction.setBookId(bookId);
+					bookDao.decrementQuantity(bookId);
+				}
 		
-
-		String transAmt = request.getParameter("transactionAmount");
-		if (transAmt == null || transAmt.isEmpty()){
-			transaction.setTransactionAmount(0.0);
-		}
-		else {
-			Double transactionAmount = Double.parseDouble(transAmt);
-			transaction.setTransactionAmount(transactionAmount);
-		}
+				String strUserId = request.getParameter("userId");
+				if(strUserId == null || strUserId.isEmpty()){
+					transaction.setUserId(0);
+					dao.addTransaction(transaction);
+				}
+				else{
+					int userId = Integer.parseInt(strUserId);
+					transaction.setUserId(userId);
+				}
+				
 		
-		String transactionid = request.getParameter("transactionId");
-		if(transactionid == null || transactionid.isEmpty())
-		{
-			dao.addTransaction(transaction);	
-		}
-		else {
-			transaction.setTransactionId(Integer.parseInt(transactionid));
-			dao.updateTransaction(transaction);
-		}
-
-		RequestDispatcher view = request.getRequestDispatcher(LIST_TRANSACTION);
-        request.setAttribute("transactions", dao.getAllTransactions());
-        view.forward(request, response);
+				String transAmt = request.getParameter("transactionAmount");
+				if (transAmt == null || transAmt.isEmpty()){
+					transaction.setTransactionAmount(0.0);
+				}
+				else {
+					Double transactionAmount = Double.parseDouble(transAmt);
+					transaction.setTransactionAmount(transactionAmount);
+				}
+				
+				String transactionid = request.getParameter("transactionId");
+				if(transactionid == null || transactionid.isEmpty())
+				{
+					dao.addTransaction(transaction);	
+				}
+				else {
+					transaction.setTransactionId(Integer.parseInt(transactionid));
+					dao.updateTransaction(transaction);
+				}
+		
+			} 
+			RequestDispatcher view = request.getRequestDispatcher(LIST_TRANSACTION);
+			request.setAttribute("transactions", dao.getAllTransactions());
+			view.forward(request, response);
 	}
-
-
 }
