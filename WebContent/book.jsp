@@ -19,7 +19,12 @@
 			<input type="text" placeholder="Category" name="category" value="<c:out value="${book.category}" />" />
 			<input type="text" placeholder="Price $" name="price" value="<c:out value="${book.price}" />" />
 			<input type="text" placeholder="Review Rating" name="reviewRating" value="<c:out value="${book.reviewRating}" />" />
-     		<%-- <input type="file" placeholder="Photo URL" name="photoUrl" value="<c:out value="${book.photo }" />" /> --%>
+			<c:if test="${not empty book }"> 
+        		<input type="text" placeholder="Photo URL" readonly="readonly"  name="photo" value="<c:out value="${book.photo }" />"/>
+        		<%--TODO: change this route --%>
+        		<a href="http://localhost:8080/book-store-josh/addPhoto.jsp?bookId=${book.bookId }">Add/Edit Photo</a><br>
+       		</c:if>
+        	<%-- <input type="file" name="photo" value="<c:out value="${book.photo }" />" /> --%>
 			<button type="submit">Submit</button>
 			<a href="BookController?action=listBook">Cancel</a>
 

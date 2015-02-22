@@ -14,7 +14,7 @@ public class Book {
 	private String publisher;
 	private String publicationYear;
 	private int reviewRating;
-	private Blob photo;
+	private String photo;
 	
 	public int getBookId(){
 		return bookId;
@@ -88,10 +88,10 @@ public class Book {
 		return reviewRating;
 	}
 	
-	public void setPhoto(Blob photo){
+	public void setPhoto(String photo){
 		this.photo = photo;
 	}
-	public Blob getPhoto(){
+	public String getPhoto(){
 		return photo;
 	}
 	

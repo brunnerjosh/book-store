@@ -22,6 +22,7 @@ CREATE TABLE `Bookstore`.`books` (
 	`category` VARCHAR(200) NULL ,
 	`price` DOUBLE NULL ,
 	`reviewRating` INT NULL ,
+	'photo' VARCHAR(300) NULL,
 	PRIMARY KEY (`bookId`) )
 ENGINE = InnoDB;
 
