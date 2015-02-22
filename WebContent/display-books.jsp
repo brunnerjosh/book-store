@@ -29,7 +29,7 @@
 		<div class="products">
 			<c:forEach items="${books}" var="book">
 				<div class="product">
-					<img src="http://lorempixel.com/172/262/abstract/" />
+					<img src="<c:out value="${book.photo}" />" />
 					<div class="product-info">
 						<div class="product-title"><c:out value="${book.title}" /></div>
 						<div class="product-price">$<c:out value="${book.price}" /></div>

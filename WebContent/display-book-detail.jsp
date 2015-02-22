@@ -23,7 +23,7 @@ book = bookDao.getBookById(intBook);
 	<h1>Book Information</h1>
 	<div class="book-detail-panel">
 		<div class="pane-left">
-			<img src="http://lorempixel.com/258/393/abstract/" />
+			<img class="product-img" src="<%=book.getPhoto() %>" />
 		</div>
 		<div class="pane-right">
 			<h2><%=book.getTitle() %></h1>

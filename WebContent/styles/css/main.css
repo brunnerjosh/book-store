@@ -625,6 +625,7 @@ button.s-blue:hover {
 }
 .products .product img {
   height: 262px;
+  width: 173px;
 }
 .add-entity {
   width: 400px;
@@ -694,6 +695,10 @@ button.s-blue:hover {
 }
 .container.as-book-detail {
   width: 800px;
+}
+.container.as-book-detail .book-detail-panel img.product-img {
+  height: 393px;
+  width: 258px;
 }
 .container.as-book-detail .book-detail-panel .pane-left {
   width: 38%;
