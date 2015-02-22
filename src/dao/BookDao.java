@@ -14,6 +14,32 @@ import util.DbUtil;
 public class BookDao {
 
 	private Connection connection;
+	public BookDao(){
+		connection = DbUtil.getConnection();
+	}
+	public boolean decrementQuantity(int bookID){
+		Book book = this.getBookById(bookID);
+		int bookInventory = book.getInventory();
+		int newBookInv = 0;
+		if(bookInventory > 0) {
+			newBookInv = --bookInventory;
+		} else {
+			return false;
+		}
+		
+		System.out.println("bookInventory: " + bookInventory + " newBookInv: " + newBookInv);
+		try{
+			PreparedStatement preparedStatement = connection.prepareStatement("update books set inventoryAmount=? where bookId=?");
+			preparedStatement.setInt(1, newBookInv);
+			preparedStatement.setInt(2, bookID);
+			preparedStatement.executeUpdate();
+			return true;
+		} catch(SQLException e){
+			e.printStackTrace();
+			return false;
+		}
+			
+	}
 	
 	public String[] bookCategories = 
 	{
@@ -25,10 +51,6 @@ public class BookDao {
 		"Horror",
 		"Romance"
 	};
-
-	public BookDao(){
-		connection = DbUtil.getConnection();
-	}
 	
 	public void addBook(Book book){
 		System.out.println("BookDao: addBook: " + book.toString());

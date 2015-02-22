@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.sql.PreparedStatement;
 
+//import model.Book;
+//import dao.BookDao;
 import model.Transaction;
 import util.DbUtil;
 
@@ -16,6 +18,7 @@ public class TransactionDao {
 	
 	public TransactionDao(){
 		connection = DbUtil.getConnection();
+		System.out.println("CREATED A NEW TRANSACTION DAO OBJECT");
 	}
 	
 	public void addTransaction(Transaction transaction){
@@ -27,8 +30,7 @@ public class TransactionDao {
 		preparedStatement.setDate(1, new java.sql.Date(transaction.getTransactionDate().getTime()));
 		preparedStatement.setInt(2, transaction.getBookId());
 		preparedStatement.setInt(3, transaction.getUserId());
-		preparedStatement.setDouble(4, transaction.getTransactionAmount());
-//		System.out.println(preparedStatement);
+		preparedStatement.setDouble(4, transaction.getTransactionAmount());		
 		preparedStatement.executeUpdate();
 		
 		} catch (SQLException e){

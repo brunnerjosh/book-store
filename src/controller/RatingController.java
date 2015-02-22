@@ -113,8 +113,8 @@ public class RatingController extends HttpServlet {
 		}
 
 		RequestDispatcher view = request.getRequestDispatcher(LIST_RATING);
-        request.setAttribute("ratings", dao.getAllRatings());
-        view.forward(request, response);
+    request.setAttribute("ratings", dao.getAllRatings());
+    view.forward(request, response);
 	}
 
 

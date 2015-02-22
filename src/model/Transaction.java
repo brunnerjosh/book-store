@@ -9,6 +9,10 @@ public class Transaction {
 	private int userId;
 	private double transactionAmount;
 	
+	public Transaction(){
+		System.out.println("CREATED A NEW TRANSACTION OBJECT");
+	}
+	
 	public void setTransactionId(int transactionId){
 		this.transactionId = transactionId;
 	}
