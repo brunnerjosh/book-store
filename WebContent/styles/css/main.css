@@ -444,6 +444,60 @@ button.s-blue:hover {
 .item-list-group div a.list-item {
   margin-right: 15px;
 }
+.item-list-group.as-row-listing ol {
+  margin: 0;
+}
+.item-list-group.as-row-listing ol li {
+  line-height: 1;
+  position: relative;
+  border-top: 1px solid #dcdcdc;
+}
+.item-list-group.as-row-listing ol li:first-of-type {
+  border-top: 0px;
+}
+.item-list-group.as-row-listing p {
+  margin: 12px 0px 8px 0px;
+}
+.item-list-group.as-row-listing p.product-name,
+.item-list-group.as-row-listing p.product-price {
+  display: inline-block;
+}
+.item-list-group.as-row-listing p.product-name {
+  font-size: 22px;
+}
+.item-list-group.as-row-listing p.product-price {
+  float: right;
+  bottom: -2px;
+  position: relative;
+}
+.item-list-group.as-row-listing p muted {
+  font-size: 18px;
+}
+.item-list-group.as-row-listing button {
+  margin-bottom: 10px;
+}
+.item-list-group.as-row-listing a.product-remove {
+  position: absolute;
+  right: -40px;
+  bottom: 6px;
+  font-size: 24px;
+  color: #a00d0d;
+  font-weight: bold;
+}
+.item-list-group.as-row-listing .product-total {
+  margin-top: 10px;
+  border-top: 3px solid #000;
+}
+.item-list-group.as-row-listing .product-total button.confirm-checkout {
+  width: 100%;
+}
+.item-list-group.as-row-listing .product-total p.total-amount {
+  display: inline-block;
+  margin: 0px;
+  font-size: 22px;
+  bottom: 4px;
+  position: relative;
+}
 .footer {
   margin-top: 50px;
   padding-top: 10px;
@@ -593,6 +647,10 @@ button.s-blue:hover {
   display: block;
   width: 100%;
   font-size: 18px;
+}
+.add-to-cart input.checkout,
+.add-to-cart button.checkout {
+  margin-bottom: 10px;
 }
 .add-to-cart input {
   margin-bottom: 10px;

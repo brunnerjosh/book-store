@@ -15,14 +15,26 @@ public class BookDao {
 
 	private Connection connection;
 	
+	public String[] bookCategories = 
+	{
+		"Fiction",
+		"Children",
+		"Poetry",
+		"Biography",
+		"Mystery",
+		"Horror",
+		"Romance"
+	};
+
 	public BookDao(){
 		connection = DbUtil.getConnection();
 	}
 	
 	public void addBook(Book book){
+		System.out.println("BookDao: addBook: " + book.toString());
 		try{
 			PreparedStatement preparedStatement = connection
-					.prepareStatement("insert into books(title, author, inventoryAmount, price, category, publisher, publicationYear, reviewRating)"
+					.prepareStatement("insert into books(title, author, inventoryAmount, price, category, publisher, publicationYear, reviewRating, photo)"
 							+ "values(?,?,?,?,?,?,?,?,?)");
 			
 			preparedStatement.setString(1, book.getTitle());
@@ -51,6 +63,18 @@ public class BookDao {
 		}
 	}
 	
+	//	Returns a calculated total of all books in a user's bag
+	public double getTotalFor(List<Integer> booksInBag){
+		double totalAmt = 0.0;
+		System.out.println("GET TOTAL FOR:");
+		for (int i = 0; i < booksInBag.size(); i++){
+			Book tempBook = this.getBookById(booksInBag.get(i)); // Save a temp copy of a book
+			totalAmt += tempBook.getPrice();
+			System.out.println("totalAmt: " + totalAmt);
+		}
+		return totalAmt;
+	}
+	
 	public int calculateRating(int bookID){
 //		Get a list of all the users and sort them based upon 
 //		their rating for a certain book(bookID). Every time 
@@ -64,6 +88,7 @@ public class BookDao {
 	}
 	
 	public void updateBook(Book book){
+		System.out.println("BookDao: updateBook");
 		try{
 			PreparedStatement preparedStatement = connection
 					.prepareStatement("update books set title=?, author=?, inventoryAmount=?, price=?, category=?,"

@@ -2,6 +2,8 @@ package model;
 
 import java.sql.Blob;
 
+import util.DbUtil;
+
 public class Book {
 	private int bookId;
 	private String title;

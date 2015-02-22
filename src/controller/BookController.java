@@ -81,7 +81,7 @@ public class BookController extends HttpServlet {
 		book.setAuthor(request.getParameter("author"));
 		book.setCategory(request.getParameter("category"));
 		book.setTitle(request.getParameter("title"));
-		String inventory = request.getParameter("inventory");
+		String inventory = request.getParameter("inventoryAmount");
 		if (inventory == null || inventory.isEmpty()){
 			book.setInventory(0);
 		}
@@ -91,6 +91,7 @@ public class BookController extends HttpServlet {
 		}
 		String rating = request.getParameter("reviewRating");
 		if (rating == null || rating.isEmpty()){
+			System.out.println("Review was null or empty");
 			book.setReviewRating(0);
 		}
 		else{
@@ -98,32 +99,45 @@ public class BookController extends HttpServlet {
 			book.setReviewRating(rate);
 		}
 
-		book.setPrice(Double.parseDouble(request.getParameter("price"))); //TODO: may need validation
+		// book.setPrice(Double.parseDouble(request.getParameter("price"))); //TODO: may need validation
+		String priceFromForm = request.getParameter("price");
+		System.out.println("Price from form: " + priceFromForm);
+		if(priceFromForm == null || priceFromForm.isEmpty()){
+			System.out.println("Price was null for Book Add");
+			book.setPrice(0.0);
+		} else {
+			Double unconvertedPrice = Double.parseDouble(request.getParameter("price"));
+			System.out.println("Price was valid!");
+		}
+		
 		book.setYearPublished(request.getParameter("publicationYear"));
 		book.setPublisher(request.getParameter("publisher"));
-		InputStream inputStream = null; // input stream of the upload file
-
-        // obtains the upload file part in this multipart request
-        Part filePart = request.getPart("photoUrl");
-        if (filePart != null) {
-            // prints out some information for debugging
-            System.out.println(filePart.getName());
-            System.out.println(filePart.getSize());
-            System.out.println(filePart.getContentType());
-
-            // obtains input stream of the upload file
-            inputStream = filePart.getInputStream();
-        }
-
-		System.out.println(filePart);
-		if (filePart == null || filePart.toString().isEmpty()){
-			//do nothing
-		}
-		else {
-			//File file = new File("/Users/tazzledazzle/Pictures/"+photoUrl);
-//			FileInputStream inputStream = new FileInputStream(file);
-			book.setPhoto((Blob)inputStream);
-		}
+		
+//		COMMENTED OUT SO THAT THE PROCESS OF ADDING A BOOK WORKED
+//		InputStream inputStream = null; // input stream of the upload file
+//
+//    // obtains the upload file part in this multipart request
+//    Part filePart = request.getPart("photoUrl");
+//    if (filePart != null) {
+//        // prints out some information for debugging
+//        System.out.println(filePart.getName());
+//        System.out.println(filePart.getSize());
+//        System.out.println(filePart.getContentType());
+//
+//        // obtains input stream of the upload file
+//        inputStream = filePart.getInputStream();
+//    }
+//
+//		System.out.println("File part: " + filePart);
+//		if (filePart == null || filePart.toString().isEmpty()){
+//			//do nothing
+//			System.out.println("File part was null");
+//		}
+//		else {
+//			//File file = new File("/Users/tazzledazzle/Pictures/"+photoUrl);
+////			FileInputStream inputStream = new FileInputStream(file);
+//			book.setPhoto((Blob)inputStream);
+//		}
 		String bookId = request.getParameter("bookId");
 		if(bookId == null || bookId.isEmpty()){
 			dao.addBook(book);
@@ -134,6 +148,8 @@ public class BookController extends HttpServlet {
 			dao.updateBook(book);
 		}
 
+		System.out.println("Book OBJ: " + book.toString());
+		
 		RequestDispatcher view = request.getRequestDispatcher(LIST_BOOK);
 		request.setAttribute("books", dao.getAllBooks());
 		view.forward(request, response);
