@@ -22,7 +22,7 @@
 			<c:if test="${not empty book }"> 
         		<input type="text" placeholder="Photo URL" readonly="readonly"  name="photo" value="<c:out value="${book.photo }" />"/>
         		<%--TODO: change this route --%>
-        		<a href="http://localhost:8080/book-store-josh/addPhoto.jsp?bookId=${book.bookId }">Add/Edit Photo</a><br>
+        		<a href="addPhoto.jsp?bookId=${book.bookId }">Add/Edit Photo</a><br>
        		</c:if>
         	<%-- <input type="file" name="photo" value="<c:out value="${book.photo }" />" /> --%>
 			<button type="submit">Submit</button>

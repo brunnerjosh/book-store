@@ -83,7 +83,9 @@
 					
 					// Write the file
 					File file = new File(filePath + File.separator + fileName) ;
+					System.out.println("BEFORE fi.write()");
 	            	fi.write( file ) ;
+	            	System.out.println("AFTER fi.write()");
 	            	if(!fileName.equals("")){
 	            		out.println("<img src='./uploadFiles/" + fileName + "'/><br>");
 	            		

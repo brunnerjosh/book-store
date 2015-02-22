@@ -111,32 +111,8 @@ public class BookController extends HttpServlet {
 		
 		book.setYearPublished(request.getParameter("publicationYear"));
 		book.setPublisher(request.getParameter("publisher"));
+		book.setPhoto(request.getParameter("photo"));
 		
-//		COMMENTED OUT SO THAT THE PROCESS OF ADDING A BOOK WORKED
-//		InputStream inputStream = null; // input stream of the upload file
-//
-//    // obtains the upload file part in this multipart request
-//    Part filePart = request.getPart("photoUrl");
-//    if (filePart != null) {
-//        // prints out some information for debugging
-//        System.out.println(filePart.getName());
-//        System.out.println(filePart.getSize());
-//        System.out.println(filePart.getContentType());
-//
-//        // obtains input stream of the upload file
-//        inputStream = filePart.getInputStream();
-//    }
-//
-//		System.out.println("File part: " + filePart);
-//		if (filePart == null || filePart.toString().isEmpty()){
-//			//do nothing
-//			System.out.println("File part was null");
-//		}
-//		else {
-//			//File file = new File("/Users/tazzledazzle/Pictures/"+photoUrl);
-////			FileInputStream inputStream = new FileInputStream(file);
-//			book.setPhoto((Blob)inputStream);
-//		}
 		String bookId = request.getParameter("bookId");
 		if(bookId == null || bookId.isEmpty()){
 			dao.addBook(book);

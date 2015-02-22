@@ -134,11 +134,16 @@ public class BookDao {
 	
 	public void updateBookPhoto(int bookId, String photoURL){
 		//Book book = getBookById(bookId);
+		System.out.println("In updateBookPhoto!!!!");
+		System.out.println("bookID: " + bookId);
+		System.out.println("photoUrl: " + photoURL);
 		try{
 			PreparedStatement preparedStatement = connection.prepareStatement("update books set photo=? where bookId=?");
 			preparedStatement.setString(1, photoURL);
 			preparedStatement.setInt(2, bookId);
+			System.out.println("photo update: " + preparedStatement);
 			preparedStatement.executeUpdate();
+			
 			
 		}catch (SQLException e){
 			e.printStackTrace();

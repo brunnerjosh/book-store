@@ -65,3 +65,7 @@ ADD COLUMN `photo` BLOB NULL AFTER `reviewRating`;
 -- FURTHER ADDITIONS: 2/21/2015 @ 7:54pm
 ALTER TABLE `Bookstore`.`transactions`
 ADD COLUMN `sharedTransID` INT(10) NULL DEFAULT NULL AFTER `transactionId`;
+
+-- FURTHER ADDITION: 2/22/2015 @ 12:06pm
+ALTER TABLE `Bookstore`.`books`
+CHANGE COLUMN `photo` `photo` VARCHAR(300) NULL DEFAULT NULL ;
