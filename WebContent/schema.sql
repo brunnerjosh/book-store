@@ -57,6 +57,10 @@ ALTER TABLE `rating` ADD CONSTRAINT FOREIGN KEY (`userId`) REFERENCES `Bookstore
 ALTER TABLE `rating` ADD INDEX(`bookId`);
 ALTER TABLE `rating` ADD CONSTRAINT FOREIGN KEY (`bookId`) REFERENCES `Bookstore`.`books`(`bookId`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
--- ADDITIONS TO SQL FILE:
+-- ADDITIONS TO SQL FILE: initial
 ALTER TABLE `Bookstore`.`books`
 ADD COLUMN `photo` BLOB NULL AFTER `reviewRating`;
+
+-- FURTHER ADDITIONS: 2/21/2015 @ 7:46pm
+ALTER TABLE `Bookstore`.`transactions`
+ADD COLUMN `sharedTransID` INT(10) NOT NULL AFTER `transactionId`;
