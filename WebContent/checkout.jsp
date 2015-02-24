@@ -73,18 +73,18 @@ if(user != null) {
 							<strong>Total:</strong>
 							<p class="total-amount s-right">$<%=bookDao.getTotalFor(bookIDs) %></p>
 							<form method="post" action='TransactionController' name="confirmedPurchase"> <!-- action='TransactionController' name="frmAddTransaction" -->
-									<input type="text" readonly="readonly" placeholder="TransactionID" name="transactionId" value="" />
-									<input type="text" readonly="readonly" placeholder="Date" name="transactionDate" value="<fmt:formatDate pattern="MM/dd/yyyy" value="<%=currDate %>" />" /> 
-									<input type="text" readonly="readonly" placeholder="UserID" name="userId" value="<%=user.getUserid() %>" />
-									<%
-										for(int i = 0 ; i < bookIDs.size(); i++){
-											book = bookDao.getBookById(bookIDs.get(i));
-									%>
-										<input type="text" readonly="readonly" placeholder="BookID" name="bookId" value="<%=book.getBookId() %>" />
-									<%
-										}
-									%>
-									<input type="text" readonly="readonly" placeholder="Transaction Amount" name="transactionAmount" value="<%=bookDao.getTotalFor(bookIDs) %>" />
+								<input type="hidden" readonly="readonly" placeholder="TransactionID" name="transactionId" value="" />
+								<input type="hidden" readonly="readonly" placeholder="Date" name="transactionDate" value="<fmt:formatDate pattern="MM/dd/yyyy" value="<%=currDate %>" />" /> 
+								<input type="hidden" readonly="readonly" placeholder="UserID" name="userId" value="<%=user.getUserid() %>" />
+								<%
+									for(int i = 0 ; i < bookIDs.size(); i++){
+										book = bookDao.getBookById(bookIDs.get(i));
+								%>
+									<input type="hidden" readonly="readonly" placeholder="BookID" name="bookId" value="<%=book.getBookId() %>" />
+								<%
+									}
+								%>
+								<input type="hidden" readonly="readonly" visiblity="hidden" placeholder="Transaction Amount" name="transactionAmount" value="<%=bookDao.getTotalFor(bookIDs) %>" />
 								<button type="submit" class="confirm-checkout s-large s-green">Confirm Purchase</button>
 							</form>
 						</div>
