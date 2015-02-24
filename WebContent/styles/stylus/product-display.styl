@@ -29,6 +29,12 @@ for $i in (1)..(10)
       transition opacity 250ms ease
       color $white
 
+    .product-title,
+    .product-author
+      white-space nowrap
+      overflow hidden
+      text-overflow ellipsis
+
     .product-title
       line-height 1
       position absolute
@@ -45,16 +51,25 @@ for $i in (1)..(10)
       right 10px
 
     .product-purchase
-      position: absolute;
-      top: 67px;
-      left: 10px;
-      height: 24px;
-      border: none;
-      width: 48%;
+      position absolute
+      top 67px
+      left 10px
+      height 24px
+      border none
+      width 48%
+
+    .product-author
+      line-height 1
+      position absolute
+      display inline-block
+      top 26px
+      left 10px
+      font-size 15px
+      color gray
 
     .product-rating
       position absolute
-      bottom 43px
+      bottom 30px
       left 10px
       width 70%
       .rating-title

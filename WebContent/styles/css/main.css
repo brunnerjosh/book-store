@@ -51,6 +51,12 @@ muted,
 .s-red {
   color: #a00d0d;
 }
+a.s-green {
+  color: #29ba83;
+}
+a.s-blue {
+  color: #5a9dd1;
+}
 .disabled {
   cursor: not-allowed !important;
 }
@@ -568,6 +574,12 @@ button.s-blue:hover {
           transition: opacity 250ms ease;
   color: #fff;
 }
+.products .product .product-title,
+.products .product .product-author {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 .products .product .product-title {
   line-height: 1;
   position: absolute;
@@ -591,9 +603,18 @@ button.s-blue:hover {
   border: none;
   width: 48%;
 }
+.products .product .product-author {
+  line-height: 1;
+  position: absolute;
+  display: inline-block;
+  top: 26px;
+  left: 10px;
+  font-size: 15px;
+  color: #808080;
+}
 .products .product .product-rating {
   position: absolute;
-  bottom: 43px;
+  bottom: 30px;
   left: 10px;
   width: 70%;
 }
