@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.sql.PreparedStatement;
 
-//import model.Book;
+//import model.User;
 //import dao.BookDao;
 import model.Transaction;
 import util.DbUtil;
@@ -32,6 +32,7 @@ public class TransactionDao {
 		preparedStatement.setInt(3, transaction.getUserId());
 		preparedStatement.setDouble(4, transaction.getTransactionAmount());		
 		preparedStatement.executeUpdate();
+		System.out.println("Transaction Added! I should remove the item from the user's cart");
 		
 		} catch (SQLException e){
 			e.printStackTrace();

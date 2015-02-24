@@ -6,15 +6,15 @@
 <jsp:useBean id="userDao" class="dao.UserDao"/>
 
 <%
+List<Integer> booksInBag = null;
 user = (model.User) session.getAttribute("loggedInUser");
 if(user != null) {
-	System.out.println("User is not signed in");
-	int userID = user.getUserid();
-	String strBook = request.getParameter("bookId");
-	int intBook = Integer.parseInt(strBook);
-	book = bookDao.getBookById(intBook);
-	userDao.addToCart(user, intBook); //may need to hand in the User object
-	System.out.println("Added item to cart. " + user.getFirstName() +  " has this many items in cart: " + user.getBooksInBag().size());
+	booksInBag = user.getBooksInBag();
+	int bagSize = booksInBag.size(); // Get amount of books in bag
+	// Loop over list and remove the book from the user's bag
+	for(int i = 0 ; i < bagSize; i++){
+ 		user.removeBookFromBag(booksInBag.get(0)); // Since the array list for Integer is different, remove the 0th position
+	}
 %>
 	<div class="container as-small">
 		<div class="add-to-cart">

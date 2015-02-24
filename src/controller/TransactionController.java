@@ -27,6 +27,7 @@ public class TransactionController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	public static String INSERT_OR_EDIT = "/transaction.jsp";
 	public static String LIST_TRANSACTION = "/dashboard-transaction.jsp";	//check this
+	public static String CONFIRM_PURCHASE = "/confirmPurchase.jsp";
 	private TransactionDao dao;
 	private BookDao bookDao;
 
@@ -67,6 +68,8 @@ public class TransactionController extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String[] bookIDs = request.getParameterValues("bookId");
+		String forward= "";
+		String action = request.getParameter("action");
 		if(bookIDs != null)
 			for(int i = 0; i < bookIDs.length; i++){
 				
@@ -103,8 +106,7 @@ public class TransactionController extends HttpServlet {
 					int userId = Integer.parseInt(strUserId);
 					transaction.setUserId(userId);
 				}
-				
-				
+
 				String transAmt = request.getParameter("transactionAmount");
 				if (transAmt == null || transAmt.isEmpty()){
 					transaction.setTransactionAmount(0.0);
@@ -123,10 +125,18 @@ public class TransactionController extends HttpServlet {
 					transaction.setTransactionId(Integer.parseInt(transactionid));
 					dao.updateTransaction(transaction);
 				}
-		
+				
 			} 
-			RequestDispatcher view = request.getRequestDispatcher(LIST_TRANSACTION);
-			request.setAttribute("transactions", dao.getAllTransactions());
-			view.forward(request, response);
+			
+			if (action != null && action.equalsIgnoreCase("confirmedPurchase")) {
+				System.out.println("Confirmed Purchase");
+				forward = CONFIRM_PURCHASE;
+				RequestDispatcher view = request.getRequestDispatcher(forward);
+				view.forward(request, response);
+			} else {
+				RequestDispatcher view = request.getRequestDispatcher(LIST_TRANSACTION);
+				request.setAttribute("transactions", dao.getAllTransactions());
+				view.forward(request, response);
+			}
 	}
 }

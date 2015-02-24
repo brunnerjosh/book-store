@@ -36,7 +36,7 @@ public class User {
     	// Check that we have a valid bookID
     	if(bookID >= 0){
     		this.booksInBag.add(bookID);
-    		System.out.println("Added book to bag: " + booksInBag.size());
+    		System.out.println("ADDED book to bag: " + booksInBag.size());
     		return true;
     	}
     	return false; // Not a valid bookID
