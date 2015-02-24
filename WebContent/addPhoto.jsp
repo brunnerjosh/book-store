@@ -1,15 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Add a Photo</title>
-	<body>
+<!-- HEADER BAR -->
+<%@ include file = "/partials/header.jsp" %>
 
+<div class="container">
+	<div id="add-user-details" class="add-entity as-user-entry">
+		<h1 class="as-header">Add a Photo:</h1>
 		<form action="phoAdd.jsp" method="post" enctype="multipart/form-data">
 			<fieldset>
-				<p> Book ID: <input type="text" name="bookId" id="bookId"/></p>
+				<p> Book ID: <input readonly type="text" name="bookId" id="bookId"/></p>
 				<script>
 					var query_string = {};
 					var query = window.location;
@@ -18,14 +15,13 @@
 					var id = search[1];
 					document.getElementById('bookId').value = id;
 				</script>
-				<p>Upload Your Picture1: <input type="file" name="pic" id="pic"/></p>
-				<input type="submit" value="Upload" id="submit"/>
+				<p>Upload Your Picture: <input type="file" name="pic" id="pic"/></p>
+				<button type="submit" id="submit">Upload Book Cover</button>
+				<a href="BookController?action=listBook">Cancel</a>
 			</fieldset>
 		</form>
-		<script>
-   	/* 
-		var elSubmit = document.getElementById('submit');
-		elSubmit.onclick =loginCheck; */
-	</script>
-	</body>
-</html>
+	</div>
+</div>
+
+<!-- FOOTER BAR -->
+<%@ include file = "/partials/footer.jsp" %>
