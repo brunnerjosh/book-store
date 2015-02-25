@@ -666,8 +666,18 @@ button.s-blue:hover {
   width: 100%;
   margin-bottom: 10px;
 }
+.add-entity input#selectedCategory {
+  width: 65%;
+}
 .add-entity button {
   width: 100%;
+}
+.add-entity select.book-categories {
+  width: 33%;
+  display: inline-block;
+  margin-top: 0px;
+  font-size: 16px;
+  float: right;
 }
 .add-entity p.as-header {
   font-size: 18px;

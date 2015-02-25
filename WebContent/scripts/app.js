@@ -8,6 +8,10 @@ var viewShoppingBag = function(){
 	$("#shopping-bag").toggleClass("is-active");
 };
 
+$(".book-categories").change(function () {
+    $("#selectedCategory").val($('#categorySelect').val());
+});
+
 //var openAddBooks = function(){
 //	$("#add-book-details").show();
 //	$("#add-user-details").hide();

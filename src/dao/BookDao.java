@@ -43,6 +43,7 @@ public class BookDao {
 	
 	public String[] bookCategories = 
 	{
+		"All",
 		"Fiction",
 		"Children",
 		"Poetry",
@@ -51,6 +52,10 @@ public class BookDao {
 		"Horror",
 		"Romance"
 	};
+	
+	public String[] getBookCategories(){
+		return this.bookCategories;
+	}
 	
 	public void addBook(Book book){
 		System.out.println("BookDao: addBook: " + book.toString());
