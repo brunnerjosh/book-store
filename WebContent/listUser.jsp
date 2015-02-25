@@ -25,7 +25,7 @@
 	                <td id="${user.password }"><c:out value="${user.password }" /></td>
 	                <td><a href="UserController?action=edit&userId=<c:out value="${user.userid}"/>">Update</a></td>
 	                <td><a href="UserController?action=delete&userId=<c:out value="${user.userid}"/>">Delete</a></td>
-	                <td><a href="UserController?action=transHist&userId=<c:out value="${user.userid}"/>">Transactions</a></td>
+	                <td><a href="TransactionController?action=transHist&userId=<c:out value="${user.userid}"/>">Transactions</a></td>
 	            </tr>
 	        </c:forEach>
 	    </tbody>

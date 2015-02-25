@@ -1,30 +1,17 @@
-<a onclick="toggleElement('table-list-group')" href="UserController?action=transHist">Transactions</a>
+<%@ include file = "/partials/header.jsp" %> <!-- HEADER -->
+<%@ include file = "/partials/navigation.jsp" %> <!-- NAVIGATION BAR -->
 
-<div class="table-list-group">	
-	<table>
-	    <thead>
-	        <tr>
-	            <th>Transaction Id</th>
-	            <th>Date</th>
-	            <th>Book Id</th>
-	            <th>User Id</th>
-	            <th>Amount</th>
-<!-- 	            <th colspan=3>Action</th> 
--->
-	        </tr>
-	    </thead>
-	    <tbody>
-	        <c:forEach items="${transactions}" var="transaction">
-	            <tr>
-	                <td><c:out value="${transactions.transactionId}" /></td>
-	                <td><fmt:formatDate pattern="yyyy-MMM-dd" value="${transactions.transactionDate}" /></td>
-	                <td><c:out value="${transactions.bookId}" /></td>
-	                <td><c:out value="${transactions.userId}" /></td>
-	                <td><c:out value="${transactions.transactionAmount}" /></td>
-<!--  	                <td><a href="UserController?action=edit&userId=<c:out value="${user.userid}"/>">Update</a></td> 
--->
-	            </tr>
-	        </c:forEach>
-	    </tbody>
-	</table>
+<%@ include file = "/confirmAdmin.jsp" %> <!-- ADMIN ACCESS ONLY -->
+
+<!-- MAIN BODY CONTENT -->
+<div class="container clearfix">
+	<h1><%=user.getFirstName() %>'s
+		<muted>Transaction History</muted>
+	</h1>
+	<%@ include file="listUserTransactions.jsp" %>
+
 </div>
+
+
+<!-- FOOTER BAR -->
+<%@ include file = "/partials/footer.jsp" %>

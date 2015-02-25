@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.sql.PreparedStatement;
 
+import model.Book;
 import model.Transaction;
 import util.DbUtil;
 
@@ -83,7 +84,29 @@ public class TransactionDao {
 		}
 		return transactions;
 	}
-	
+	public List<Transaction> getAllTransByUserId(int user){
+		List<Transaction> transactions = new ArrayList<Transaction>();
+		try{
+			PreparedStatement preparedStatement = connection.prepareStatement("select * from transactions where userId=?");
+			preparedStatement.setInt(1, user);
+			ResultSet rs = preparedStatement.executeQuery();
+			
+			while(rs.next()){
+				Transaction transaction = new Transaction();
+				transaction.setTransactionId(rs.getInt("transactionId"));
+				transaction.setBookId(rs.getInt("bookId"));
+				transaction.setUserId(rs.getInt("userId"));
+				transaction.setTransactionDate(rs.getDate("transactionDate"));
+				transaction.setTransactionAmount(rs.getDouble("transactionAmount"));
+				transactions.add(transaction);
+			}
+		} catch(SQLException e){
+		e.printStackTrace();
+		}
+
+	return transactions;
+		
+	}
 	public Transaction getTransactionById(int transactionId){
 		Transaction transaction = new Transaction();
 		try{
