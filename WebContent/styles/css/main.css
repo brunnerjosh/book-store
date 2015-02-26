@@ -784,3 +784,51 @@ button.s-blue:hover {
   font-size: 28px;
   line-height: 1;
 }
+.container.as-user-profile {
+  width: 800px;
+}
+.container.as-user-profile .user-profile-panel img.person-img {
+  width: 258px;
+}
+.container.as-user-profile .user-profile-panel .pane-left {
+  width: 38%;
+}
+.container.as-user-profile .user-profile-panel .pane-right {
+  width: 62%;
+}
+.container.as-user-profile .user-profile-panel h2,
+.container.as-user-profile .user-profile-panel h3,
+.container.as-user-profile .user-profile-panel h4,
+.container.as-user-profile .user-profile-panel p {
+  margin-top: 6px;
+  margin-bottom: 0;
+  line-height: 1;
+}
+.container.as-user-profile .user-profile-panel .book-details {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.container.as-user-profile .user-profile-panel .purchase-section {
+  position: relative;
+  width: 200px;
+}
+.container.as-user-profile .user-profile-panel .purchase-section button.addToCart {
+  width: 200px;
+  display: block;
+  font-size: 18px;
+}
+.container.as-user-profile .user-profile-panel .purchase-section a.goBack {
+  top: 4px;
+  position: relative;
+}
+.container.as-user-profile .user-profile-panel .purchase-section div.rating,
+.container.as-user-profile .user-profile-panel .purchase-section div.price {
+  display: inline-block;
+  position: relative;
+}
+.container.as-user-profile .user-profile-panel .purchase-section div.price {
+  right: -38px;
+  position: relative;
+  font-size: 28px;
+  line-height: 1;
+}
