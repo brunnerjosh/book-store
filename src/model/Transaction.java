@@ -12,7 +12,7 @@ public class Transaction {
 	private double transactionAmount;
 	
 	public Transaction(){
-		System.out.println("CREATED A NEW TRANSACTION OBJECT");
+		
 	}
 	
 	public void setTransactionId(int transactionId){

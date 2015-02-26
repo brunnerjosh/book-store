@@ -11,8 +11,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-
 import model.Rating;
+import model.Transaction;
 
 public class RatingDao {
 	private Connection connection;
@@ -86,6 +86,29 @@ public class RatingDao {
 		}
 		
 		return ratings;
+	}
+	
+	public List<Rating> getAllRatingsByUserId(int user){
+		System.out.println("dao.RatingDao: getAllRatingsByUserId for " + user);
+		List<Rating> ratings = new ArrayList<Rating>();
+		try{
+			Statement statement = connection.createStatement();
+			ResultSet rs = statement.executeQuery("select * from rating where userId="+user);
+			while(rs.next()){
+				Rating rating = new Rating();
+				rating.setRatingId(rs.getInt("ratingId"));
+				rating.setBookId(rs.getInt("bookId"));
+				rating.setUserId(rs.getInt("userId"));
+				rating.setRatingDate(rs.getDate("ratingDate"));
+				rating.setRating(rs.getInt("rating"));
+				ratings.add(rating);
+			}
+		} catch (SQLException e){
+			e.printStackTrace();
+		}
+		
+		return ratings;
+
 	}
 	
 	public Rating getRatingById(int ratingId){
