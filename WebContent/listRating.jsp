@@ -1,4 +1,4 @@
-<a class="s-right" href="RatingController?action=insert">Add User</a>
+<a class="s-right" href="RatingController?action=insert">Add Rating</a>
 <a href="RatingController?action=listRating">List Users</a>
 <div class="table-list-group">
     <table border=1>

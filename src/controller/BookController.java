@@ -96,6 +96,7 @@ public class BookController extends HttpServlet {
 		}
 		else{
 			int rate = Integer.parseInt(rating);
+			System.out.println("Setting a Book Rating <===");
 			book.setReviewRating(rate);
 		}
 

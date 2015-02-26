@@ -81,10 +81,12 @@ public class Book {
 	}
 	
 	public void setReviewRating(int reviewRating){
+		System.out.println("model.Book: setReviewRating");
 		this.reviewRating = reviewRating;
 	}
 	
 	public int getReviewRating(){
+		System.out.println("model.Book: getReviewRating");
 		return reviewRating;
 	}
 	

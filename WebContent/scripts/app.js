@@ -12,6 +12,10 @@ $(".book-categories").change(function () {
     $("#selectedCategory").val($('#categorySelect').val());
 });
 
+$(".rating-options").change(function () {
+    $("#selectedRating").val($('#ratingSelect').val());
+});
+
 //var openAddBooks = function(){
 //	$("#add-book-details").show();
 //	$("#add-user-details").hide();

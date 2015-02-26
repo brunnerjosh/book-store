@@ -25,6 +25,8 @@ public class RatingController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	public static String INSERT_OR_EDIT = "/rating.jsp";
 	public static String LIST_RATING = "/dashboard-rating.jsp";	//check this
+	public static String BOOK_DETAIL = "display-book-detail.jsp";
+	public static String CONFIRM_RATING = "confirm-rating.jsp";
 	private RatingDao dao;
 
 	public RatingController(){
@@ -66,6 +68,8 @@ public class RatingController extends HttpServlet {
 	throws ServletException, IOException {
 		Rating rating = new Rating();
 		String strBookId = request.getParameter("bookId");
+		String action = request.getParameter("action");
+		String forward= "";
 		if(strBookId == null || strBookId.isEmpty()){
 			rating.setBookId(0);
 			dao.addRating(rating);
@@ -90,16 +94,7 @@ public class RatingController extends HttpServlet {
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
-		
-//		String ratingString = request.getParameter("rating");
-//		if (ratingString == null || ratingString.isEmpty()){
-//			rating.setRating(0);
-//		}
-//		else{
-//			int r = Integer.parseInt(ratingString);
-//			rating.setRating(r);
-//		}
-//		
+	
 		int ratingStr = Integer.parseInt(request.getParameter("rating"));
 		rating.setRating(ratingStr);
 		
@@ -112,10 +107,14 @@ public class RatingController extends HttpServlet {
 			dao.updateRating(rating);
 		}
 
-		RequestDispatcher view = request.getRequestDispatcher(LIST_RATING);
-    request.setAttribute("ratings", dao.getAllRatings());
-    view.forward(request, response);
+		if (action != null && action.equalsIgnoreCase("userAddRating")){
+			request.setAttribute("bookId", strBookId);
+			RequestDispatcher view = request.getRequestDispatcher(CONFIRM_RATING);
+			view.forward(request, response);
+		} else {
+			RequestDispatcher view = request.getRequestDispatcher(LIST_RATING);
+	    request.setAttribute("ratings", dao.getAllRatings());
+	    view.forward(request, response);
+		}
 	}
-
-
 }
