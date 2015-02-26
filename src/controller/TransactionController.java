@@ -16,18 +16,12 @@ import model.Book;
 import model.Transaction;
 import dao.BookDao;
 
-
-//transactionId
-//transactionDate
-//bookId
-//userId
-//transactionAmount
-
 public class TransactionController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	public static String INSERT_OR_EDIT = "/transaction.jsp";
 	public static String LIST_TRANSACTION = "/dashboard-transaction.jsp";	//check this
 	public static String CONFIRM_PURCHASE = "/confirmPurchase.jsp";
+	public static String TRANS_HIST = "/transactionHistory.jsp";
 	private TransactionDao dao;
 	private BookDao bookDao;
 
@@ -58,6 +52,13 @@ public class TransactionController extends HttpServlet {
 			forward = LIST_TRANSACTION;
 			request.setAttribute("transactions", dao.getAllTransactions());
 		}
+		else if (action.equalsIgnoreCase("transHist")){
+			forward = TRANS_HIST;
+			int userId = Integer.parseInt(request.getParameter("userId"));
+			System.out.println("This is a transaction history for User: " +userId);
+//			User user = dao.getUserHistById(userId);
+			request.setAttribute("transactions", dao.getAllTransByUserId(userId));
+		}
 		else {
 			forward = INSERT_OR_EDIT;
 		}
@@ -72,18 +73,18 @@ public class TransactionController extends HttpServlet {
 		String action = request.getParameter("action");
 		if(bookIDs != null)
 			for(int i = 0; i < bookIDs.length; i++){
-				
+
 				Transaction transaction = new Transaction();
 				System.out.println(request.toString());	//TODO:
 				System.out.println(response.toString());	//TODO:
 				try{
 					Date transDate = new SimpleDateFormat("MM/dd/yyyy").parse(request.getParameter("transactionDate"));
 					transaction.setTransactionDate(transDate);
-		
+
 				} catch (ParseException e) {
 					e.printStackTrace();
 				}
-				
+
 				if(bookIDs[i] == null || bookIDs[i].isEmpty()){
 					System.out.println("strBookId or strBookId was BAD");
 					transaction.setBookId(0);
@@ -96,7 +97,7 @@ public class TransactionController extends HttpServlet {
 						continue; // Go back to top of For Loop
 					};
 				}
-		
+
 				String strUserId = request.getParameter("userId");
 				if(strUserId == null || strUserId.isEmpty()){
 					transaction.setUserId(0);
@@ -115,19 +116,19 @@ public class TransactionController extends HttpServlet {
 					Double transactionAmount = Double.parseDouble(transAmt);
 					transaction.setTransactionAmount(transactionAmount);
 				}
-				
+
 				String transactionid = request.getParameter("transactionId");
 				if(transactionid == null || transactionid.isEmpty())
 				{
-					dao.addTransaction(transaction);	
+					dao.addTransaction(transaction);
 				}
 				else {
 					transaction.setTransactionId(Integer.parseInt(transactionid));
 					dao.updateTransaction(transaction);
 				}
-				
-			} 
-			
+
+			}
+
 			if (action != null && action.equalsIgnoreCase("confirmedPurchase")) {
 				System.out.println("Confirmed Purchase");
 				forward = CONFIRM_PURCHASE;
