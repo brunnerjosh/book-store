@@ -7,15 +7,24 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+
+import model.Rating;
+import model.Transaction;
 import model.User;
 import util.DbUtil;
+import dao.TransactionDao;
+import dao.RatingDao;
 
 public class UserDao {
 	
 	private Connection connection;
+	private TransactionDao transDao;
+	private RatingDao ratingDao;
 	
 	public UserDao() {
 		connection = DbUtil.getConnection();
+		transDao = new TransactionDao();
+		ratingDao = new RatingDao();
 		System.out.println("CREATED A USER DAO");
 	}
 		
@@ -49,6 +58,24 @@ public class UserDao {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+	}
+	
+	public int countBooksPurchased(int userId){
+		if(userId > 0){
+			System.out.println("dao.UserDao: countBooksPurchased for " + userId);
+			List<Transaction> userTransactions = transDao.getAllTransByUserId(userId);
+			return userTransactions.size();
+		}
+		return 0;
+	}
+	
+	public int countRatingsMade(int userId){
+		if(userId > 0){
+			System.out.println("dao.UserDao: countRatingsMade for " + userId);
+			List<Rating> userRatings = ratingDao.getAllRatingsByUserId(userId);
+			return userRatings.size();
+		}
+		return 0;
 	}
 	
 	public void updateUser(User user){

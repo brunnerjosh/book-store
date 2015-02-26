@@ -86,6 +86,7 @@ public class TransactionDao {
 		return transactions;
 	}
 	public List<Transaction> getAllTransByUserId(int user){
+		System.out.println("dao.TransactionDao: getAllTransByUserId for " + user);
 		List<Transaction> transactions = new ArrayList<Transaction>();
 		try{
 			PreparedStatement preparedStatement = connection.prepareStatement("select * from transactions where userId=?");
@@ -104,7 +105,7 @@ public class TransactionDao {
 		} catch(SQLException e){
 		e.printStackTrace();
 		}
-
+		
 	return transactions;
 
 	}

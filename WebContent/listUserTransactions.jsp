@@ -1,4 +1,4 @@
-<a onclick="toggleElement('table-list-group')" href="TransactionController?action=transHist">Transactions</a>
+<a onclick="" href="user-profile.jsp">Go Back</a>
 
 <div class="table-list-group">	
 	<table>

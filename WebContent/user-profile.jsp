@@ -13,28 +13,25 @@ Date currDate = new Date();
 int userID = 0;
 if(user != null){
 	userID = user.getUserid();
-}
-String strBook = request.getParameter("bookId");
-if(strBook != null && !strBook.isEmpty()){
-	System.out.println("BookID was handed to the page: " + strBook);
-	int intBook = Integer.parseInt(strBook);
+	int intBook = 2;
 	book = bookDao.getBookById(intBook);
 	System.out.println("Display Book Detail: id:" + intBook + " title:" + book.getTitle());
 	%>
 	
 	<div class="container as-book-detail">
-		<h1>Book Information</h1>
+		<h1>User Profile</h1>
 		<div class="book-detail-panel">
 			<div class="pane-left">
 				<img class="product-img" src="<%=book.getPhoto() %>" />
 			</div>
 			<div class="pane-right">
-				<h2><%=book.getTitle() %></h1>
-				<p class="muted">by: <%=book.getAuthor() %></p>
+				<h2><%=user.getFirstName() %> <%=user.getLastName() %></h1>
+				<p class="muted">born in <%=user.getDob() %></p>
 	
 				<div class="book-details">
-					<h4>Book Details:</h4>
-					<p>category <strong><%=book.getCategory()%></strong></p>
+					<h4>User Stats:</h4>
+					<p>books purchased: <strong><%=userDao.countBooksPurchased(user.getUserid()) %></strong>&nbsp &nbsp <a href="TransactionController?action=transHist&userId=<%=user.getUserid()%>">View Transactions</a></p>
+					<p>ratings made: <strong><%=userDao.countRatingsMade(user.getUserid()) %></strong>&nbsp &nbsp <a href="TransactionController?action=transHist&userId=<%=user.getUserid()%>">View Ratings</a></p>
 					<%
 					if(book.getInventory() >= 1){
 						out.print("<p><strong>"+book.getInventory()+"</strong> copies left</p>");

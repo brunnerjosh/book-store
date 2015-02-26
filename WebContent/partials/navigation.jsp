@@ -33,6 +33,7 @@ boolean isAdmin = false;
 			<c:choose>
 				<c:when test="${isSignedIn == true}">
 					<%=user.getFirstName() %> :
+					<a href="user-profile.jsp" class="list-item">Profile</a>
 					<a href="logOut.jsp" class="list-item">Log out</a>
 				</c:when>
 				<c:otherwise>
