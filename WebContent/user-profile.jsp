@@ -58,30 +58,23 @@ if(strBook != null && !strBook.isEmpty()){
 						%>
 					</form>
 					<a href="BookController?action=bookDisplay&category=all" class="goBack">Go Back</a>
-					
-					<% 
-						if(user != null) {
-					%>
-					
-						<form method="POST" action='RatingController?action=userAddRating&bookId=<%=book.getBookId() %>' name="userAddRating">
-						    <select id="ratingSelect" class="rating-options">
-					            <option>-- Add Rating --</option>
-					            <%
-					            for(int i = 1 ; i < 11; i++){
-					            	out.print("<option value=\"" + i +  "\">" + i + " star</option>");
-					            }
-					            %>
-				            </select>
-						    <input type="submit" value="Submit" />
-						    <input placeholder="RatingID" type="hidden" readonly="readonly" name="ratingId" value="<c:out value="${rating.ratingId}" />" />
-						    <input placeholder="UserID" type="hidden" name="userId" value="<%=user.getUserid()%>" />
-						    <input placeholder="BookID" type="hidden" name="bookId" value="<%=book.getBookId()%>" />
-						    <input placeholder="Date of Trans" type="hidden" name="ratingDate"  value="<fmt:formatDate pattern="MM/dd/yyyy" value="<%=currDate %>" />" />
-						    <input placeholder="Rating" type="hidden" id="selectedRating" name="rating" value="" />
-						</form>
-					<%
-						} 
-					%>
+	
+					<form method="POST" action='RatingController?action=userAddRating&bookId=<%=book.getBookId() %>' name="userAddRating">
+					    <select id="ratingSelect" class="rating-options">
+				            <option>-- Add Rating --</option>
+				            <%
+				            for(int i = 1 ; i < 11; i++){
+				            	out.print("<option value=\"" + i +  "\">" + i + " star</option>");
+				            }
+				            %>
+			            </select>
+					    <input type="submit" value="Submit" />
+					    <input placeholder="RatingID" type="hidden" readonly="readonly" name="ratingId" value="<c:out value="${rating.ratingId}" />" />
+					    <input placeholder="UserID" type="hidden" name="userId" value="<%=user.getUserid()%>" />
+					    <input placeholder="BookID" type="hidden" name="bookId" value="<%=book.getBookId()%>" />
+					    <input placeholder="Date of Trans" type="hidden" name="ratingDate"  value="<fmt:formatDate pattern="MM/dd/yyyy" value="<%=currDate %>" />" />
+					    <input placeholder="Rating" type="hidden" id="selectedRating" name="rating" value="" />
+					</form>
 				</div>
 			</div>
 		</div>
@@ -89,7 +82,7 @@ if(strBook != null && !strBook.isEmpty()){
 	</div>
 	<%
 } else {
-	out.print("<h1>You shouldn't have gotten to this point...</h1>");
+	out.print("<h1>You're not signed in!</h1>");
 }
 	%>
 	
