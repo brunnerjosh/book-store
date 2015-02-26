@@ -787,6 +787,9 @@ button.s-blue:hover {
 .container.as-user-profile {
   width: 800px;
 }
+.container.as-user-profile .user-profile-panel {
+  position: relative;
+}
 .container.as-user-profile .user-profile-panel img.person-img {
   width: 258px;
 }
@@ -804,31 +807,11 @@ button.s-blue:hover {
   margin-bottom: 0;
   line-height: 1;
 }
-.container.as-user-profile .user-profile-panel .book-details {
-  margin-top: 20px;
-  margin-bottom: 20px;
+.container.as-user-profile .user-profile-panel h4 {
+  margin-top: 15px;
 }
-.container.as-user-profile .user-profile-panel .purchase-section {
-  position: relative;
-  width: 200px;
-}
-.container.as-user-profile .user-profile-panel .purchase-section button.addToCart {
-  width: 200px;
-  display: block;
-  font-size: 18px;
-}
-.container.as-user-profile .user-profile-panel .purchase-section a.goBack {
-  top: 4px;
-  position: relative;
-}
-.container.as-user-profile .user-profile-panel .purchase-section div.rating,
-.container.as-user-profile .user-profile-panel .purchase-section div.price {
-  display: inline-block;
-  position: relative;
-}
-.container.as-user-profile .user-profile-panel .purchase-section div.price {
-  right: -38px;
-  position: relative;
-  font-size: 28px;
-  line-height: 1;
+.container.as-user-profile .user-profile-panel .edit-profile {
+  position: absolute;
+  top: 20px;
+  right: 20px;
 }

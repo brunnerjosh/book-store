@@ -21,13 +21,14 @@ if(user != null){
 			</div>
 			<div class="pane-right">
 				<h2><%=user.getFirstName() %> <%=user.getLastName() %></h1>
-				<p class="muted">born in <%=user.getDob() %></p>
+				<p class="muted">born in <fmt:formatDate pattern="MM/dd/yyyy" value="<%=user.getDob() %>" /></p>
 	
 				<div class="book-details">
 					<h4>User Stats:</h4>
 					<p>books purchased: <strong><%=userDao.countBooksPurchased(user.getUserid()) %></strong>&nbsp &nbsp <a href="TransactionController?action=transHist&userId=<%=user.getUserid()%>">View Transactions</a></p>
 					<p>ratings made: <strong><%=userDao.countRatingsMade(user.getUserid()) %></strong>&nbsp &nbsp <a href="TransactionController?action=transHist&userId=<%=user.getUserid()%>">View Ratings</a></p>
 				</div>
+				<a class="edit-profile" href="user-settings.jsp">Edit Profile</a>
 			</div>
 		</div>
 	

@@ -18,6 +18,7 @@ public class UserController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	public static String INSERT_OR_EDIT = "/user.jsp"; // user.jsp
 	public static String LIST_USER = "/dashboard-user.jsp"; // listUser.jsp
+	public static String USER_PROFILE = "user-profile.jsp"; // listUser.jsp
 	private UserDao dao;
 	
 	public UserController() {
@@ -62,6 +63,8 @@ public class UserController extends HttpServlet {
         user.setFirstName(request.getParameter("firstName"));
         user.setLastName(request.getParameter("lastName"));
         user.setPassword(request.getParameter("password"));
+        String forward= "";
+    		String action = request.getParameter("action");
         System.out.println("UserController: doPost");
         try {
             Date dob = new SimpleDateFormat("MM/dd/yyyy").parse(request.getParameter("dob"));
@@ -79,10 +82,18 @@ public class UserController extends HttpServlet {
         else
         {
             user.setUserid(Integer.parseInt(userid));
+            System.out.println("UserController: doPost UPDATE for " + user.getFirstName());
             dao.updateUser(user);
         }
-        RequestDispatcher view = request.getRequestDispatcher(LIST_USER);
-        request.setAttribute("users", dao.getAllUsers());
-        view.forward(request, response);
+        if(action != null && action.equalsIgnoreCase("update-settings")){
+        	System.out.println("USER IS CHANGING SETTINGS");
+	        RequestDispatcher view = request.getRequestDispatcher(USER_PROFILE);
+	        request.setAttribute("loggedInUser", user);
+	        view.forward(request, response);
+        } else {
+        	RequestDispatcher view = request.getRequestDispatcher(LIST_USER);
+          request.setAttribute("users", dao.getAllUsers());
+          view.forward(request, response);
+        }
     }
 }
