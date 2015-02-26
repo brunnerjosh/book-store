@@ -91,6 +91,7 @@ public class UserDao {
             preparedStatement.setString(4, user.getEmail());
             preparedStatement.setString(5, user.getPassword());
             preparedStatement.setInt(6, user.getUserid());
+            System.out.println("prepared statement: " + preparedStatement);
             preparedStatement.executeUpdate();
 
         } catch (SQLException e) {
