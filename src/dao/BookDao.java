@@ -135,7 +135,11 @@ public class BookDao {
 				count++;
 			}
 		}
-		avgRating = (ratingTotal/count);
+		if(count == 0){
+			avgRating = 0;
+		} else {
+			avgRating = (ratingTotal/count);
+		}
 		System.out.println("Trying to divide " + ratingTotal + " by " + count + " for bookID: " + bookID);
 		try{
 			PreparedStatement preparedStatement = connection.prepareStatement("update books set reviewRating=? where bookId=?");
@@ -148,11 +152,7 @@ public class BookDao {
 			e.printStackTrace();
 		}
 		
-		if(count == 0){
-			return 0;
-		} else {
-			return avgRating;
-		}
+		return avgRating;
 		
 	}
 	
