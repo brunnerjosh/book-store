@@ -8,49 +8,48 @@ import java.util.ArrayList;
 import java.util.List;
 import java.sql.PreparedStatement;
 
-//import model.User;
-//import dao.BookDao;
+import model.Book;
 import model.Transaction;
 import util.DbUtil;
 
 public class TransactionDao {
 	Connection connection;
-	
+
 	public TransactionDao(){
 		connection = DbUtil.getConnection();
 		System.out.println("CREATED A NEW TRANSACTION DAO OBJECT");
 	}
-	
+
 	public void addTransaction(Transaction transaction){
 		try{
-			PreparedStatement preparedStatement = connection		
+			PreparedStatement preparedStatement = connection
 				.prepareStatement("insert into transactions( `transactionDate`, `bookId`, `userId`, `transactionAmount`) "
 						+ "values (?,?,?,?)");
 		//preparedStatement.setInt(1, transaction.getTransactionId());
 		preparedStatement.setDate(1, new java.sql.Date(transaction.getTransactionDate().getTime()));
 		preparedStatement.setInt(2, transaction.getBookId());
 		preparedStatement.setInt(3, transaction.getUserId());
-		preparedStatement.setDouble(4, transaction.getTransactionAmount());		
+		preparedStatement.setDouble(4, transaction.getTransactionAmount());
 		preparedStatement.executeUpdate();
 		System.out.println("Transaction Added! I should remove the item from the user's cart");
-		
+
 		} catch (SQLException e){
 			e.printStackTrace();
 		}
 	}
-	
+
 	public void deleteTransaction(int transactionId){
 		try{
 			PreparedStatement preparedStatement = connection
 					.prepareStatement("delete from transactions where transactionId=?");
 			preparedStatement.setInt(1, transactionId);
 			preparedStatement.executeUpdate();
-			
+
 		}catch(SQLException e){
 			e.printStackTrace();
 		}
 	}
-	
+
 	public void updateTransaction(Transaction transaction){
 		try{
 			PreparedStatement preparedStatement = connection
@@ -66,7 +65,7 @@ public class TransactionDao {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public List<Transaction> getAllTransactions(){
 		List<Transaction> transactions = new ArrayList<Transaction>();
 		try{
@@ -86,7 +85,29 @@ public class TransactionDao {
 		}
 		return transactions;
 	}
-	
+	public List<Transaction> getAllTransByUserId(int user){
+		List<Transaction> transactions = new ArrayList<Transaction>();
+		try{
+			PreparedStatement preparedStatement = connection.prepareStatement("select * from transactions where userId=?");
+			preparedStatement.setInt(1, user);
+			ResultSet rs = preparedStatement.executeQuery();
+
+			while(rs.next()){
+				Transaction transaction = new Transaction();
+				transaction.setTransactionId(rs.getInt("transactionId"));
+				transaction.setBookId(rs.getInt("bookId"));
+				transaction.setUserId(rs.getInt("userId"));
+				transaction.setTransactionDate(rs.getDate("transactionDate"));
+				transaction.setTransactionAmount(rs.getDouble("transactionAmount"));
+				transactions.add(transaction);
+			}
+		} catch(SQLException e){
+		e.printStackTrace();
+		}
+
+	return transactions;
+
+	}
 	public Transaction getTransactionById(int transactionId){
 		Transaction transaction = new Transaction();
 		try{
@@ -94,7 +115,7 @@ public class TransactionDao {
 					.prepareStatement("select * from transactions where transactionId=?");
 			preparedStatement.setInt(1, transactionId);
 			ResultSet rs = preparedStatement.executeQuery();
-			
+
 			if (rs.next()){
 				transaction.setTransactionId(rs.getInt("transactionId"));
 				transaction.setBookId(rs.getInt("bookId"));
@@ -107,5 +128,5 @@ public class TransactionDao {
 		}
 		return transaction;
 	}
-	
+
 }

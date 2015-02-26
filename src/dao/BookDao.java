@@ -28,6 +28,7 @@ public class BookDao {
 		ratingDao = new RatingDao();
 		System.out.println("Created a BOOKDAO");
 	}
+	
 	public boolean decrementQuantity(int bookID){
 		Book book = this.getBookById(bookID);
 		int bookInventory = book.getInventory();
@@ -124,6 +125,7 @@ public class BookDao {
 		System.out.println("Calculating rating for " + bookID);
 		
 		int count = 0;
+		int avgRating = 0;
 		int ratingTotal = 0;
 		List<User> myUserList = userDao.getAllUsers();
 		List<Rating> myRatings = ratingDao.getAllRatings();
@@ -133,13 +135,23 @@ public class BookDao {
 				count++;
 			}
 		}
-		
+		avgRating = (ratingTotal/count);
 		System.out.println("Trying to divide " + ratingTotal + " by " + count + " for bookID: " + bookID);
+		try{
+			PreparedStatement preparedStatement = connection.prepareStatement("update books set reviewRating=? where bookId=?");
+			preparedStatement.setInt(1, avgRating);
+			preparedStatement.setInt(2, bookID);
+			System.out.println(" ===> book rating update: " + preparedStatement);
+			preparedStatement.executeUpdate();
+			
+		}catch (SQLException e){
+			e.printStackTrace();
+		}
 		
 		if(count == 0){
 			return 0;
 		} else {
-			return (ratingTotal/count);
+			return avgRating;
 		}
 		
 	}
