@@ -6,6 +6,7 @@ import java.util.Date;
 
 public class Transaction {
 	private int transactionId;
+	private int sharedTransID;
 	private Date transactionDate;
 	private int bookId;
 	private int userId;
@@ -21,6 +22,14 @@ public class Transaction {
 	
 	public int getTransactionId(){
 		return transactionId;
+	}
+	
+	public void setSharedTransID(int sharedTransID){
+		this.sharedTransID = sharedTransID;
+	}
+	
+	public int getSharedTransID(){
+		return sharedTransID;
 	}
 	
 	public void setTransactionDate(Date transactionDate){

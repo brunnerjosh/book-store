@@ -5,6 +5,7 @@
 	    <thead>
 	        <tr>
 	            <th>Transaction Id</th>
+	            <th>Shared Trans Id</th>
 	            <th>Transaction Date</th>
 	            <th>Book ID</th>
 	            <th>User ID</th>
@@ -16,6 +17,7 @@
 	        <c:forEach items="${transactions}" var="transaction">
 	            <tr>
 	                <td><c:out value="${transaction.transactionId}" /></td>
+	                <td><c:out value="${transaction.sharedTransID }" /></td>
 	                <td><fmt:formatDate pattern="yyyy-MMM-dd" value="${transaction.transactionDate}" /></td>
 	                <td><c:out value="${transaction.bookId}" /></td>
 	                <td><c:out value="${transaction.userId}" /></td>

@@ -6,13 +6,14 @@
 <jsp:useBean id="book" class="model.Book"/>
 <jsp:useBean id="bookDao" class="dao.BookDao"/>
 <jsp:useBean id="userDao" class="dao.UserDao"/>
-
+<jsp:useBean id="transDao" class="dao.TransactionDao"/>
 <%
 List<Integer> bookIDs = null;
 user = (model.User) session.getAttribute("loggedInUser");
 if(user != null) {
 	bookIDs = user.getBooksInBag();
 	System.out.println("Total: " + bookDao.getTotalFor(bookIDs));
+	System.out.println("Last Shared Id: " + transDao.getLastId());
 /*	 for(int i = 0 ; i < bookIDs.size(); i++){
 		book = bookDao.getBookById(bookIDs.get(i));
 		System.out.println("Book in Bag: " + bookIDs.get(i));
@@ -72,10 +73,12 @@ if(user != null) {
 						<div class="product-total clearfix">
 							<strong>Total:</strong>
 							<p class="total-amount s-right">$<%=bookDao.getTotalFor(bookIDs) %></p>
-							<form method="post" action='TransactionController?action=confirmedPurchase' name="confirmedPurchase"> <!-- action='TransactionController' name="frmAddTransaction" -->
+							<form method="post" action='TransactionController?action=confirmPurchase' name="confirmedPurchase"> <!-- action='TransactionController' name="frmAddTransaction" -->
 								<input type="hidden" readonly="readonly" placeholder="TransactionID" name="transactionId" value="" />
 								<input type="hidden" readonly="readonly" placeholder="Date" name="transactionDate" value="<fmt:formatDate pattern="MM/dd/yyyy" value="<%=currDate %>" />" /> 
 								<input type="hidden" readonly="readonly" placeholder="UserID" name="userId" value="<%=user.getUserid() %>" />
+								<input type="hidden" readonly="readonly" placeholder="sharedTransId" name="sharedTransID" value="<%= transDao.getLastId()+1 %>" />
+								
 								<%
 									for(int i = 0 ; i < bookIDs.size(); i++){
 										book = bookDao.getBookById(bookIDs.get(i));

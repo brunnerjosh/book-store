@@ -73,7 +73,7 @@ public class TransactionController extends HttpServlet {
 		String action = request.getParameter("action");
 		if(bookIDs != null)
 			for(int i = 0; i < bookIDs.length; i++){
-
+					
 				Transaction transaction = new Transaction();
 				System.out.println(request.toString());	//TODO:
 				System.out.println(response.toString());	//TODO:
@@ -84,7 +84,17 @@ public class TransactionController extends HttpServlet {
 				} catch (ParseException e) {
 					e.printStackTrace();
 				}
-
+				
+				String sharedId = request.getParameter("sharedTransID");
+				if (sharedId == null || sharedId.isEmpty()){
+					System.out.println("SharedID invaild, Tell Josh we Run for the Hills!!");
+					transaction.setSharedTransID(0);
+				} else {
+					int shTransId = Integer.parseInt(sharedId);
+					transaction.setSharedTransID(shTransId);
+				}
+				
+				
 				if(bookIDs[i] == null || bookIDs[i].isEmpty()){
 					System.out.println("strBookId or strBookId was BAD");
 					transaction.setBookId(0);
