@@ -20,12 +20,14 @@ public class BookDao {
 
 	private UserDao userDao;
 	private RatingDao ratingDao;
+	private Transaction transaction;
 	
 	private Connection connection;
 	public BookDao(){
 		connection = DbUtil.getConnection();
 		userDao = new UserDao();
 		ratingDao = new RatingDao();
+		transaction = new Transaction();
 		System.out.println("Created a BOOKDAO");
 	}
 	
@@ -111,7 +113,7 @@ public class BookDao {
 			totalAmt += tempBook.getPrice();
 			System.out.println("totalAmt: " + totalAmt);
 		}
-		return totalAmt;
+		return transaction.round(totalAmt,2);
 	}
 	
 	public int calculateRating(int bookID){
