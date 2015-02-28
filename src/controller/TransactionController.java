@@ -139,7 +139,7 @@ public class TransactionController extends HttpServlet {
 
 			}
 
-			if (action != null && action.equalsIgnoreCase("confirmedPurchase")) {
+			if (action != null && action.equalsIgnoreCase("confirmPurchase")) {
 				System.out.println("Confirmed Purchase");
 				forward = CONFIRM_PURCHASE;
 				RequestDispatcher view = request.getRequestDispatcher(forward);
