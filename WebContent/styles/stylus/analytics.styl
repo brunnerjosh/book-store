@@ -1,10 +1,39 @@
-.analytics-left-nav
+.analytics-left-nav,
+.analytics-right-section
   h2
-    margin 0 0 10px 0px
+    margin 0 0 10px -30px
     line-height 1
     letter-spacing 5px
-    margin-left -30px
   ul
     margin 0
   li
     line-height 1.5
+
+.analytics-right-section
+  background $table-cell-bg
+  padding 10px
+  h2
+    font-size 24px
+    margin-left 0px
+  li
+    margin-bottom 2px
+    margin-right 40px
+    padding 10px 0px 10px 60px
+    border-top 1px solid $gray
+    &:first-of-type
+      border-top 0
+  .error
+    color $red
+  .book-item
+    position relative
+  .book-photo
+    position absolute
+    height 70px
+    width 47px
+    left 0
+  .book-title
+    font-weight bold
+    font-size 22px
+  .book-info
+    line-height 1
+    color $black-light

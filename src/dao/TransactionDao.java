@@ -101,6 +101,31 @@ public class TransactionDao {
 		}
 		return transactions;
 	}
+	public List<Transaction> getAllTransByBookId(int book){
+		System.out.println("dao.TransactionDao: getAllTransByBookId for " + book);
+		List<Transaction> transactions = new ArrayList<Transaction>();
+		try{
+			PreparedStatement preparedStatement = connection.prepareStatement("select * from transactions where bookId=?");
+			preparedStatement.setInt(1, book);
+			ResultSet rs = preparedStatement.executeQuery();
+
+			while(rs.next()){
+				Transaction transaction = new Transaction();
+				transaction.setTransactionId(rs.getInt("transactionId"));
+				transaction.setSharedTransID(rs.getInt("sharedTransID"));
+				transaction.setBookId(rs.getInt("bookId"));
+				transaction.setUserId(rs.getInt("userId"));
+				transaction.setTransactionDate(rs.getDate("transactionDate"));
+				transaction.setTransactionAmount(rs.getDouble("transactionAmount"));
+				transactions.add(transaction);
+			}
+		} catch(SQLException e){
+		e.printStackTrace();
+		}
+		
+	return transactions;
+
+	}
 	public List<Transaction> getAllTransByUserId(int user){
 		System.out.println("dao.TransactionDao: getAllTransByUserId for " + user);
 		List<Transaction> transactions = new ArrayList<Transaction>();

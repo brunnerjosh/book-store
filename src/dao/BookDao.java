@@ -21,6 +21,7 @@ public class BookDao {
 	private UserDao userDao;
 	private RatingDao ratingDao;
 	private Transaction transaction;
+	private TransactionDao transDao;
 	
 	private Connection connection;
 	public BookDao(){
@@ -28,6 +29,7 @@ public class BookDao {
 		userDao = new UserDao();
 		ratingDao = new RatingDao();
 		transaction = new Transaction();
+		transDao = new TransactionDao();
 		System.out.println("Created a BOOKDAO");
 	}
 	
@@ -286,5 +288,13 @@ public class BookDao {
 		return book;
 	}
 	
+	public int countBooksPurchased(int bookId){
+		if(bookId > 0){
+			System.out.println("dao.BookDao: countBooksPurchased for " + bookId);
+			List<Transaction> booksInTransactions = transDao.getAllTransByBookId(bookId);
+			return booksInTransactions.size();
+		}
+		return 0;
+	}
 	
 }

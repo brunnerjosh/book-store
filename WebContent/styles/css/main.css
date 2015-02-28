@@ -815,15 +815,54 @@ button.s-blue:hover {
   top: 20px;
   right: 20px;
 }
-.analytics-left-nav h2 {
-  margin: 0 0 10px 0px;
+.analytics-left-nav h2,
+.analytics-right-section h2 {
+  margin: 0 0 10px -30px;
   line-height: 1;
   letter-spacing: 5px;
-  margin-left: -30px;
 }
-.analytics-left-nav ul {
+.analytics-left-nav ul,
+.analytics-right-section ul {
   margin: 0;
 }
-.analytics-left-nav li {
+.analytics-left-nav li,
+.analytics-right-section li {
   line-height: 1.5;
+}
+.analytics-right-section {
+  background: #fafafa;
+  padding: 10px;
+}
+.analytics-right-section h2 {
+  font-size: 24px;
+  margin-left: 0px;
+}
+.analytics-right-section li {
+  margin-bottom: 2px;
+  margin-right: 40px;
+  padding: 10px 0px 10px 60px;
+  border-top: 1px solid #bdbbbb;
+}
+.analytics-right-section li:first-of-type {
+  border-top: 0;
+}
+.analytics-right-section .error {
+  color: #a00d0d;
+}
+.analytics-right-section .book-item {
+  position: relative;
+}
+.analytics-right-section .book-photo {
+  position: absolute;
+  height: 70px;
+  width: 47px;
+  left: 0;
+}
+.analytics-right-section .book-title {
+  font-weight: bold;
+  font-size: 22px;
+}
+.analytics-right-section .book-info {
+  line-height: 1;
+  color: #464545;
 }
