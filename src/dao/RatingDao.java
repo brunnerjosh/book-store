@@ -137,6 +137,29 @@ public class RatingDao {
 
 	}
 	
+	public List<Rating> getAllRatingsByBookId(int book){
+		System.out.println("dao.RatingDao: getAllRatingsByUserId for " + book);
+		List<Rating> ratings = new ArrayList<Rating>();
+		try{
+			Statement statement = connection.createStatement();
+			ResultSet rs = statement.executeQuery("select * from rating where bookId="+book);
+			while(rs.next()){
+				Rating rating = new Rating();
+				rating.setRatingId(rs.getInt("ratingId"));
+				rating.setBookId(rs.getInt("bookId"));
+				rating.setUserId(rs.getInt("userId"));
+				rating.setRatingDate(rs.getDate("ratingDate"));
+				rating.setRating(rs.getInt("rating"));
+				ratings.add(rating);
+			}
+		} catch (SQLException e){
+			e.printStackTrace();
+		}
+		
+		return ratings;
+
+	}
+	
 	public Rating getRatingById(int ratingId){
 		Rating rating = new Rating();
 		try{

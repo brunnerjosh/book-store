@@ -297,4 +297,13 @@ public class BookDao {
 		return 0;
 	}
 	
+	public int countRatingsFor(int bookId){
+		if(bookId > 0){
+			System.out.println("dao.BookDao: countBooksPurchased for " + bookId);
+			List<Rating> bookRatings = ratingDao.getAllRatingsByBookId(bookId);
+			return bookRatings.size();
+		}
+		return 0;
+	}
+	
 }
