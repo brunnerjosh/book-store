@@ -27,6 +27,9 @@ public class RatingController extends HttpServlet {
 	public static String LIST_RATING = "/dashboard-rating.jsp";	//check this
 	public static String BOOK_DETAIL = "display-book-detail.jsp";
 	public static String CONFIRM_RATING = "confirm-rating.jsp";
+	public static String RATING_HIST = "ratingHistory.jsp";
+	public static String TOP_RATED = "favoriteBooks.jsp";
+	
 	private RatingDao dao;
 
 	public RatingController(){
@@ -51,9 +54,20 @@ public class RatingController extends HttpServlet {
 			Rating rating = dao.getRatingById(ratingId);
 			request.setAttribute("rating", rating);
 		}
+		else if (action.equalsIgnoreCase("ratingHist")){
+			forward = RATING_HIST;
+			int userId = Integer.parseInt(request.getParameter("userId"));
+			System.out.println("This is a rating history for User: " +userId);
+			request.setAttribute("ratings", dao.getAllRatingsByUserId(userId));
+		}
 		else if (action.equalsIgnoreCase("listRating")){
 			forward = LIST_RATING;
 			request.setAttribute("ratings", dao.getAllRatings());
+		}
+		else if (action.equalsIgnoreCase("favoriteBooks")){
+			forward = TOP_RATED;
+			int topAmount = Integer.parseInt(request.getParameter("topAmount"));
+			request.setAttribute("ratings", dao.getTopRatings(topAmount));
 		}
 		else {
 			forward = INSERT_OR_EDIT;

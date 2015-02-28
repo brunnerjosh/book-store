@@ -22,6 +22,7 @@ public class TransactionController extends HttpServlet {
 	public static String LIST_TRANSACTION = "/dashboard-transaction.jsp";	//check this
 	public static String CONFIRM_PURCHASE = "/confirmPurchase.jsp";
 	public static String TRANS_HIST = "/transactionHistory.jsp";
+	public static String BEST_SELLER = "/bestSeller.jsp";
 	private TransactionDao dao;
 	private BookDao bookDao;
 
@@ -58,6 +59,13 @@ public class TransactionController extends HttpServlet {
 			System.out.println("This is a transaction history for User: " +userId);
 //			User user = dao.getUserHistById(userId);
 			request.setAttribute("transactions", dao.getAllTransByUserId(userId));
+		}
+		else if (action.equalsIgnoreCase("bestSellers")){
+			forward = BEST_SELLER;
+			int topAmount = Integer.parseInt(request.getParameter("topAmount"));
+			String category = request.getParameter("category");
+			//System.out.println("This is a Best Seller, category = " + category + ", topAmount = " + topAmount);
+			request.setAttribute("transactions", dao.getTopTransactionsByCategory(topAmount, category));
 		}
 		else {
 			forward = INSERT_OR_EDIT;
