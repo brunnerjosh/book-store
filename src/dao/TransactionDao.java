@@ -126,6 +126,50 @@ public class TransactionDao {
 	return transactions;
 
 	}
+	public List<Transaction> getTopTransactionsByCategory(int topAmount, String category){
+		System.out.println("dao.TransactionDao: getTopTransactions for top " + topAmount);
+		List<Transaction> transactions = new ArrayList<Transaction>();
+		try{
+			//System.out.println("In Dao, category = " + category + ", topAmount = " + topAmount);
+						
+			String ps = " ";
+			
+			if (category.equalsIgnoreCase("all")) {
+				System.out.println("Looking for ALL categories");
+				ps = "select *, COUNT(t.bookId) from transactions t INNER JOIN  books b on t.bookId = b.bookId and (b.category in ('Fiction','Children','Poetry','Biography','Mystery','Horror','Romance')) where t.transactionDate > current_date()-7 group by t.bookId order by COUNT(t.bookId) DESC limit ?";
+			} else {
+				ps = "select *, COUNT(t.bookId) from transactions t INNER JOIN  books b on t.bookId = b.bookId and b.category =? group by t.bookId order by COUNT(t.bookId) DESC limit ?";
+			}
+			
+			PreparedStatement preparedStatement = connection.prepareStatement(ps);
+			
+			if (category.equalsIgnoreCase("all")) {
+				preparedStatement.setInt(1, topAmount);
+			} else {
+				preparedStatement.setString(1, category);
+				preparedStatement.setInt(2, topAmount);
+			}
+			
+			System.out.println("preparedStatement = " + preparedStatement);
+			
+			ResultSet rs = preparedStatement.executeQuery();
+			
+			while(rs.next()){
+				Transaction transaction = new Transaction();
+				transaction.setTransactionId(rs.getInt("transactionId"));
+				transaction.setBookId(rs.getInt("bookId"));
+				transaction.setUserId(rs.getInt("userId"));
+				transaction.setTransactionDate(rs.getDate("transactionDate"));
+				transaction.setTransactionAmount(rs.getDouble("transactionAmount"));
+				transactions.add(transaction);
+			}
+		} catch(SQLException e){
+		e.printStackTrace();
+		}
+		
+	return transactions;
+
+	}
 	public Transaction getTransactionById(int transactionId){
 		Transaction transaction = new Transaction();
 		try{
