@@ -1,6 +1,5 @@
 <%@ include file = "/partials/header.jsp" %> <!-- HEADER -->
 <%@ include file = "/partials/navigation.jsp" %> <!-- NAVIGATION BAR -->
-<jsp:useBean id="bookDao" class="dao.BookDao"/>
 <%@ include file = "/confirmAdmin.jsp" %> <!-- ADMIN ACCESS ONLY -->
 
 <!-- MAIN BODY CONTENT -->

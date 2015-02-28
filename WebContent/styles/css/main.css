@@ -815,3 +815,15 @@ button.s-blue:hover {
   top: 20px;
   right: 20px;
 }
+.analytics-left-nav h2 {
+  margin: 0 0 10px 0px;
+  line-height: 1;
+  letter-spacing: 5px;
+  margin-left: -30px;
+}
+.analytics-left-nav ul {
+  margin: 0;
+}
+.analytics-left-nav li {
+  line-height: 1.5;
+}
