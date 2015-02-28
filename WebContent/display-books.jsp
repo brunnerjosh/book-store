@@ -28,16 +28,17 @@
 		</div>
 		<div class="products">
 			<c:forEach items="${books}" var="book">
-				<div class="product">
-					<img src="<c:out value="${book.photo}" />" />
-					<div class="product-info">
-						<div class="product-title"><c:out value="${book.title}" /></div>
-						<div class="product-author">by <c:out value="${book.author}" /></div>
-						<div class="product-price">$<c:out value="${book.price}" /></div>
-						<a href="BookController?action=bookDetail&bookId=${book.bookId}" class="product-purchase s-blue">View Detail</a>
-						<%@ include file = "/partials/product-rating.jsp" %>
+				<a href="BookController?action=bookDetail&bookId=${book.bookId}">
+					<div class="product">
+						<img src="<c:out value="${book.photo}" />" />
+						<div class="product-info">
+							<div class="product-title"><c:out value="${book.title}" /></div>
+							<div class="product-author">by <c:out value="${book.author}" /></div>
+							<div class="product-price">$<c:out value="${book.price}" /></div>
+							<%@ include file = "/partials/product-rating.jsp" %>
+						</div>	
 					</div>
-				</div>
+				</a>
 			</c:forEach>
 		</div>
 	</div>
