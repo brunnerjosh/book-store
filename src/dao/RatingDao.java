@@ -88,6 +88,32 @@ public class RatingDao {
 		return ratings;
 	}
 	
+	public List<Rating> getTopRatings(int topAmount){
+		System.out.println("dao.RatingDao: getTopRatings for top " + topAmount);
+		List<Rating> ratings = new ArrayList<Rating>();
+		try{
+			PreparedStatement preparedStatement = connection.prepareStatement("select *, avg(r.rating) from rating r INNER JOIN books b on r.bookId = b.bookId where r.ratingDate > current_date()-14  group by r.bookId order by avg(r.rating) DESC limit ?");
+			preparedStatement.setInt(1, topAmount);
+			System.out.println("preparedStatement = " + preparedStatement);
+			ResultSet rs = preparedStatement.executeQuery();
+				
+			while(rs.next()){
+				Rating rating = new Rating();
+				rating.setRatingId(rs.getInt("ratingId"));
+				rating.setBookId(rs.getInt("bookId"));
+				rating.setUserId(rs.getInt("userId"));
+				rating.setRatingDate(rs.getDate("ratingDate"));
+				rating.setRating(rs.getInt("rating"));
+				ratings.add(rating);
+			}
+		} catch (SQLException e){
+			e.printStackTrace();
+		}
+		
+		return ratings;
+	}
+	
+	
 	public List<Rating> getAllRatingsByUserId(int user){
 		System.out.println("dao.RatingDao: getAllRatingsByUserId for " + user);
 		List<Rating> ratings = new ArrayList<Rating>();
