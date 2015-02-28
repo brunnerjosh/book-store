@@ -3,11 +3,19 @@
 <jsp:useBean id="transaction" class="model.Transaction"/>
 <%
 String topAmountStr = request.getParameter("topAmount");
+String categoryStr = request.getParameter("category");
 int topAmount = Integer.parseInt(topAmountStr);
 int count = 0; // Keeps track of how many items were displayed
 %>
 <div class="analytics-right-section">
-	<h2>Top <%=topAmount %> Best Sellers</h2>
+	<h2>
+	Top <%=topAmount %> Best Sellers
+		<%
+			if(!categoryStr.equals("All")){
+				out.print(": "+categoryStr);
+			}
+		%>
+	</h2>
 	<ol>
 		<c:forEach items="${transactions}" var="transaction">
 		    <li class="book-item">
