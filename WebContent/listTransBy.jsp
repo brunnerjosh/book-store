@@ -38,6 +38,7 @@ if(myTrans != null){
 			int sharedTransId_next = 0;
 			int myTransSize = myTrans.size();
 			boolean hasMoreContents = true;
+			
 			for(int i = 0; i < myTransSize; i++){
 				
 				//If the list has an item, save the shared id from it
@@ -76,10 +77,14 @@ if(myTrans != null){
 					
 					out.print("<ol class=\"sub-list\">");
 					for(j = i; j < count; j++){
-						topBook = bookAccess.getBookById(myTrans.get(j).getBookId());
-						if((j+1) < myTransSize){
+						System.out.println("Smokin a J: " + j);
+						if((j+1) < myTransSize || j == (myTransSize-1)){
+							topBook = bookAccess.getBookById(myTrans.get(j).getBookId());
+							System.out.println("Still within list ==> I("+i+") to J("+j+") -- transSize:" + myTransSize);
 							current = myTrans.get(j).getSharedTransID();
-							next = myTrans.get(j+1).getSharedTransID();
+							if((j+1) < myTransSize){
+								next = myTrans.get(j+1).getSharedTransID();
+							}
 							%>
 							
 							<li class="book-item">
@@ -91,7 +96,7 @@ if(myTrans != null){
 							<%
 							count++;
 						} else {
-							System.out.println("Ran out of contents");
+							System.out.println("RAN OUT OF CONTENTS on " + topBook.getTitle() + " with j=" + j);
 							hasMoreContents = false;
 						}
 						
@@ -110,10 +115,12 @@ if(myTrans != null){
 					
 				//Else the two ints DID NOT MATCH, print out a single item transaction
 				} else {
+					
 					System.out.println("Single-Part");
+					topBook = bookAccess.getBookById(myTrans.get(i).getBookId());
 					%>
 					<li class="book-item">
-						<%-- <div class="shared-transID">Transaction ID: <%=myTrans.get(j).getSharedTransID() %> for <%=myTrans.get(j).getBookId() %></div> --%>
+						<%-- <div class="shared-transID">Transaction ID: <%=myTrans.get(i).getSharedTransID() %> for <%=myTrans.get(i).getBookId() %></div> --%>
 						<img class="book-photo" src="<%=topBook.getPhoto() %>" />
 				        <div class="book-title"><%=topBook.getTitle() %></div> 
 				        <div class="book-info">by <%=topBook.getAuthor() %></div>
@@ -127,22 +134,4 @@ if(myTrans != null){
 			}
 		}
 	%>
-
-	<ol>
-		<c:forEach items="${myTrans}" var="transaction">
-		    <li class="book-item">
-		        <%
-		        	/* transaction = (model.Transaction) pageContext.getAttribute("transaction"); */
-		        	topBook = bookAccess.getBookById(transaction.getBookId());
-		        %>
-		        <img class="book-photo" src="<%=topBook.getPhoto() %>" />
-		        <div class="book-title"><%=topBook.getTitle() %></div> 
-		        <div class="book-info">
-		        	by <%=topBook.getAuthor() %>
-		        	<br>
-		        	<%=bookAccess.countBooksPurchased(topBook.getBookId()) %> copies sold
-	        	</div>
-		    </li>
-		</c:forEach>
-	</ol>
 </div>

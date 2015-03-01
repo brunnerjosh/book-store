@@ -233,7 +233,7 @@ public class TransactionDao {
 		}
 		System.out.println("TransactionDao: Getting transactions " + thresholdParam + "("+arrowDirection+") $" + priceLimit);
 		try{
-			PreparedStatement preparedStatement = connection.prepareStatement("select * from transactions where transactionAmount" + arrowDirection + priceLimit + " ORDER BY sharedTransID");
+			PreparedStatement preparedStatement = connection.prepareStatement("select * from transactions where transactionAmount" + arrowDirection + priceLimit + " ORDER BY sharedTransID DESC");
 			System.out.println("prepared statement: " + preparedStatement);
 			ResultSet rs = preparedStatement.executeQuery();
 

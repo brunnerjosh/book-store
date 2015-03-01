@@ -1,3 +1,4 @@
+ <jsp:useBean id="transDao" class="dao.TransactionDao"/>
  <!-- HEADER BAR -->
  <%@ include file = "/partials/header.jsp" %>
 	  <sql:setDataSource 
@@ -16,6 +17,7 @@
     
 	
 	<form method="POST" action='TransactionController' name="frmAddTransaction">
+		Shared Trans ID<input type="text" placeholder="sharedTransId" name="sharedTransID" value="<%= transDao.getLastId()+1 %>" />
 		Transaction ID : <input type="text" readonly="readonly" name="transactionId"
             value="<c:out value="${transaction.transactionId}" />" /> <br /> 
 		Transaction Date : <input type="text" name="transactionDate"
