@@ -223,4 +223,34 @@ public class TransactionDao {
 		return transactions;
 	}
 
+	public List<Transaction> sortTransBy(String thresholdParam, double priceLimit){
+		List<Transaction> transactions = new ArrayList<Transaction>();
+		String arrowDirection = "";
+		if(thresholdParam.equalsIgnoreCase("above")){
+			arrowDirection = ">";
+		} else {
+			arrowDirection = "<";
+		}
+		System.out.println("TransactionDao: Getting transactions " + thresholdParam + "("+arrowDirection+") $" + priceLimit);
+		try{
+			PreparedStatement preparedStatement = connection.prepareStatement("select * from transactions where transactionAmount" + arrowDirection + priceLimit + " ORDER BY sharedTransID");
+			System.out.println("prepared statement: " + preparedStatement);
+			ResultSet rs = preparedStatement.executeQuery();
+
+			while(rs.next()){
+				Transaction transaction = new Transaction();
+				transaction.setTransactionId(rs.getInt("transactionId"));
+				transaction.setSharedTransID(rs.getInt("sharedTransID"));
+				transaction.setBookId(rs.getInt("bookId"));
+				transaction.setUserId(rs.getInt("userId"));
+				transaction.setTransactionDate(rs.getDate("transactionDate"));
+				transaction.setTransactionAmount(rs.getDouble("transactionAmount"));
+				transactions.add(transaction);
+			}
+		} catch(SQLException e){
+		e.printStackTrace();
+		}
+		return transactions;
+	}
+	
 }

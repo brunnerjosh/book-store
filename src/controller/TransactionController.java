@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -71,8 +72,26 @@ public class TransactionController extends HttpServlet {
 		else if (action.equalsIgnoreCase("viewTransactions")){
 			forward = VIEW_TRANSACTIONS;
 			String sortByType = request.getParameter("byType");
+			String strThresholdParam = request.getParameter("threshold");
+			String strPriceLimit = request.getParameter("priceLimit");
+			
+			if(strPriceLimit != null && strThresholdParam != null){
+				double priceLimit = Double.parseDouble(strPriceLimit);
+				System.out.println("in transCtrl doGet: " + strThresholdParam + " " + priceLimit);
+				List<Transaction> myTrans = dao.sortTransBy(strThresholdParam, priceLimit);
+				System.out.println("transCtrl --- myTrans: " + myTrans.toString());
+				request.setAttribute("transactions", myTrans);
+			}
+//			List<Transaction> myTrans = (List<Transaction>) request.getAttribute("transactions");
+//			if(myTrans != null){
+//				System.out.println("viewTrans: myTrans: " + myTrans.toString());
+//				request.setAttribute("transactions", myTrans);
+//			} else {
+//				System.out.println("myTrans was NULL again :(");
+//			}
+			
 			request.setAttribute("sortByType", sortByType);
-			request.setAttribute("transactions", dao.getTransactionsBy(sortByType));
+//			request.setAttribute("transactions", dao.getTransactionsBy(sortByType));
 		}
 		else {
 			forward = INSERT_OR_EDIT;

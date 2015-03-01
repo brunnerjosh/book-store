@@ -866,3 +866,54 @@ button.s-blue:hover {
   line-height: 1;
   color: #464545;
 }
+.analytics-right-section .row-section {
+  position: relative;
+  padding-top: 20px;
+  border-top: 1px solid #bdbbbb;
+}
+.analytics-right-section .row-section:first-of-type {
+  border-top: 0;
+}
+.analytics-right-section .row-section .row-title {
+  font-size: 24px;
+  margin: 0;
+  line-height: 1;
+}
+.analytics-right-section .row-section .row-sub {
+  color: #bdbbbb;
+  margin: 0;
+  line-height: 1;
+}
+.analytics-right-section .row-section .order-total {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: #dcdcdc;
+  padding: 0px 30px;
+}
+.analytics-right-section .row-section .book-photo {
+  height: 53px;
+  width: 35px;
+}
+.analytics-right-section .row-section .book-title {
+  font-size: 20px;
+}
+.analytics-right-section .row-section .book-info {
+  font-size: 16px;
+}
+.analytics-right-section .row-section .book-item {
+  padding-left: 46px;
+}
+.analytics-right-section .row-section li {
+  margin-bottom: 7px;
+}
+.analytics-right-section .row-section ol ol {
+  padding-left: 0px;
+}
+.analytics-right-section .row-section ol ol li {
+  margin-right: 18px;
+  border-top: 1px solid #dedede;
+}
+.analytics-right-section .row-section ol ol li:first-of-type {
+  border-top: 0;
+}
