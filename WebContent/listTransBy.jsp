@@ -61,7 +61,8 @@ if(myTrans != null){
 				<div class="row-section">
 					<div class="order-total">Total:  &nbsp $<%=myTrans.get(i).getTransactionAmount() %></div>
 					<p class="row-title">Order Number: <%=myTrans.get(i).getSharedTransID()%></p>
-					<p class="row-sub">made by <%=transUser.getFirstName()%> <%=transUser.getLastName()%></p>
+					<p class="row-sub">- placed on <fmt:formatDate pattern="MM/dd/yyyy" value="<%=myTrans.get(i).getTransactionDate()%>" /></p>
+					<p class="row-sub">- made by <%=transUser.getFirstName()%> <%=transUser.getLastName()%></p>
 					<ol>
 				<%
 				
@@ -77,7 +78,7 @@ if(myTrans != null){
 					
 					out.print("<ol class=\"sub-list\">");
 					for(j = i; j < count; j++){
-						System.out.println("Smokin a J: " + j);
+
 						if((j+1) < myTransSize || j == (myTransSize-1)){
 							topBook = bookAccess.getBookById(myTrans.get(j).getBookId());
 							System.out.println("Still within list ==> I("+i+") to J("+j+") -- transSize:" + myTransSize);
@@ -92,6 +93,7 @@ if(myTrans != null){
 								<img class="book-photo" src="<%=topBook.getPhoto() %>" />
 						        <div class="book-title"><%=topBook.getTitle() %></div> 
 						        <div class="book-info">by <%=topBook.getAuthor() %></div>
+						        <div class="book-price">$<%=topBook.getPrice() %></div>
 							</li>
 							<%
 							count++;
@@ -124,6 +126,7 @@ if(myTrans != null){
 						<img class="book-photo" src="<%=topBook.getPhoto() %>" />
 				        <div class="book-title"><%=topBook.getTitle() %></div> 
 				        <div class="book-info">by <%=topBook.getAuthor() %></div>
+				        <div class="book-price">$<%=topBook.getPrice() %></div>
 					</li>
 					<%
 				}

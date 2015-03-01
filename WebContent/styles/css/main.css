@@ -891,6 +891,12 @@ button.s-blue:hover {
   background: #dcdcdc;
   padding: 0px 30px;
 }
+.analytics-right-section .row-section .book-price {
+  display: inline-block;
+  position: absolute;
+  top: 12px;
+  right: 7px;
+}
 .analytics-right-section .row-section .book-photo {
   height: 53px;
   width: 35px;
@@ -906,12 +912,12 @@ button.s-blue:hover {
 }
 .analytics-right-section .row-section li {
   margin-bottom: 7px;
+  margin-right: 44px;
 }
 .analytics-right-section .row-section ol ol {
   padding-left: 0px;
 }
 .analytics-right-section .row-section ol ol li {
-  margin-right: 18px;
   border-top: 1px solid #dedede;
 }
 .analytics-right-section .row-section ol ol li:first-of-type {
