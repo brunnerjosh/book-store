@@ -16,5 +16,6 @@
 			%>
 		</ul>
 		<li><a href="RatingController?action=favoriteBooks&topAmount=20">Top 20 Rated Books</a></li>
+		<li><a href="TransactionController?action=viewTransactions&byType=Price">View Transactions (By Price)</a></li>
 	</ul>
 </div>

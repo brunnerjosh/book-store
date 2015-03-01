@@ -23,6 +23,7 @@ public class TransactionController extends HttpServlet {
 	public static String CONFIRM_PURCHASE = "/confirmPurchase.jsp";
 	public static String TRANS_HIST = "/transactionHistory.jsp";
 	public static String BEST_SELLER = "/bestSeller.jsp";
+	public static String VIEW_TRANSACTIONS = "viewTransactions.jsp";
 	private TransactionDao dao;
 	private BookDao bookDao;
 
@@ -66,6 +67,12 @@ public class TransactionController extends HttpServlet {
 			String category = request.getParameter("category");
 			//System.out.println("This is a Best Seller, category = " + category + ", topAmount = " + topAmount);
 			request.setAttribute("transactions", dao.getTopTransactionsByCategory(topAmount, category));
+		}
+		else if (action.equalsIgnoreCase("viewTransactions")){
+			forward = VIEW_TRANSACTIONS;
+			String sortByType = request.getParameter("byType");
+			request.setAttribute("sortByType", sortByType);
+			request.setAttribute("transactions", dao.getTransactionsBy(sortByType));
 		}
 		else {
 			forward = INSERT_OR_EDIT;
@@ -153,6 +160,7 @@ public class TransactionController extends HttpServlet {
 				RequestDispatcher view = request.getRequestDispatcher(forward);
 				view.forward(request, response);
 			} else {
+				System.out.println("TransContoller: Else statement reached");
 				RequestDispatcher view = request.getRequestDispatcher(LIST_TRANSACTION);
 				request.setAttribute("transactions", dao.getAllTransactions());
 				view.forward(request, response);

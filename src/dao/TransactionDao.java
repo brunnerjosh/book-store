@@ -216,5 +216,11 @@ public class TransactionDao {
 		}
 		return transaction;
 	}
+	
+	public List<Transaction> getTransactionsBy(String sortByType){
+		List<Transaction> transactions = new ArrayList<Transaction>();
+		System.out.println("TransactionDao: Getting transactions by " + sortByType);
+		return transactions;
+	}
 
 }
