@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -67,6 +68,10 @@ public class RatingController extends HttpServlet {
 		else if (action.equalsIgnoreCase("favoriteBooks")){
 			forward = TOP_RATED;
 			int topAmount = Integer.parseInt(request.getParameter("topAmount"));
+			List<Rating> myRatings = dao.getTopRatings(topAmount);
+			for(int i = 0; i < myRatings.size(); i++){
+				System.out.println(myRatings.get(i).toString());
+			}
 			request.setAttribute("ratings", dao.getTopRatings(topAmount));
 		}
 		else {
