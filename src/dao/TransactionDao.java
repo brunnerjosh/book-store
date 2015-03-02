@@ -195,6 +195,28 @@ public class TransactionDao {
 	return transactions;
 
 	}
+	
+	public double getTotalSales(){
+		double totalSales = 0.00;
+		
+		try{
+			String ps = " ";
+			ps = "     SELECT Sum(  transactionAmount ) as total FROM transactions ";
+			PreparedStatement preparedStatement = connection.prepareStatement(ps);
+			ResultSet rs = preparedStatement.executeQuery();
+			
+			while(rs.next()){
+				
+				totalSales = rs.getDouble("total");
+				System.out.println("Total Sales : " + totalSales);
+			}
+		} catch (SQLException e){
+			e.printStackTrace();
+		}
+		
+		return totalSales;
+	}
+	
 	public Transaction getTransactionById(int transactionId){
 		Transaction transaction = new Transaction();
 		try{
