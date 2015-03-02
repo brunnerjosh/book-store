@@ -10,6 +10,8 @@ import java.sql.PreparedStatement;
 
 import model.Book;
 import model.Transaction;
+import model.MonthlySale;
+import model.WeeklySale;
 import util.DbUtil;
 
 public class TransactionDao {
@@ -194,6 +196,73 @@ public class TransactionDao {
 		
 	return transactions;
 
+	}
+	
+	public double getTotalSales(){
+		double totalSales = 0.00;
+		
+		try{
+			String ps = " ";
+			ps = "     SELECT Sum(  transactionAmount ) as total FROM transactions ";
+			PreparedStatement preparedStatement = connection.prepareStatement(ps);
+			ResultSet rs = preparedStatement.executeQuery();
+			
+			while(rs.next()){
+				
+				totalSales = rs.getDouble("total");
+				System.out.println("Total Sales : " + totalSales);
+			}
+		} catch (SQLException e){
+			e.printStackTrace();
+		}
+		
+		return totalSales;
+	}
+	public List<MonthlySale> getMonthlySales(){
+		List<MonthlySale> list = new ArrayList<MonthlySale>();
+		try{
+			String ps = " ";
+			ps = "Select MONTHNAME(transactionDate) AS month, SUM(transactionAmount) "
+					+ "AS sum FROM transactions GROUP BY YEAR(transactionDate), MONTH(transactionDate)";
+			PreparedStatement preparedStatement = connection.prepareStatement(ps);
+			ResultSet rs = preparedStatement.executeQuery();
+			
+			while(rs.next()){
+				MonthlySale mSale = new MonthlySale();
+				mSale.setMonth(rs.getString("month"));
+				System.out.print("Month: " + mSale.getMonth() + " ");
+				Double sales = Double.parseDouble(rs.getString("sum"));
+				System.out.println("Sum: " + mSale.getSales());
+				mSale.setSales(sales);
+				list.add(mSale);
+			}
+		} catch (SQLException e){
+			e.printStackTrace();
+		}
+		return list;
+	}
+	public List<WeeklySale> getWeeklySales(){
+		List<WeeklySale> list = new ArrayList<WeeklySale>();
+		try{
+			String ps = " ";
+			ps = "Select CONCAT('Week ', WEEK(transactionDate)) AS week, SUM(transactionAmount) AS sum "
+					+ "FROM transactions group by Week(transactionDate)";
+			PreparedStatement preparedStatement = connection.prepareStatement(ps);
+			ResultSet rs = preparedStatement.executeQuery();
+			
+			while(rs.next()){
+				WeeklySale wSale = new WeeklySale();
+				wSale.setWeek(rs.getString("week"));
+				System.out.print("Week: " + wSale.getWeek());
+				Double sales = Double.parseDouble(rs.getString("sum"));
+				wSale.setSales(sales);
+				System.out.println(" Sales: " + wSale.getSales());
+				list.add(wSale);
+			}
+		} catch (SQLException e){
+			e.printStackTrace();
+		}
+		return list;
 	}
 	public Transaction getTransactionById(int transactionId){
 		Transaction transaction = new Transaction();

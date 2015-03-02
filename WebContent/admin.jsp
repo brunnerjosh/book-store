@@ -24,7 +24,7 @@
 
     <a href="BookController?action=bookDisplay&category=all">View Books</a>
     <br>
-    <a href="dashboard-analytics.jsp">View Analytics</a>
+    <a href="/dashboard-analytics.jsp">View Analytics</a>
   </div>
 </div>
 
