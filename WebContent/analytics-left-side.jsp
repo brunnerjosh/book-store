@@ -17,5 +17,8 @@
 		</ul>
 		<li><a href="RatingController?action=favoriteBooks&topAmount=20">Top 20 Rated Books</a></li>
 		<li><a href="TransactionController?action=viewTransactions&byType=Price">View Transactions (By Price)</a></li>
+		<li><a href="TransactionController?action=sales&type=total">Show Total Sales</a></li>
+		<li><a href="TransactionController?action=sales&type=monthly">Show Monthly Sales</a></li>
+		<li><a href="TransactionController?action=sales&type=weekly">Show Weekly Sales</a></li>
 	</ul>
 </div>

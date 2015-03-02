@@ -25,6 +25,8 @@ public class TransactionController extends HttpServlet {
 	public static String TRANS_HIST = "/transactionHistory.jsp";
 	public static String BEST_SELLER = "/bestSeller.jsp";
 	public static String VIEW_TRANSACTIONS = "viewTransactions.jsp";
+	public static String TOTAL_SALES = "totalSales.jsp";
+	public static String TIMEBASED_SALES = "timebasedSales.jsp";
 	private TransactionDao dao;
 	private BookDao bookDao;
 
@@ -92,6 +94,17 @@ public class TransactionController extends HttpServlet {
 			
 			request.setAttribute("sortByType", sortByType);
 //			request.setAttribute("transactions", dao.getTransactionsBy(sortByType));
+		}
+		else if (action.equalsIgnoreCase("sales")){
+			
+			String type = request.getParameter("type");
+			if(type.equalsIgnoreCase("total")){
+				forward = TOTAL_SALES;
+			}
+			else{
+				forward = TIMEBASED_SALES;
+			}
+			request.setAttribute("type", type);
 		}
 		else {
 			forward = INSERT_OR_EDIT;
