@@ -18,7 +18,56 @@
 		<%@ include file = 'analytics-left-side.jsp' %>
 	</div>
 	<div class="pane-right">
-		
+	<div class="analytics-right-section">
+		<h2>Sales Stats for <strong>Quest</strong></h2>
+		<table class="width-100">
+			<tr>
+				<td>
+					<div class="sales-column">
+						<h3 class="header">Weekly</h3>
+						<ul>
+							<%for (int i = 0; i < Wlist.size(); i++){ 
+									model.WeeklySale sale = Wlist.get(i);
+								%>
+									<li><%= sale.getWeek() %> - $<%= sale.getSales() %></li>
+							<% } %>	
+						</ul>
+					</div>
+				</td>
+				<td>
+					<div class="sales-column">
+						<h3 class="header">Monthly</h3>
+						<ul>
+							<%
+							for (int i = 0; i < Mlist.size(); i++){ 
+								model.MonthlySale sale = Mlist.get(i);
+							%>
+								<li><%= sale.getMonth() %> - $<%= sale.getSales() %></li>
+								
+							<% } %>
+						</ul>
+						
+					</div>
+				</td>
+				<td>
+					<div class="sales-column">
+						<h3 class="header">Total</h3>
+						<ul>
+							<li>$<%=transDao.getTotalSales() %></li>
+						</ul>
+					</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+		<%-- <table border="1">
+		<tr>
+			<td>Total Sales</td>
+		</tr>
+		<tr>
+			<td><%=transDao.getTotalSales() %></td>
+		</tr>
+		</table>
 		<table border="2">
 			<% if (period.equalsIgnoreCase("monthly")){ %>
 			<div>Total Sales By Month</div>
@@ -27,7 +76,7 @@
 					<td>Sales</td>
 				</tr>
 				
-					<%for (int i = 0; i < Mlist.size(); i++){ 
+				<%for (int i = 0; i < Mlist.size(); i++){ 
 						model.MonthlySale sale = Mlist.get(i);
 					%>
 					<tr>
@@ -53,7 +102,7 @@
 				<% } %>
 				
 			<%} %>
-		</table>
+		</table> --%>
 	</div>
 </div>
 

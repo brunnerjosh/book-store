@@ -27,7 +27,7 @@ if(myTrans != null){
 		}
 		%>
 		<input type="text" id="thresholdParam" name="thresholdParam" value="<%=threshold %>" placeholder="ABOVE or BELOW" required>
-		<input type="text" id="priceLimit" name="priceLimit" value="<%=priceLimit %>" placeholder="$$$" required>
+		<input type="text" id="priceLimit" name="priceLimit" value="<%=priceLimit %>" placeholder="ex. 24.19" required>
 		<input type="submit" value="View Transactions">
 	</form>
 
