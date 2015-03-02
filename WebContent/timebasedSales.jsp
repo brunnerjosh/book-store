@@ -39,12 +39,32 @@
 						<h3 class="header">Monthly</h3>
 						<ul>
 							<%
+							double monthDiff_start = 0;
+							double monthDiff_end = 0;
+							double monthlyDifference = 0;
 							for (int i = 0; i < Mlist.size(); i++){ 
 								model.MonthlySale sale = Mlist.get(i);
+								monthDiff_start = sale.getSales();
+								monthlyDifference = (monthDiff_start - monthDiff_end);
 							%>
-								<li><%= sale.getMonth() %> - $<%= sale.getSales() %></li>
+								<li>
+									<div class="sales-month"><%= sale.getMonth() %></div>
+									<div class="sales-amount">$<%= sale.getSales() %></div>
+									<div class="sales-difference">
+										<%
+											if(monthlyDifference > 0){
+												out.print("$"+monthlyDifference);
+											} else {
+												out.print("-<div class=\"dollar-sign\">$</div>" + Math.abs(monthlyDifference));
+											}
+										%>
+									</div>
+								</li>
 								
-							<% } %>
+							<%
+								monthDiff_end = sale.getSales();
+							} 
+							%>
 						</ul>
 						
 					</div>
