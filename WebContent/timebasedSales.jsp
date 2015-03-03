@@ -22,6 +22,7 @@
 	<div class="pane-right">
 	<div class="analytics-right-section">
 		<h2>Sales Stats for <strong>Quest</strong></h2>
+		<div class="total-sales"><muted>Total Revenue:</muted> $<%=transaction.round(transDao.getTotalSales(),2) %></div>
 		<table class="stats-display width-100">
 			<tr>
 				<%-- <td>
@@ -97,32 +98,14 @@
 							double monthDiff_start = 0;
 							double monthDiff_end = 0;
 							double monthlyDifference = 0;
-							double runningTotal = 0.0;
-							double runningDifference = 0.0;
 							for (int i = 0; i < Mlist.size(); i++){
 								model.MonthlySale sale = Mlist.get(i);
 								currYear_month = Integer.parseInt(sale.getYear());
 								monthDiff_start = sale.getSales();
 								monthlyDifference = transaction.round((monthDiff_start - monthDiff_end),2);
 								
-								runningTotal += transaction.round(sale.getSales(),2);
-								runningDifference += monthlyDifference;
-								
-								System.out.println("runningTotal: " + runningTotal + " runningDifference: " + runningDifference);
-								
 								if(currYear_month != nextYear_month){
-									
-									%>
-									<%-- <div class="total-row">
-										<div class="running-total">Total: <%=transaction.round(runningTotal,2) %></div>
-										<div class="running-difference">Diff: <%=transaction.round(runningDifference,2) %></div>
-									</div> --%>
-									<%
-									
-									// reset these counter variables every year
-									runningTotal = 0.0; 
-									runningDifference = 0.0;
-									
+																		
 									%>
 									<div class="header-row relative">
 										<div class="sales-year"><%=currYear_month%></div>
@@ -131,6 +114,7 @@
 										<div class="sales-total">Total</div>
 									</div>
 									<%
+						
 								}
 							%>
 								<li>
@@ -158,14 +142,6 @@
 
 					</div>
 				</td>
-				<%-- <td>
-					<div class="sales-column">
-						<h3 class="header">Total</h3>
-						<ul>
-							<li class="total-sales">$<%=transaction.round(transDao.getTotalSales(),2) %></li>
-						</ul>
-					</div>
-				</td> --%>
 			</tr>
 		</table>
 	</div>

@@ -834,6 +834,7 @@ button.s-blue:hover {
 }
 .analytics-right-section {
   background: #fafafa;
+  position: relative;
   padding: 10px;
 }
 .analytics-right-section h2 {
@@ -935,6 +936,12 @@ button.s-blue:hover {
   padding-right: 0px;
   padding-left: 10px;
 }
+.analytics-right-section .total-sales {
+  position: absolute;
+  top: 0px;
+  right: 10px;
+  font-size: 26px;
+}
 .analytics-right-section .sales-column.as-weekly .sales-difference {
   left: 52px;
 }
@@ -999,9 +1006,6 @@ button.s-blue:hover {
 }
 .analytics-right-section .sales-column .diff-bad {
   color: #a00d0d;
-}
-.analytics-right-section .sales-column .total-sales {
-  font-size: 26px;
 }
 .analytics-right-section .sales-column .sales-year {
   position: absolute;

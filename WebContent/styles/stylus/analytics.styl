@@ -11,6 +11,7 @@
 
 .analytics-right-section
   background $table-cell-bg
+  position relative
   padding 10px
   h2
     font-size 24px
@@ -90,6 +91,12 @@
         padding-right 0px
         padding-left 10px
 
+  .total-sales
+    position absolute
+    top 0px
+    right 10px
+    font-size 26px
+
   .sales-column
     &.as-weekly
       .sales-difference
@@ -152,8 +159,6 @@
       color $green
     .diff-bad
       color $red
-    .total-sales
-      font-size 26px
 
     .sales-year
       position: absolute;
