@@ -20,7 +20,7 @@
 	<div class="pane-right">
 	<div class="analytics-right-section">
 		<h2>Sales Stats for <strong>Quest</strong></h2>
-		<table class="width-100">
+		<table class="stats-display width-100">
 			<tr>
 				<td>
 					<div class="sales-column">
@@ -48,14 +48,16 @@
 								monthlyDifference = (monthDiff_start - monthDiff_end);
 							%>
 								<li>
-									<div class="sales-month"><%= sale.getMonth() %></div>
+									<div class="sales-month"><%= sale.getMonth() %> &mdash; </div>
 									<div class="sales-amount">$<%= sale.getSales() %></div>
 									<div class="sales-difference">
 										<%
 											if(monthlyDifference > 0){
-												out.print("$"+monthlyDifference);
+												out.print("<div class=\"diff-good\">+<div class=\"dollar-sign\">$</div>" + monthlyDifference + "</div>");
+											} else if(monthlyDifference == 0){
+												out.print("<div class=\"dollar-sign\">$</div>" + monthlyDifference);
 											} else {
-												out.print("-<div class=\"dollar-sign\">$</div>" + Math.abs(monthlyDifference));
+												out.print("<div class=\"diff-bad\">-<div class=\"dollar-sign\">$</div>" + Math.abs(monthlyDifference) + "</div>");
 											}
 										%>
 									</div>

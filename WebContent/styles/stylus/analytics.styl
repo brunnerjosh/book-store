@@ -81,3 +81,38 @@
           border-top 1px solid $gray-light
           &:first-of-type
             border-top 0
+  .stats-display
+    td
+      vertical-align top
+  .sales-column
+    h3
+      &.header
+        margin 0 40px 5px 0
+        padding-bottom 4px
+        line-height 1
+        border-bottom 4px solid black
+
+    li
+      padding 10px
+    ul
+      padding-left 10px
+      list-style-type none
+    .sales-month,
+    .sales-amount,
+    .sales-difference,
+    .dollar-sign,
+    .diff-good,
+    .diff-bad
+      position relative
+      display inline-block
+    .sales-difference
+      float right
+    .dollar-sign
+      top: -5px;
+      font-size: 14px;
+      margin-right: 2px;
+      margin-left: 8px;
+    .diff-good
+      color $green
+    .diff-bad
+      color $red
