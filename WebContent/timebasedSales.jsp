@@ -1,7 +1,9 @@
+<%@page import="model.Transaction"%>
 <%@ include file = "/partials/header.jsp" %> <!-- HEADER -->
 <%@ include file = "/partials/navigation.jsp" %> <!-- NAVIGATION BAR -->
 <%@ include file = "/confirmAdmin.jsp" %> <!-- ADMIN ACCESS ONLY -->
 <jsp:useBean id="transDao" class="dao.TransactionDao"/>
+<jsp:useBean id="transaction" class="model.Transaction"/>
 <jsp:useBean id="month" class="model.MonthlySale"/>
 <jsp:useBean id="week" class="model.WeeklySale"/>
 <%
@@ -11,7 +13,7 @@
 %>
 <!-- MAIN BODY CONTENT -->
 <div class="container clearfix">
-	<h1>Dashboard: 
+	<h1>Dashboard:
 		<muted>Analytics</muted>
 	</h1>
 	<div class="pane-left">
@@ -22,16 +24,60 @@
 		<h2>Sales Stats for <strong>Quest</strong></h2>
 		<table class="stats-display width-100">
 			<tr>
+				<%-- <td>
+					<div class="sales-column">
+						<h3 class="header">Weekly</h3>
+						<ul>
+							<%for (int i = 0; i < Wlist.size(); i++){
+									model.WeeklySale sale = Wlist.get(i);
+								%>
+									<li><%= sale.getWeek() %> - $<%= sale.getSales() %></li>
+							<% } %>
+						</ul>
+					</div>
+				</td> --%>
 				<td>
 					<div class="sales-column">
 						<h3 class="header">Weekly</h3>
 						<ul>
-							<%for (int i = 0; i < Wlist.size(); i++){ 
-									model.WeeklySale sale = Wlist.get(i);
-								%>
-									<li><%= sale.getWeek() %> - $<%= sale.getSales() %></li>
-							<% } %>	
+							<%
+							int currYear_week = 0;
+							int nextYear_week = 1;
+							double weekDiff_start = 0;
+							double weekDiff_end = 0;
+							double weeklyDifference = 0;
+							for (int i = 0; i < Wlist.size(); i++){
+								model.WeeklySale sale = Wlist.get(i);
+								currYear_week = Integer.parseInt(sale.getYear());
+								weekDiff_start = sale.getSales();
+								weeklyDifference = transaction.round((weekDiff_start - weekDiff_end), 2);
+								if(currYear_week != nextYear_week){
+									out.print("<div class=\"relative\"><div class=\"sales-year\">"+currYear_week+"</div> <div class=\"sales-total\">Total</div><div class=\'sales-change\'>Increase/Decrease</div></div>");
+								}
+							%>
+								<li>
+									<div class="sales-month">Week ending <%=sale.getMonth() %>/<%=sale.getDay() %> &mdash; </div>
+									<div class="sales-amount">$<%=transaction.round(sale.getSales(),2) %></div>
+									<div class="sales-difference">
+										<%
+											if(weeklyDifference > 0){
+												out.print("<div class=\"diff-good\">+<div class=\"dollar-sign\">$</div>" + weeklyDifference + "</div>");
+											} else if(weeklyDifference == 0){
+												out.print("<div class=\"dollar-sign\">$</div>" + weeklyDifference);
+											} else {
+												out.print("<div class=\"diff-bad\">-<div class=\"dollar-sign\">$</div>" + Math.abs(weeklyDifference) + "</div>");
+											}
+										%>
+									</div>
+								</li>
+
+							<%
+								weekDiff_end = sale.getSales();
+								nextYear_week = currYear_week;
+							}
+							%>
 						</ul>
+
 					</div>
 				</td>
 				<td>
@@ -39,23 +85,23 @@
 						<h3 class="header">Monthly</h3>
 						<ul>
 							<%
-							int currYear = 0;
-							int nextYear = 1;
+							int currYear_month = 0;
+							int nextYear_month = 1;
 							double monthDiff_start = 0;
 							double monthDiff_end = 0;
 							double monthlyDifference = 0;
-							for (int i = 0; i < Mlist.size(); i++){ 
+							for (int i = 0; i < Mlist.size(); i++){
 								model.MonthlySale sale = Mlist.get(i);
-								currYear = Integer.parseInt(sale.getYear());
+								currYear_month = Integer.parseInt(sale.getYear());
 								monthDiff_start = sale.getSales();
-								monthlyDifference = (monthDiff_start - monthDiff_end);
-								if(currYear != nextYear){
-									out.print("<div class=\"relative\"><div class=\"sales-year\">"+currYear+"</div> <div class=\"sales-total\">Total</div><div class=\'sales-change\'>Increase/Decrease</div></div>");
+								monthlyDifference = transaction.round((monthDiff_start - monthDiff_end),2);
+								if(currYear_month != nextYear_month){
+									out.print("<div class=\"relative\"><div class=\"sales-year\">"+currYear_month+"</div> <div class=\"sales-total\">Total</div><div class=\'sales-change\'>Increase/Decrease</div></div>");
 								}
 							%>
 								<li>
 									<div class="sales-month"><%= sale.getMonth() %> &mdash; </div>
-									<div class="sales-amount">$<%= sale.getSales() %></div>
+									<div class="sales-amount">$<%=transaction.round(sale.getSales(),2) %></div>
 									<div class="sales-difference">
 										<%
 											if(monthlyDifference > 0){
@@ -68,24 +114,24 @@
 										%>
 									</div>
 								</li>
-								
+
 							<%
 								monthDiff_end = sale.getSales();
-								nextYear = currYear;
-							} 
+								nextYear_month = currYear_month;
+							}
 							%>
 						</ul>
-						
+
 					</div>
 				</td>
-				<td>
+				<%-- <td>
 					<div class="sales-column">
 						<h3 class="header">Total</h3>
 						<ul>
 							<li class="total-sales">$<%=transDao.getTotalSales() %></li>
 						</ul>
 					</div>
-				</td>
+				</td> --%>
 			</tr>
 		</table>
 	</div>
@@ -104,8 +150,8 @@
 					<td>Month</td>
 					<td>Sales</td>
 				</tr>
-				
-				<%for (int i = 0; i < Mlist.size(); i++){ 
+
+				<%for (int i = 0; i < Mlist.size(); i++){
 						model.MonthlySale sale = Mlist.get(i);
 					%>
 					<tr>
@@ -113,15 +159,15 @@
 						<td><%= sale.getSales() %></td>
 					</tr>
 				<% } %>
-				
+
 			<%} else { %>
 			<div>Total Sales by Week</div>
 			<tr>
 					<td>Week</td>
 					<td>Sales</td>
 				</tr>
-				
-					<%for (int i = 0; i < Wlist.size(); i++){ 
+
+					<%for (int i = 0; i < Wlist.size(); i++){
 						model.WeeklySale sale = Wlist.get(i);
 					%>
 					<tr>
@@ -129,7 +175,7 @@
 						<td><%= sale.getSales() %></td>
 					</tr>
 				<% } %>
-				
+
 			<%} %>
 		</table> --%>
 	</div>

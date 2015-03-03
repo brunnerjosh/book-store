@@ -246,8 +246,19 @@ public class TransactionDao {
 		List<WeeklySale> list = new ArrayList<WeeklySale>();
 		try{
 			String ps = " ";
-			ps = "Select CONCAT('Week ', WEEK(transactionDate)) AS week, SUM(transactionAmount) AS sum "
-					+ "FROM transactions group by Week(transactionDate)";
+			ps = "Select WEEK(transactionDate) AS week, "
+					+ "YEAR(transactionDate) AS year, "
+					+ "MONTH(transactionDate) AS month, "
+					+ "DAY(transactionDate) AS day, "
+					+ "SUM(transactionAmount) AS sum, "
+					+ "DATE_FORMAT(DATE_SUB(DATE_ADD(MAKEDATE(YEAR(transactionDate), 1), "
+					+ "INTERVAL WEEK(transactionDate) WEEK), INTERVAL WEEKDAY( DATE_ADD(MAKEDATE(YEAR(transactionDate), 1), "
+					+ "INTERVAL WEEK(transactionDate) WEEK)) -1 DAY),'%m/%d') AS weekStart_date, "
+					+ "DATE_FORMAT(DATE_SUB( DATE_ADD(MAKEDATE(YEAR(transactionDate), 1), "
+					+ "INTERVAL WEEK(transactionDate) WEEK), INTERVAL WEEKDAY( DATE_ADD(MAKEDATE(YEAR(transactionDate), 1), "
+					+ "INTERVAL WEEK(transactionDate) WEEK)) -7 DAY),'%m/%d') AS weekEnd_date "
+					+ "FROM transactions GROUP BY YEARWEEK(transactionDate)";
+				
 			PreparedStatement preparedStatement = connection.prepareStatement(ps);
 			ResultSet rs = preparedStatement.executeQuery();
 			
@@ -255,6 +266,16 @@ public class TransactionDao {
 				WeeklySale wSale = new WeeklySale();
 				wSale.setWeek(rs.getString("week"));
 				System.out.print("Week: " + wSale.getWeek());
+				wSale.setYear(rs.getString("year"));
+				System.out.print("Year: " + wSale.getYear() + " ");	
+				wSale.setMonth(rs.getString("month"));
+				System.out.print("Month: " + wSale.getMonth() + " ");	
+				wSale.setWeekStart(rs.getString("weekStart_date"));
+				System.out.print("weekStart_date: " + wSale.getWeekStart() + " ");
+				wSale.setWeekEnd(rs.getString("weekEnd_date"));
+				System.out.print("weekEnd_date: " + wSale.getWeekEnd() + " ");	
+				wSale.setDay(rs.getString("day"));
+				System.out.print("Day: " + wSale.getDay() + " ");	
 				Double sales = Double.parseDouble(rs.getString("sum"));
 				wSale.setSales(sales);
 				System.out.println(" Sales: " + wSale.getSales());

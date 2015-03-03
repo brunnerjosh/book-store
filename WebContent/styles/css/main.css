@@ -993,6 +993,6 @@ button.s-blue:hover {
   margin-right: 34px;
   border-bottom: 2px solid #000;
 }
-.analytics-right-section .sales-column .sales-year + li {
+.analytics-right-section .sales-column .relative + li {
   border-top: 0;
 }
