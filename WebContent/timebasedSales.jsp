@@ -37,7 +37,7 @@
 					</div>
 				</td> --%>
 				<td>
-					<div class="sales-column">
+					<div class="sales-column as-weekly">
 						<h3 class="header">Weekly</h3>
 						<ul>
 							<%
@@ -56,15 +56,14 @@
 									<div class="header-row relative">
 										<div class="sales-year"><%=currYear_week%></div>
 										<div class="sales-week">Week Period</div>
-										<div class="sales-total">Total</div>
 										<div class="sales-change">Increase/Decrease</div>
+										<div class="sales-total">Total</div>
 									</div>
 									<%
 								}
 							%>
 								<li>
 									<div class="sales-month"><%=sale.getWeekStart() %> &ndash; <%=sale.getWeekEnd() %></div>
-									<div class="sales-amount">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$<%=transaction.round(sale.getSales(),2) %></div>
 									<div class="sales-difference">
 										<%
 											if(weeklyDifference > 0){
@@ -76,6 +75,7 @@
 											}
 										%>
 									</div>
+									<div class="sales-amount">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$<%=transaction.round(sale.getSales(),2) %></div>
 								</li>
 
 							<%
@@ -97,25 +97,44 @@
 							double monthDiff_start = 0;
 							double monthDiff_end = 0;
 							double monthlyDifference = 0;
+							double runningTotal = 0.0;
+							double runningDifference = 0.0;
 							for (int i = 0; i < Mlist.size(); i++){
 								model.MonthlySale sale = Mlist.get(i);
 								currYear_month = Integer.parseInt(sale.getYear());
 								monthDiff_start = sale.getSales();
 								monthlyDifference = transaction.round((monthDiff_start - monthDiff_end),2);
+								
+								runningTotal += transaction.round(sale.getSales(),2);
+								runningDifference += monthlyDifference;
+								
+								System.out.println("runningTotal: " + runningTotal + " runningDifference: " + runningDifference);
+								
 								if(currYear_month != nextYear_month){
+									
+									%>
+									<%-- <div class="total-row">
+										<div class="running-total">Total: <%=transaction.round(runningTotal,2) %></div>
+										<div class="running-difference">Diff: <%=transaction.round(runningDifference,2) %></div>
+									</div> --%>
+									<%
+									
+									// reset these counter variables every year
+									runningTotal = 0.0; 
+									runningDifference = 0.0;
+									
 									%>
 									<div class="header-row relative">
 										<div class="sales-year"><%=currYear_month%></div>
 										<div class="sales-week">Month</div>
-										<div class="sales-total">Total</div>
 										<div class="sales-change">Increase/Decrease</div>
+										<div class="sales-total">Total</div>
 									</div>
 									<%
 								}
 							%>
 								<li>
 									<div class="sales-month"><%= sale.getMonth() %> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </div>
-									<div class="sales-amount">$<%=transaction.round(sale.getSales(),2) %></div>
 									<div class="sales-difference">
 										<%
 											if(monthlyDifference > 0){
@@ -127,6 +146,7 @@
 											}
 										%>
 									</div>
+									<div class="sales-amount">$<%=transaction.round(sale.getSales(),2) %></div>
 								</li>
 
 							<%

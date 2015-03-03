@@ -91,6 +91,9 @@
         padding-left 10px
 
   .sales-column
+    &.as-weekly
+      .sales-difference
+        left 52px
     h3
       &.header
         margin 0 0px 5px 0
@@ -110,11 +113,16 @@
     .sales-difference
       display table-cell
 
+    .sales-difference
+      left: 30px;
+      position: relative;
+
     .sales-month
       min-width 100px
 
-    .sales-difference
+    .sales-amount
       top: -26px;
+      float right
       position relative
 
     .dollar-sign,
@@ -133,10 +141,8 @@
       text-align right
 
     .sales-change
-      text-align right
+      text-align center
 
-    .sales-difference
-      float right
     .dollar-sign
       top: -5px;
       font-size: 14px;

@@ -935,6 +935,9 @@ button.s-blue:hover {
   padding-right: 0px;
   padding-left: 10px;
 }
+.analytics-right-section .sales-column.as-weekly .sales-difference {
+  left: 52px;
+}
 .analytics-right-section .sales-column h3.header {
   margin: 0 0px 5px 0;
   padding-bottom: 4px;
@@ -955,11 +958,16 @@ button.s-blue:hover {
 .analytics-right-section .sales-column .sales-difference {
   display: table-cell;
 }
+.analytics-right-section .sales-column .sales-difference {
+  left: 30px;
+  position: relative;
+}
 .analytics-right-section .sales-column .sales-month {
   min-width: 100px;
 }
-.analytics-right-section .sales-column .sales-difference {
+.analytics-right-section .sales-column .sales-amount {
   top: -26px;
+  float: right;
   position: relative;
 }
 .analytics-right-section .sales-column .dollar-sign,
@@ -978,10 +986,7 @@ button.s-blue:hover {
   text-align: right;
 }
 .analytics-right-section .sales-column .sales-change {
-  text-align: right;
-}
-.analytics-right-section .sales-column .sales-difference {
-  float: right;
+  text-align: center;
 }
 .analytics-right-section .sales-column .dollar-sign {
   top: -5px;
