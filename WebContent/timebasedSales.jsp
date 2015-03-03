@@ -138,14 +138,14 @@
 
 					</div>
 				</td>
-				<td>
+				<%-- <td>
 					<div class="sales-column">
 						<h3 class="header">Total</h3>
 						<ul>
 							<li class="total-sales">$<%=transaction.round(transDao.getTotalSales(),2) %></li>
 						</ul>
 					</div>
-				</td>
+				</td> --%>
 			</tr>
 		</table>
 	</div>

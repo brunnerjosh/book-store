@@ -955,6 +955,9 @@ button.s-blue:hover {
 .analytics-right-section .sales-column .sales-difference {
   display: table-cell;
 }
+.analytics-right-section .sales-column .sales-month {
+  min-width: 100px;
+}
 .analytics-right-section .sales-column .sales-difference {
   top: -26px;
   position: relative;
