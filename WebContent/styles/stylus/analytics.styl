@@ -84,23 +84,36 @@
   .stats-display
     td
       vertical-align top
+      padding-right 10px
+      width 50%
+      & + td
+        padding-right 0px
+        padding-left 10px
+
   .sales-column
     h3
       &.header
-        margin 0 40px 5px 0
+        margin 0 0px 5px 0
         padding-bottom 4px
         line-height 1
         border-bottom 4px solid black
 
     li
       padding 10px
+      margin-right 0px
     ul
       position relative
       padding-left 10px
       list-style-type none
     .sales-month,
     .sales-amount,
-    .sales-difference,
+    .sales-difference
+      display table-cell
+
+    .sales-difference
+      top: -26px;
+      position relative
+
     .dollar-sign,
     .diff-good,
     .diff-bad
@@ -108,17 +121,16 @@
       display inline-block
 
     .sales-total,
-    .sales-change
-      position absolute
+    .sales-change,
+    .sales-week
+      position relative
+      display table-cell
 
     .sales-total
-      top: 4px;
-      left: 108px;
+      text-align right
 
     .sales-change
-      top: 4px;
-      margin-right: 40px;
-      right: 0px;
+      text-align right
 
     .sales-difference
       float right
@@ -135,14 +147,16 @@
       font-size 26px
 
     .sales-year
-      margin-top: 30px;
+      position: absolute;
+      top: -32px;
       letter-spacing: 6px;
-      font-weight: bold;
-      font-size: 21px;
-      position: relative;
-      display: block;
-      margin-right: 34px;
+      font-size: 24px;
+
+    .header-row
+      display table
+      width 100%
+      margin-top: 50px;
       border-bottom: 2px solid black;
 
-    .relative + li
+      & + li
         border-top 0

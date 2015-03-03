@@ -928,15 +928,22 @@ button.s-blue:hover {
 }
 .analytics-right-section .stats-display td {
   vertical-align: top;
+  padding-right: 10px;
+  width: 50%;
+}
+.analytics-right-section .stats-display td + td {
+  padding-right: 0px;
+  padding-left: 10px;
 }
 .analytics-right-section .sales-column h3.header {
-  margin: 0 40px 5px 0;
+  margin: 0 0px 5px 0;
   padding-bottom: 4px;
   line-height: 1;
   border-bottom: 4px solid #000;
 }
 .analytics-right-section .sales-column li {
   padding: 10px;
+  margin-right: 0px;
 }
 .analytics-right-section .sales-column ul {
   position: relative;
@@ -945,7 +952,13 @@ button.s-blue:hover {
 }
 .analytics-right-section .sales-column .sales-month,
 .analytics-right-section .sales-column .sales-amount,
-.analytics-right-section .sales-column .sales-difference,
+.analytics-right-section .sales-column .sales-difference {
+  display: table-cell;
+}
+.analytics-right-section .sales-column .sales-difference {
+  top: -26px;
+  position: relative;
+}
 .analytics-right-section .sales-column .dollar-sign,
 .analytics-right-section .sales-column .diff-good,
 .analytics-right-section .sales-column .diff-bad {
@@ -953,17 +966,16 @@ button.s-blue:hover {
   display: inline-block;
 }
 .analytics-right-section .sales-column .sales-total,
-.analytics-right-section .sales-column .sales-change {
-  position: absolute;
+.analytics-right-section .sales-column .sales-change,
+.analytics-right-section .sales-column .sales-week {
+  position: relative;
+  display: table-cell;
 }
 .analytics-right-section .sales-column .sales-total {
-  top: 4px;
-  left: 108px;
+  text-align: right;
 }
 .analytics-right-section .sales-column .sales-change {
-  top: 4px;
-  margin-right: 40px;
-  right: 0px;
+  text-align: right;
 }
 .analytics-right-section .sales-column .sales-difference {
   float: right;
@@ -984,15 +996,17 @@ button.s-blue:hover {
   font-size: 26px;
 }
 .analytics-right-section .sales-column .sales-year {
-  margin-top: 30px;
+  position: absolute;
+  top: -32px;
   letter-spacing: 6px;
-  font-weight: bold;
-  font-size: 21px;
-  position: relative;
-  display: block;
-  margin-right: 34px;
+  font-size: 24px;
+}
+.analytics-right-section .sales-column .header-row {
+  display: table;
+  width: 100%;
+  margin-top: 50px;
   border-bottom: 2px solid #000;
 }
-.analytics-right-section .sales-column .relative + li {
+.analytics-right-section .sales-column .header-row + li {
   border-top: 0;
 }

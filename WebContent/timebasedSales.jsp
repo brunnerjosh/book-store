@@ -52,12 +52,19 @@
 								weekDiff_start = sale.getSales();
 								weeklyDifference = transaction.round((weekDiff_start - weekDiff_end), 2);
 								if(currYear_week != nextYear_week){
-									out.print("<div class=\"relative\"><div class=\"sales-year\">"+currYear_week+"</div> <div class=\"sales-total\">Total</div><div class=\'sales-change\'>Increase/Decrease</div></div>");
+									%>
+									<div class="header-row relative">
+										<div class="sales-year"><%=currYear_week%></div>
+										<div class="sales-week">Week Period</div>
+										<div class="sales-total">Total</div>
+										<div class="sales-change">Increase/Decrease</div>
+									</div>
+									<%
 								}
 							%>
 								<li>
-									<div class="sales-month">Week ending <%=sale.getMonth() %>/<%=sale.getDay() %> &mdash; </div>
-									<div class="sales-amount">$<%=transaction.round(sale.getSales(),2) %></div>
+									<div class="sales-month"><%=sale.getWeekStart() %> &ndash; <%=sale.getWeekEnd() %></div>
+									<div class="sales-amount">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$<%=transaction.round(sale.getSales(),2) %></div>
 									<div class="sales-difference">
 										<%
 											if(weeklyDifference > 0){
@@ -96,11 +103,18 @@
 								monthDiff_start = sale.getSales();
 								monthlyDifference = transaction.round((monthDiff_start - monthDiff_end),2);
 								if(currYear_month != nextYear_month){
-									out.print("<div class=\"relative\"><div class=\"sales-year\">"+currYear_month+"</div> <div class=\"sales-total\">Total</div><div class=\'sales-change\'>Increase/Decrease</div></div>");
+									%>
+									<div class="header-row relative">
+										<div class="sales-year"><%=currYear_month%></div>
+										<div class="sales-week">Month</div>
+										<div class="sales-total">Total</div>
+										<div class="sales-change">Increase/Decrease</div>
+									</div>
+									<%
 								}
 							%>
 								<li>
-									<div class="sales-month"><%= sale.getMonth() %> &mdash; </div>
+									<div class="sales-month"><%= sale.getMonth() %> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </div>
 									<div class="sales-amount">$<%=transaction.round(sale.getSales(),2) %></div>
 									<div class="sales-difference">
 										<%
@@ -124,14 +138,14 @@
 
 					</div>
 				</td>
-				<%-- <td>
+				<td>
 					<div class="sales-column">
 						<h3 class="header">Total</h3>
 						<ul>
-							<li class="total-sales">$<%=transDao.getTotalSales() %></li>
+							<li class="total-sales">$<%=transaction.round(transDao.getTotalSales(),2) %></li>
 						</ul>
 					</div>
-				</td> --%>
+				</td>
 			</tr>
 		</table>
 	</div>
