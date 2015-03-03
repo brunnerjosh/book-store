@@ -2,6 +2,7 @@ package model;
 
 public class MonthlySale {
 	private String month;
+	private String year;
 	private Double sales;
 	
 	public MonthlySale(){}
@@ -12,6 +13,14 @@ public class MonthlySale {
 	
 	public String getMonth(){
 		return month;
+	}
+	
+	public void setYear(String year){
+		this.year = year;
+	}
+	
+	public String getYear(){
+		return year;
 	}
 	
 	public void setSales(Double sales){

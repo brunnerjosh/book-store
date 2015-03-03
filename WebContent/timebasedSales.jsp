@@ -39,13 +39,19 @@
 						<h3 class="header">Monthly</h3>
 						<ul>
 							<%
+							int currYear = 0;
+							int nextYear = 1;
 							double monthDiff_start = 0;
 							double monthDiff_end = 0;
 							double monthlyDifference = 0;
 							for (int i = 0; i < Mlist.size(); i++){ 
 								model.MonthlySale sale = Mlist.get(i);
+								currYear = Integer.parseInt(sale.getYear());
 								monthDiff_start = sale.getSales();
 								monthlyDifference = (monthDiff_start - monthDiff_end);
+								if(currYear != nextYear){
+									out.print("<div class=\"relative\"><div class=\"sales-year\">"+currYear+"</div> <div class=\"sales-total\">Total</div><div class=\'sales-change\'>Increase/Decrease</div></div>");
+								}
 							%>
 								<li>
 									<div class="sales-month"><%= sale.getMonth() %> &mdash; </div>
@@ -65,6 +71,7 @@
 								
 							<%
 								monthDiff_end = sale.getSales();
+								nextYear = currYear;
 							} 
 							%>
 						</ul>
@@ -75,7 +82,7 @@
 					<div class="sales-column">
 						<h3 class="header">Total</h3>
 						<ul>
-							<li>$<%=transDao.getTotalSales() %></li>
+							<li class="total-sales">$<%=transDao.getTotalSales() %></li>
 						</ul>
 					</div>
 				</td>

@@ -222,8 +222,7 @@ public class TransactionDao {
 		List<MonthlySale> list = new ArrayList<MonthlySale>();
 		try{
 			String ps = " ";
-			ps = "Select MONTHNAME(transactionDate) AS month, SUM(transactionAmount) "
-					+ "AS sum FROM transactions GROUP BY YEAR(transactionDate), MONTH(transactionDate)";
+			ps = "select MONTHNAME(transactionDate) AS month, YEAR(transactionDate) as year, SUM(transactionAmount) AS sum FROM transactions GROUP BY YEAR(transactionDate), MONTH(transactionDate)";
 			PreparedStatement preparedStatement = connection.prepareStatement(ps);
 			ResultSet rs = preparedStatement.executeQuery();
 			
@@ -231,6 +230,8 @@ public class TransactionDao {
 				MonthlySale mSale = new MonthlySale();
 				mSale.setMonth(rs.getString("month"));
 				System.out.print("Month: " + mSale.getMonth() + " ");
+				mSale.setYear(rs.getString("year"));
+				System.out.print("Year: " + mSale.getYear() + " ");				
 				Double sales = Double.parseDouble(rs.getString("sum"));
 				System.out.println("Sum: " + mSale.getSales());
 				mSale.setSales(sales);

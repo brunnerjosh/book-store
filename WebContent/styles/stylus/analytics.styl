@@ -95,6 +95,7 @@
     li
       padding 10px
     ul
+      position relative
       padding-left 10px
       list-style-type none
     .sales-month,
@@ -105,6 +106,20 @@
     .diff-bad
       position relative
       display inline-block
+
+    .sales-total,
+    .sales-change
+      position absolute
+
+    .sales-total
+      top: 4px;
+      left: 108px;
+
+    .sales-change
+      top: 4px;
+      margin-right: 40px;
+      right: 0px;
+
     .sales-difference
       float right
     .dollar-sign
@@ -116,3 +131,17 @@
       color $green
     .diff-bad
       color $red
+    .total-sales
+      font-size 26px
+
+    .sales-year
+      margin-top: 30px;
+      letter-spacing: 6px;
+      font-weight: bold;
+      font-size: 21px;
+      position: relative;
+      display: block;
+      margin-right: 34px;
+      border-bottom: 2px solid black;
+      & + li
+        border-top 0

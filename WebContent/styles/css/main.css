@@ -15,6 +15,9 @@ a.is-active {
 .clearfix {
   overflow: auto;
 }
+.relative {
+  position: relative;
+}
 .container {
   width: 1200px;
   position: relative;
@@ -936,6 +939,7 @@ button.s-blue:hover {
   padding: 10px;
 }
 .analytics-right-section .sales-column ul {
+  position: relative;
   padding-left: 10px;
   list-style-type: none;
 }
@@ -947,6 +951,19 @@ button.s-blue:hover {
 .analytics-right-section .sales-column .diff-bad {
   position: relative;
   display: inline-block;
+}
+.analytics-right-section .sales-column .sales-total,
+.analytics-right-section .sales-column .sales-change {
+  position: absolute;
+}
+.analytics-right-section .sales-column .sales-total {
+  top: 4px;
+  left: 108px;
+}
+.analytics-right-section .sales-column .sales-change {
+  top: 4px;
+  margin-right: 40px;
+  right: 0px;
 }
 .analytics-right-section .sales-column .sales-difference {
   float: right;
@@ -962,4 +979,20 @@ button.s-blue:hover {
 }
 .analytics-right-section .sales-column .diff-bad {
   color: #a00d0d;
+}
+.analytics-right-section .sales-column .total-sales {
+  font-size: 26px;
+}
+.analytics-right-section .sales-column .sales-year {
+  margin-top: 30px;
+  letter-spacing: 6px;
+  font-weight: bold;
+  font-size: 21px;
+  position: relative;
+  display: block;
+  margin-right: 34px;
+  border-bottom: 2px solid #000;
+}
+.analytics-right-section .sales-column .sales-year + li {
+  border-top: 0;
 }
