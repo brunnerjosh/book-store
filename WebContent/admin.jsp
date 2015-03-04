@@ -8,17 +8,6 @@
   <div>
     <h1>Admin Dashboard</h1>
 
-    <!-- <div class="item-list-group">
-      <div class="side-left">
-        <div class="side-left">
-          <a href="/UserController?action=listUser" class="list-item">Users</a>
-          <a href="/BookController?action=listBook" class="list-item">Books</a>
-          <a href="/TransactionController?action=listTransaction" class="list-item">Transactions</a>
-          <a href="/RatingController?action=listRating" class="list-item">Ratings</a>
-        </div>
-      </div>
-    </div> -->
-
     <%-- DISPLAY COOKIES --%>
   <%--   <%@ include file = "displayCookies.jsp" %> --%>
 	<div class="pane-left">
