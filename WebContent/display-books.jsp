@@ -11,9 +11,17 @@
 	<div>
 		<h1>Quest: An Online Bookstore</h1>
 		
+		<%
+		String searchQuery = request.getParameter("query");
+		String priceLimit = request.getParameter("priceLimit");
+		if(searchQuery == null){
+			searchQuery = "";
+		}
+		%>
+		
 		<div class="search-bar">
 			<form method="get" name="searchQuery" action="processSearchQuery.jsp">
-				<input type="text" id="searchQuery" name="searchQuery" placeholder="Search for Title">
+				<input type="text" id="searchQuery" name="searchQuery" value="<%=searchQuery %>" placeholder="Search">
 				<button type="submit" class="s-blue search-button">Search</button>
 			</form>
 		</div>
