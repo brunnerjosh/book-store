@@ -1039,3 +1039,20 @@ button.s-blue:hover {
   display: block;
   font-size: 24px;
 }
+.search-bar {
+  position: absolute;
+  top: 50px;
+  right: 32px;
+  border: 2px solid #5a9dd1;
+}
+.search-bar input {
+  height: 42px;
+  font-size: 18px;
+  width: 309px;
+}
+.search-bar button {
+  height: 42px;
+  vertical-align: top;
+  margin-left: -5px;
+  background: #5a9dd1;
+}

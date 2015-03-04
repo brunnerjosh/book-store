@@ -33,7 +33,7 @@ public class BookController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String forward = "";
 		String action = request.getParameter("action");
-
+		System.out.println("GETTING ALL THE THINGS!!!: " + action);
 		if (action.equalsIgnoreCase("delete")) {
 			int bookId = Integer.parseInt(request.getParameter("bookId"));
 			dao.deleteBook(bookId);
@@ -56,6 +56,10 @@ public class BookController extends HttpServlet {
 			System.out.println("category = " + category);
 			if (category.equalsIgnoreCase("all")) {
 				request.setAttribute("books", dao.getAllBooks());
+			} else if (category.equalsIgnoreCase("Search")) {
+				System.out.println("User searched something");
+				String searchQuery = request.getParameter("query");
+				request.setAttribute("books", dao.getBooksBySearch(searchQuery));
 			} else {
 				request.setAttribute("books", dao.getAllBooksByCategory(category));
 			}

@@ -261,6 +261,40 @@ public class BookDao {
 	
 		return books;
 	}
+
+	public List<Book> getBooksBySearch(String searchQuery) {
+		System.out.println("dao.BookDao: getBooksBySearch");
+		List<Book> books = new ArrayList<Book>();
+		try{
+			PreparedStatement preparedStatement = connection.prepareStatement("select * from books WHERE "
+					+ "(title like \"%"+searchQuery+"%\" OR author like \"%"+searchQuery+"%\" "
+					+ "OR publisher like \"%"+searchQuery+"%\" OR category like \"%"+searchQuery+"%\")");
+			ResultSet rs = preparedStatement.executeQuery();
+			
+			while(rs.next()){
+				Book book = new Book();
+				
+				book.setBookId(rs.getInt("bookId"));
+				book.setTitle(rs.getString("title"));
+				book.setAuthor(rs.getString("author"));
+				book.setInventory(rs.getInt("inventoryAmount"));
+				book.setPrice(rs.getDouble("price"));
+				book.setCategory(rs.getString("category"));
+				book.setPublisher(rs.getString("publisher"));
+				book.setYearPublished(rs.getString("publicationYear"));
+				book.setReviewRating(calculateRating(book.getBookId()));
+//				book.setReviewRating(rs.getInt("reviewRating"));
+				book.setPhoto(rs.getString("photo"));
+				System.out.println("Searched book: " + book.toString());
+				books.add(book);
+			}
+		} catch(SQLException e){
+			e.printStackTrace();
+		}
+	
+		return books;
+	}
+	
 	public Book getBookById(int bookId){
 		System.out.println("dao.BookDao: getBookById");
 		Book book = new Book();

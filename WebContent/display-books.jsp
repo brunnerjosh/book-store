@@ -12,9 +12,9 @@
 		<h1>Quest: An Online Bookstore</h1>
 		
 		<div class="search-bar">
-			<form method="post" action="">
-				<input type="text" placeholder="Search for Title">
-				<button type="submit" class="search-button">Search</button>
+			<form method="get" name="searchQuery" action="processSearchQuery.jsp">
+				<input type="text" id="searchQuery" name="searchQuery" placeholder="Search for Title">
+				<button type="submit" class="s-blue search-button">Search</button>
 			</form>
 		</div>
 
