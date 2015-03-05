@@ -16,10 +16,10 @@
 			<p>Note that changes to these items goes against the normal "flow" of interactions. Nevertheless, in some instances, it may be necessary to modify a particular item in the database. Proceed with caution.
 			<div class="admin-link-group">
 				<ul>
-					<li><a href="/UserController?action=listUser" class="list-item">Users</a></li>
-				    <li><a href="/BookController?action=listBook" class="list-item">Books</a></li>
-				    <li><a href="/TransactionController?action=listTransaction" class="list-item">Transactions</a></li>
-				    <li><a href="/RatingController?action=listRating" class="list-item">Ratings</a></li>
+					<li><a href="/UserController?action=listUser" class="list-item">View Users</a></li>
+				    <li><a href="/BookController?action=listBook" class="list-item">View Books</a></li>
+				    <li><a href="/TransactionController?action=listTransaction" class="list-item">View Transactions</a></li>
+				    <li><a href="/RatingController?action=listRating" class="list-item">View Ratings</a></li>
 			    </ul>
 		    </div>
 	    </div>

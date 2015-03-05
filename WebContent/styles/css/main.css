@@ -456,6 +456,9 @@ button.s-blue:hover {
   top: 0;
   right: 0;
 }
+.item-list-group div span.list-item-label {
+  margin-right: 10px;
+}
 .item-list-group div a.list-item {
   margin-right: 15px;
 }
@@ -1055,4 +1058,62 @@ button.s-blue:hover {
   vertical-align: top;
   margin-left: -5px;
   background: #5a9dd1;
+}
+.container.as-index-page {
+  margin-top: 70px;
+}
+.container.as-index-page h1 {
+  margin: 0;
+  font-size: 54px;
+  line-height: 1;
+}
+.container.as-index-page img.index-logo {
+  position: relative;
+  width: 90%;
+}
+.container.as-index-page .index-description {
+  line-height: 1.5;
+}
+.container.as-index-page table.as-button-group {
+  margin-top: 20px;
+  width: 100%;
+}
+.container.as-index-page table.as-button-group td {
+  vertical-align: bottom;
+  padding-left: 20px;
+}
+.container.as-index-page table.as-button-group td:first-of-type {
+  padding-left: 0px;
+}
+.container.as-index-page button.cta-button {
+  height: 70px;
+  width: 100%;
+  font-size: 24px;
+  border-radius: 1px;
+  color: #fff;
+  border: 0;
+  font-weight: bold;
+  -webkit-transition: background 300ms ease;
+          transition: background 300ms ease;
+}
+.container.as-index-page button.cta-button:hover.sign-up {
+  background: #3ca7dc;
+}
+.container.as-index-page button.cta-button:hover.sign-in {
+  background: #2288bc;
+}
+.container.as-index-page button.cta-button:hover.view-books {
+  background: #1b6c96;
+}
+.container.as-index-page button.sign-up {
+  background: #228abd;
+  border: 2px solid #228abd;
+}
+.container.as-index-page button.sign-in {
+  background: #175c7f;
+  border: 2px solid #175c7f;
+}
+.container.as-index-page button.view-books {
+  background: #0e394f;
+  border: 2px solid #0e394f;
 }

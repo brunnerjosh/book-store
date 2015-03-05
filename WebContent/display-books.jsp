@@ -28,13 +28,13 @@
 
 		<div class="item-list-group">
 			<div class="side-left">
-				Category:
+				<span class="list-item-label">Category:</span>
 				<div class="side-left">
 					<%
 					int categoryLength = bookDao.bookCategories.length;
 					for(int i = 0; i < categoryLength; i++){
 					%>
-						<a href="BookController?action=bookDisplay&category=<%=bookDao.bookCategories[i]%>"><%=bookDao.bookCategories[i]%></a>
+						<a class="list-item" href="BookController?action=bookDisplay&category=<%=bookDao.bookCategories[i]%>"><%=bookDao.bookCategories[i]%></a>
 					<%
 					}
 					%>

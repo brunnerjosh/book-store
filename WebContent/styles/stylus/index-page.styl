@@ -1,0 +1,47 @@
+.container.as-index-page
+  margin-top 70px
+  h1
+    margin 0
+    font-size 54px
+    line-height 1
+  img.index-logo
+    position: relative;
+    width: 90%;
+  .index-description
+    line-height 1.5
+  table
+    &.as-button-group
+      margin-top 20px
+      width 100%
+      td
+        vertical-align bottom
+        padding-left 20px
+        &:first-of-type
+          padding-left 0px
+  button
+    &.cta-button
+      height: 70px;
+      width: 100%;
+      font-size 24px
+      border-radius 1px
+      color white
+      border 0
+      font-weight bold
+      transition background 300ms ease
+      &:hover
+        &.sign-up
+          background lighten(#228ABD, 20%)
+        &.sign-in
+          background lighten(#175C7F, 20%)
+        &.view-books
+          background lighten(#0E394F, 20%)
+
+    &.sign-up
+      background #228ABD
+      border 2px solid #228ABD
+    &.sign-in
+      background #175C7F
+      border 2px solid #175C7F
+    &.view-books
+      background #0E394F
+      border 2px solid #0E394F

@@ -20,7 +20,7 @@ boolean isAdmin = false;
 	<div class="main-nav item-list-group clearfix">
 		<div class="side-left">
 			<a href="/" class="list-item">Home</a>
-			<a href="/BookController?action=bookDisplay&category=all" class="list-item">View Books</a>
+			<a href="/BookController?action=bookDisplay&category=all" class="list-item">Browse Books</a>
 			<c:choose>
 				<c:when test="${userIsAdmin == true}">
 					<a href="admin.jsp" class="list-item">Admin</a>
