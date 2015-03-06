@@ -30,7 +30,7 @@ public class BookDao {
 		ratingDao = new RatingDao();
 		transaction = new Transaction();
 		transDao = new TransactionDao();
-		System.out.println("Created a BOOKDAO");
+		// System.out.println("Created a BOOKDAO");
 	}
 	
 	public boolean decrementQuantity(int bookID){
@@ -43,7 +43,7 @@ public class BookDao {
 			return false;
 		}
 		
-		System.out.println("bookInventory: " + bookInventory + " newBookInv: " + newBookInv);
+		// System.out.println("bookInventory: " + bookInventory + " newBookInv: " + newBookInv);
 		try{
 			PreparedStatement preparedStatement = connection.prepareStatement("update books set inventoryAmount=? where bookId=?");
 			preparedStatement.setInt(1, newBookInv);
@@ -74,7 +74,7 @@ public class BookDao {
 	}
 	
 	public void addBook(Book book){
-		System.out.println("BookDao: addBook: " + book.toString());
+		// System.out.println("BookDao: addBook: " + book.toString());
 		try{
 			PreparedStatement preparedStatement = connection
 					.prepareStatement("insert into books(title, author, inventoryAmount, price, category, publisher, publicationYear, reviewRating, photo)"
@@ -109,11 +109,11 @@ public class BookDao {
 	//	Returns a calculated total of all books in a user's bag
 	public double getTotalFor(List<Integer> booksInBag){
 		double totalAmt = 0.0;
-		System.out.println("GET TOTAL FOR:");
+		// System.out.println("GET TOTAL FOR:");
 		for (int i = 0; i < booksInBag.size(); i++){
 			Book tempBook = this.getBookById(booksInBag.get(i)); // Save a temp copy of a book
 			totalAmt += tempBook.getPrice();
-			System.out.println("totalAmt: " + totalAmt);
+			// System.out.println("totalAmt: " + totalAmt);
 		}
 		return transaction.round(totalAmt,2);
 	}
@@ -126,7 +126,7 @@ public class BookDao {
 //		the count variable. Once you've iterated over all the users, 
 //		calculate the average rating for a specific book and return 
 //		that as the int.
-		System.out.println("Calculating rating for " + bookID);
+		// System.out.println("Calculating rating for " + bookID);
 		
 		int count = 0;
 		int avgRating = 0;
@@ -144,12 +144,12 @@ public class BookDao {
 		} else {
 			avgRating = (ratingTotal/count);
 		}
-		System.out.println("Trying to divide " + ratingTotal + " by " + count + " for bookID: " + bookID);
+		// System.out.println("Trying to divide " + ratingTotal + " by " + count + " for bookID: " + bookID);
 		try{
 			PreparedStatement preparedStatement = connection.prepareStatement("update books set reviewRating=? where bookId=?");
 			preparedStatement.setInt(1, avgRating);
 			preparedStatement.setInt(2, bookID);
-			System.out.println(" ===> book rating update: " + preparedStatement);
+			// System.out.println(" ===> book rating update: " + preparedStatement);
 			preparedStatement.executeUpdate();
 			
 		}catch (SQLException e){
@@ -161,7 +161,7 @@ public class BookDao {
 	}
 	
 	public void updateBook(Book book){
-		System.out.println("BookDao: updateBook");
+		// System.out.println("BookDao: updateBook");
 		try{
 			PreparedStatement preparedStatement = connection
 					.prepareStatement("update books set title=?, author=?, inventoryAmount=?, price=?, category=?,"
@@ -186,14 +186,14 @@ public class BookDao {
 	
 	public void updateBookPhoto(int bookId, String photoURL){
 		//Book book = getBookById(bookId);
-		System.out.println("In updateBookPhoto!!!!");
-		System.out.println("bookID: " + bookId);
-		System.out.println("photoUrl: " + photoURL);
+		// System.out.println("In updateBookPhoto!!!!");
+		// System.out.println("bookID: " + bookId);
+		// System.out.println("photoUrl: " + photoURL);
 		try{
 			PreparedStatement preparedStatement = connection.prepareStatement("update books set photo=? where bookId=?");
 			preparedStatement.setString(1, photoURL);
 			preparedStatement.setInt(2, bookId);
-			System.out.println("photo update: " + preparedStatement);
+			// System.out.println("photo update: " + preparedStatement);
 			preparedStatement.executeUpdate();
 			
 			
@@ -203,7 +203,7 @@ public class BookDao {
 	}
 	
 	public List<Book> getAllBooks() {
-		System.out.println("dao.BookDao: getAllBooks");
+		// System.out.println("dao.BookDao: getAllBooks");
 		List<Book> books = new ArrayList<Book>();
 		try{
 			Statement statement = connection.createStatement();
@@ -233,7 +233,7 @@ public class BookDao {
 	}
 	
 	public List<Book> getTopRated() {
-		System.out.println("dao.BookDao: getAllBooks");
+		// System.out.println("dao.BookDao: getAllBooks");
 		List<Book> books = new ArrayList<Book>();
 		try{
 			Statement statement = connection.createStatement();
@@ -263,7 +263,7 @@ public class BookDao {
 	}
 	
 	public List<Book> getAllBooksByCategory(String category) {
-		System.out.println("dao.BookDao: getAllBooksByCategory");
+		// System.out.println("dao.BookDao: getAllBooksByCategory");
 		List<Book> books = new ArrayList<Book>();
 		try{
 			PreparedStatement preparedStatement = connection.prepareStatement("select * from books where category=?");
@@ -294,7 +294,7 @@ public class BookDao {
 	}
 
 	public List<Book> getBooksBySearch(String searchQuery) {
-		System.out.println("dao.BookDao: getBooksBySearch");
+		// System.out.println("dao.BookDao: getBooksBySearch");
 		List<Book> books = new ArrayList<Book>();
 		try{
 			PreparedStatement preparedStatement = connection.prepareStatement("select * from books WHERE "
@@ -316,7 +316,7 @@ public class BookDao {
 				book.setReviewRating(calculateRating(book.getBookId()));
 //				book.setReviewRating(rs.getInt("reviewRating"));
 				book.setPhoto(rs.getString("photo"));
-				System.out.println("Searched book: " + book.toString());
+				// System.out.println("Searched book: " + book.toString());
 				books.add(book);
 			}
 		} catch(SQLException e){
@@ -327,7 +327,7 @@ public class BookDao {
 	}
 	
 	public Book getBookById(int bookId){
-		System.out.println("dao.BookDao: getBookById");
+		// System.out.println("dao.BookDao: getBookById");
 		Book book = new Book();
 		try{
 			PreparedStatement preparedStatement = connection.prepareStatement("select * from books where bookId=?");
@@ -355,7 +355,7 @@ public class BookDao {
 	
 	public int countBooksPurchased(int bookId){
 		if(bookId > 0){
-			System.out.println("dao.BookDao: countBooksPurchased for " + bookId);
+			// System.out.println("dao.BookDao: countBooksPurchased for " + bookId);
 			List<Transaction> booksInTransactions = transDao.getAllTransByBookId(bookId);
 			return booksInTransactions.size();
 		}
@@ -364,7 +364,7 @@ public class BookDao {
 	
 	public int countRatingsFor(int bookId){
 		if(bookId > 0){
-			System.out.println("dao.BookDao: countBooksPurchased for " + bookId);
+			// System.out.println("dao.BookDao: countBooksPurchased for " + bookId);
 			List<Rating> bookRatings = ratingDao.getAllRatingsByBookId(bookId);
 			return bookRatings.size();
 		}

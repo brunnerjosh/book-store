@@ -58,7 +58,7 @@ public class RatingController extends HttpServlet {
 		else if (action.equalsIgnoreCase("ratingHist")){
 			forward = RATING_HIST;
 			int userId = Integer.parseInt(request.getParameter("userId"));
-			System.out.println("This is a rating history for User: " +userId);
+			// System.out.println("This is a rating history for User: " +userId);
 			request.setAttribute("ratings", dao.getAllRatingsByUserId(userId));
 		}
 		else if (action.equalsIgnoreCase("listRating")){
@@ -70,7 +70,7 @@ public class RatingController extends HttpServlet {
 			int topAmount = Integer.parseInt(request.getParameter("topAmount"));
 			List<Rating> myRatings = dao.getTopRatings(topAmount);
 			for(int i = 0; i < myRatings.size(); i++){
-				System.out.println(myRatings.get(i).toString());
+				// System.out.println(myRatings.get(i).toString());
 			}
 			request.setAttribute("ratings", dao.getTopRatings(topAmount));
 		}

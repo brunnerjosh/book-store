@@ -8,13 +8,13 @@
 <%
 user = (model.User) session.getAttribute("loggedInUser");
 if(user != null) {
-	System.out.println("User is not signed in");
+	// System.out.println("User is not signed in");
 	int userID = user.getUserid();
 	String strBook = request.getParameter("bookId");
 	int intBook = Integer.parseInt(strBook);
 	book = bookDao.getBookById(intBook);
 	userDao.addToCart(user, intBook); //may need to hand in the User object
-	System.out.println("Added item to cart. " + user.getFirstName() +  " has this many items in cart: " + user.getBooksInBag().size());
+	// System.out.println("Added item to cart. " + user.getFirstName() +  " has this many items in cart: " + user.getBooksInBag().size());
 %>
 	<div class="container as-small">
 		<div class="add-to-cart">

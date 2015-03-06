@@ -60,7 +60,7 @@ public class TransactionController extends HttpServlet {
 		else if (action.equalsIgnoreCase("transHist")){
 			forward = TRANS_HIST;
 			int userId = Integer.parseInt(request.getParameter("userId"));
-			System.out.println("This is a transaction history for User: " +userId);
+			// System.out.println("This is a transaction history for User: " +userId);
 //			User user = dao.getUserHistById(userId);
 			request.setAttribute("transactions", dao.getAllTransByUserId(userId));
 		}
@@ -68,7 +68,7 @@ public class TransactionController extends HttpServlet {
 			forward = BEST_SELLER;
 			int topAmount = Integer.parseInt(request.getParameter("topAmount"));
 			String category = request.getParameter("category");
-			//System.out.println("This is a Best Seller, category = " + category + ", topAmount = " + topAmount);
+			//// System.out.println("This is a Best Seller, category = " + category + ", topAmount = " + topAmount);
 			request.setAttribute("transactions", dao.getTopTransactionsByCategory(topAmount, category));
 		}
 		else if (action.equalsIgnoreCase("viewTransactions")){
@@ -79,17 +79,17 @@ public class TransactionController extends HttpServlet {
 			
 			if(strPriceLimit != null && strThresholdParam != null){
 				double priceLimit = Double.parseDouble(strPriceLimit);
-				System.out.println("in transCtrl doGet: " + strThresholdParam + " " + priceLimit);
+				// System.out.println("in transCtrl doGet: " + strThresholdParam + " " + priceLimit);
 				List<Transaction> myTrans = dao.sortTransBy(strThresholdParam, priceLimit);
-				System.out.println("transCtrl --- myTrans: " + myTrans.toString());
+				// System.out.println("transCtrl --- myTrans: " + myTrans.toString());
 				request.setAttribute("transactions", myTrans);
 			}
 //			List<Transaction> myTrans = (List<Transaction>) request.getAttribute("transactions");
 //			if(myTrans != null){
-//				System.out.println("viewTrans: myTrans: " + myTrans.toString());
+//				// System.out.println("viewTrans: myTrans: " + myTrans.toString());
 //				request.setAttribute("transactions", myTrans);
 //			} else {
-//				System.out.println("myTrans was NULL again :(");
+//				// System.out.println("myTrans was NULL again :(");
 //			}
 			
 			request.setAttribute("sortByType", sortByType);
@@ -122,8 +122,8 @@ public class TransactionController extends HttpServlet {
 			for(int i = 0; i < bookIDs.length; i++){
 					
 				Transaction transaction = new Transaction();
-				System.out.println(request.toString());	//TODO:
-				System.out.println(response.toString());	//TODO:
+				// System.out.println(request.toString());	//TODO:
+				// System.out.println(response.toString());	//TODO:
 				try{
 					Date transDate = new SimpleDateFormat("MM/dd/yyyy").parse(request.getParameter("transactionDate"));
 					transaction.setTransactionDate(transDate);
@@ -134,7 +134,7 @@ public class TransactionController extends HttpServlet {
 				
 				String sharedId = request.getParameter("sharedTransID");
 				if (sharedId == null || sharedId.isEmpty()){
-					System.out.println("SharedID invaild, Tell Josh we Run for the Hills!!");
+					// System.out.println("SharedID invaild, Tell Josh we Run for the Hills!!");
 					transaction.setSharedTransID(0);
 				} else {
 					int shTransId = Integer.parseInt(sharedId);
@@ -143,14 +143,14 @@ public class TransactionController extends HttpServlet {
 				
 				
 				if(bookIDs[i] == null || bookIDs[i].isEmpty()){
-					System.out.println("strBookId or strBookId was BAD");
+					// System.out.println("strBookId or strBookId was BAD");
 					transaction.setBookId(0);
 					dao.addTransaction(transaction);
 				} else {
 					int bookId = Integer.parseInt(bookIDs[i]);
 					transaction.setBookId(bookId);
 					if(!bookDao.decrementQuantity(bookId)){
-						System.out.println("BookID " + bookId + " is OUT OF STOCK");
+						// System.out.println("BookID " + bookId + " is OUT OF STOCK");
 						continue; // Go back to top of For Loop
 					};
 				}
@@ -187,12 +187,12 @@ public class TransactionController extends HttpServlet {
 			}
 
 			if (action != null && action.equalsIgnoreCase("confirmPurchase")) {
-				System.out.println("Confirmed Purchase");
+				// System.out.println("Confirmed Purchase");
 				forward = CONFIRM_PURCHASE;
 				RequestDispatcher view = request.getRequestDispatcher(forward);
 				view.forward(request, response);
 			} else {
-				System.out.println("TransContoller: Else statement reached");
+				// System.out.println("TransContoller: Else statement reached");
 				RequestDispatcher view = request.getRequestDispatcher(LIST_TRANSACTION);
 				request.setAttribute("transactions", dao.getAllTransactions());
 				view.forward(request, response);

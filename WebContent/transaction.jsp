@@ -4,7 +4,7 @@
  
  <%
  	String transId = request.getParameter("transactionId");
- 	System.out.println("trsnID being edited: " + transId);
+ 	// System.out.println("trsnID being edited: " + transId);
  	int formSharedTransId = 0;
  	if(transId != null){
  		int sharedTransId = transDao.getTransactionById(Integer.parseInt(transId)).getSharedTransID();

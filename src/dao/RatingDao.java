@@ -59,7 +59,7 @@ public class RatingDao {
 			preparedStatement.setDate(3, new java.sql.Date(rating.getRatingDate().getTime()));
 			preparedStatement.setInt(4, rating.getRating());
 			preparedStatement.setInt(5, rating.getRatingId());
-			System.out.println(preparedStatement.toString());
+			// System.out.println(preparedStatement.toString());
 			preparedStatement.executeUpdate();
 			
 		} catch (SQLException e){
@@ -89,12 +89,12 @@ public class RatingDao {
 	}
 	
 	public List<Rating> getTopRatings(int topAmount){
-		System.out.println("dao.RatingDao: getTopRatings for top " + topAmount);
+		// System.out.println("dao.RatingDao: getTopRatings for top " + topAmount);
 		List<Rating> ratings = new ArrayList<Rating>();
 		try{
 			PreparedStatement preparedStatement = connection.prepareStatement("select *, avg(r.rating) from rating r INNER JOIN books b on r.bookId = b.bookId where r.ratingDate > current_date()-14  group by r.bookId order by avg(r.rating) DESC limit ?");
 			preparedStatement.setInt(1, topAmount);
-			System.out.println("preparedStatement = " + preparedStatement);
+			// System.out.println("preparedStatement = " + preparedStatement);
 			ResultSet rs = preparedStatement.executeQuery();
 				
 			while(rs.next()){
@@ -115,7 +115,7 @@ public class RatingDao {
 	
 	
 	public List<Rating> getAllRatingsByUserId(int user){
-		System.out.println("dao.RatingDao: getAllRatingsByUserId for " + user);
+		// System.out.println("dao.RatingDao: getAllRatingsByUserId for " + user);
 		List<Rating> ratings = new ArrayList<Rating>();
 		try{
 			Statement statement = connection.createStatement();
@@ -138,7 +138,7 @@ public class RatingDao {
 	}
 	
 	public List<Rating> getAllRatingsByBookId(int book){
-		System.out.println("dao.RatingDao: getAllRatingsByUserId for " + book);
+		// System.out.println("dao.RatingDao: getAllRatingsByUserId for " + book);
 		List<Rating> ratings = new ArrayList<Rating>();
 		try{
 			Statement statement = connection.createStatement();

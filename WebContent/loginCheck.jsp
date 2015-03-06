@@ -15,7 +15,7 @@
 	String password = request.getParameter("password");
 	user = userDao.authCreds(email, password); /* Get the authenticated user */
 	if(user != null){
-	  System.out.println("User is authenticated");
+	  // System.out.println("User is authenticated");
 	  out.print( user.getFirstName());
 	  session.setAttribute("loggedInUser", user); /* Save this User object to the session */
 %>
@@ -23,12 +23,12 @@
 <%
 		response.sendRedirect("admin.jsp");
 	} else {
-	  System.out.println("User is NOT authenticated");
+	  // System.out.println("User is NOT authenticated");
 	  response.sendRedirect("signUp.jsp"); /* Directs to a sign up page */
 	}
 
   // myUser = userDao.getUserById(60);
-  // System.out.println(myUser.toString());
+  // // System.out.println(myUser.toString());
 
 	/* if (user.isAdmin(email, password)) {
 		session.setAttribute("email", email);

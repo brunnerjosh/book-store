@@ -59,9 +59,9 @@
 					
 					// Write the file
 					File file = new File(filePath + File.separator + fileName) ;
-					System.out.println("BEFORE fi.write()");
+					// System.out.println("BEFORE fi.write()");
 	            	fi.write( file ) ;
-	            	System.out.println("AFTER fi.write()");
+	            	// System.out.println("AFTER fi.write()");
 	            	if(!fileName.equals("")){
 	            		String photoURL = "./uploadFiles/" + fileName;
 	            		int id = Integer.parseInt(bookId);

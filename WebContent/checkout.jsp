@@ -12,11 +12,11 @@ List<Integer> bookIDs = null;
 user = (model.User) session.getAttribute("loggedInUser");
 if(user != null) {
 	bookIDs = user.getBooksInBag();
-	System.out.println("Total: " + bookDao.getTotalFor(bookIDs));
-	System.out.println("Last Shared Id: " + transDao.getLastId());
+	// System.out.println("Total: " + bookDao.getTotalFor(bookIDs));
+	// System.out.println("Last Shared Id: " + transDao.getLastId());
 /*	 for(int i = 0 ; i < bookIDs.size(); i++){
 		book = bookDao.getBookById(bookIDs.get(i));
-		System.out.println("Book in Bag: " + bookIDs.get(i));
+		// System.out.println("Book in Bag: " + bookIDs.get(i));
 	}
 */
 
@@ -26,7 +26,7 @@ if(user != null) {
 	int intBook = Integer.parseInt(strBook);
 	book = bookDao.getBookById(intBook);
 	userDao.addToCart(user, intBook); //may need to hand in the User object
-	System.out.println("Added item to cart. " + user.getFirstName() +	" has this many items in cart: " + user.getBooksInBag().size());
+	// System.out.println("Added item to cart. " + user.getFirstName() +	" has this many items in cart: " + user.getBooksInBag().size());
  */
  %>
 	<div class="container as-medium">
@@ -51,7 +51,7 @@ if(user != null) {
 							<%
 							for(int i = 0 ; i < bookIDs.size(); i++){
 								book = bookDao.getBookById(bookIDs.get(i));
-								/* System.out.println("Book in Bag: " + bookIDs.get(i)); */
+								/* // System.out.println("Book in Bag: " + bookIDs.get(i)); */
 							%>
 								<li class="item-row">
 									<p class="product-name">

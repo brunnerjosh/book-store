@@ -6,5 +6,5 @@
        	response.addCookie(cookies[i]);
 	}
 	
-    System.out.println("...All cookies crumbled (deleted)");
+    // System.out.println("...All cookies crumbled (deleted)");
 %>

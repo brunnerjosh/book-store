@@ -36,10 +36,10 @@
 											</div>
 											<%
 												int j = 0;
-												System.out.println(cat+"purchase size: " + userPurchases.size());
+												// System.out.println(cat+"purchase size: " + userPurchases.size());
 												while (userPurchases.size() > j){
 													model.UserPurchase purchase = userPurchases.get(j);
-													System.out.println("count: " + purchase.getCount());
+													// System.out.println("count: " + purchase.getCount());
 														if (purchase.getCategory().equalsIgnoreCase(cat) && purchase.getCount() >= 2){
 														%>
 															<li>

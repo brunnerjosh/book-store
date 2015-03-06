@@ -16,10 +16,10 @@ if(user != null){
 }
 String strBook = request.getParameter("bookId");
 if(strBook != null && !strBook.isEmpty()){
-	System.out.println("BookID was handed to the page: " + strBook);
+	// System.out.println("BookID was handed to the page: " + strBook);
 	int intBook = Integer.parseInt(strBook);
 	book = bookDao.getBookById(intBook);
-	System.out.println("Display Book Detail: id:" + intBook + " title:" + book.getTitle());
+	// System.out.println("Display Book Detail: id:" + intBook + " title:" + book.getTitle());
 	%>
 	
 	<div class="container as-book-detail">

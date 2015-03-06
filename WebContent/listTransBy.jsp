@@ -8,9 +8,9 @@
 String sortByType = request.getAttribute("sortByType").toString();
 List<Transaction> myTrans = (List<Transaction>) request.getAttribute("transactions");
 if(myTrans != null){
-	System.out.println("myTrans object: " + myTrans.toString());	
+	// System.out.println("myTrans object: " + myTrans.toString());	
 } else {
-	System.out.println("myTrans was NULL");
+	// System.out.println("myTrans was NULL");
 }
 
 %>
@@ -47,7 +47,7 @@ if(myTrans != null){
 				//If there's a valid next item, save the shared id from that
 				if((i+1) < myTransSize){
 					sharedTransId_next = myTrans.get(i+1).getSharedTransID(); //save next sharedTransId
-					System.out.println(sharedTransId+":"+sharedTransId_next + " for bookIDs: " + myTrans.get(i).getBookId() + ":" + myTrans.get(i+1).getBookId());
+					// System.out.println(sharedTransId+":"+sharedTransId_next + " for bookIDs: " + myTrans.get(i).getBookId() + ":" + myTrans.get(i+1).getBookId());
 				
 				//Else there was NOT a valid item next, trigger a boolean to say so
 				} else {
@@ -69,7 +69,7 @@ if(myTrans != null){
 				//compare the current and next items while ALSO making sure that there are no more items in the list (false-positive)
 				//If the two ints match, we have found a multi-part transaction
 				if(sharedTransId == sharedTransId_next && hasMoreContents){
-					System.out.println("Multi-Part i="+i);
+					// System.out.println("Multi-Part i="+i);
 					//Start a second for loop to print these results out
 					int j = 0;
 					int current = 0;
@@ -81,7 +81,7 @@ if(myTrans != null){
 
 						if((j+1) < myTransSize || j == (myTransSize-1)){
 							topBook = bookAccess.getBookById(myTrans.get(j).getBookId());
-							System.out.println("Still within list ==> I("+i+") to J("+j+") -- transSize:" + myTransSize);
+							// System.out.println("Still within list ==> I("+i+") to J("+j+") -- transSize:" + myTransSize);
 							current = myTrans.get(j).getSharedTransID();
 							if((j+1) < myTransSize){
 								next = myTrans.get(j+1).getSharedTransID();
@@ -98,27 +98,27 @@ if(myTrans != null){
 							<%
 							count++;
 						} else {
-							System.out.println("RAN OUT OF CONTENTS on " + topBook.getTitle() + " with j=" + j);
+							// System.out.println("RAN OUT OF CONTENTS on " + topBook.getTitle() + " with j=" + j);
 							hasMoreContents = false;
 						}
 						
-						System.out.println("Comparing " + current + " : " + next);
+						// System.out.println("Comparing " + current + " : " + next);
 						// If the next transaction DOES NOT have the same shared ID, error out with -1 
 						if(current != next){
-							System.out.println("Erroring out!");
+							// System.out.println("Erroring out!");
 							count = -1;
 						}
 					}
 					out.print("</ol>");
 
-					System.out.println("Setting I("+i+") to J("+j+")");
+					// System.out.println("Setting I("+i+") to J("+j+")");
 					i = (j-1); //set i (from the parent for loop) to j when for loop completes (fast-forward)
 					
 					
 				//Else the two ints DID NOT MATCH, print out a single item transaction
 				} else {
 					
-					System.out.println("Single-Part");
+					// System.out.println("Single-Part");
 					topBook = bookAccess.getBookById(myTrans.get(i).getBookId());
 					%>
 					<li class="book-item">

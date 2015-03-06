@@ -20,7 +20,7 @@ public class TransactionDao {
 
 	public TransactionDao(){
 		connection = DbUtil.getConnection();
-		System.out.println("CREATED A NEW TRANSACTION DAO OBJECT");
+		// System.out.println("CREATED A NEW TRANSACTION DAO OBJECT");
 	}
 
 	public void addTransaction(Transaction transaction){
@@ -35,7 +35,7 @@ public class TransactionDao {
 		preparedStatement.setInt(4, transaction.getUserId());
 		preparedStatement.setDouble(5, transaction.getTransactionAmount());
 		preparedStatement.executeUpdate();
-		System.out.println("Transaction Added! I should remove the item from the user's cart");
+		// System.out.println("Transaction Added! I should remove the item from the user's cart");
 
 		} catch (SQLException e){
 			e.printStackTrace();
@@ -104,7 +104,7 @@ public class TransactionDao {
 		return transactions;
 	}
 	public List<Transaction> getAllTransByBookId(int book){
-		System.out.println("dao.TransactionDao: getAllTransByBookId for " + book);
+		// System.out.println("dao.TransactionDao: getAllTransByBookId for " + book);
 		List<Transaction> transactions = new ArrayList<Transaction>();
 		try{
 			PreparedStatement preparedStatement = connection.prepareStatement("select * from transactions where bookId=?");
@@ -130,7 +130,7 @@ public class TransactionDao {
 	}
 	
 	public List<UserPurchase> getUserPurchaseData(){
-		System.out.println("dao.TransactionDao: getUserPurchaseData");
+		// System.out.println("dao.TransactionDao: getUserPurchaseData");
 		
 		List<UserPurchase> list = new ArrayList<UserPurchase>();
 		try{
@@ -154,7 +154,7 @@ public class TransactionDao {
 		return list;
 	}
 	public List<Transaction> getAllTransByUserId(int user){
-		System.out.println("dao.TransactionDao: getAllTransByUserId for " + user);
+		// System.out.println("dao.TransactionDao: getAllTransByUserId for " + user);
 		List<Transaction> transactions = new ArrayList<Transaction>();
 		try{
 			PreparedStatement preparedStatement = connection.prepareStatement("select * from transactions where userId=?");
@@ -179,15 +179,15 @@ public class TransactionDao {
 
 	}
 	public List<Transaction> getTopTransactionsByCategory(int topAmount, String category){
-		System.out.println("dao.TransactionDao: getTopTransactions for top " + topAmount);
+		// System.out.println("dao.TransactionDao: getTopTransactions for top " + topAmount);
 		List<Transaction> transactions = new ArrayList<Transaction>();
 		try{
-			//System.out.println("In Dao, category = " + category + ", topAmount = " + topAmount);
+			//// System.out.println("In Dao, category = " + category + ", topAmount = " + topAmount);
 						
 			String ps = " ";
 			
 			if (category.equalsIgnoreCase("all")) {
-				System.out.println("Looking for ALL categories");
+				// System.out.println("Looking for ALL categories");
 				ps = "select *, COUNT(t.bookId) from transactions t INNER JOIN  books b on t.bookId = b.bookId and (b.category in ('Fiction','Children','Poetry','Biography','Mystery','Horror','Romance')) where t.transactionDate > current_date()-7 group by t.bookId order by COUNT(t.bookId) DESC limit ?";
 			} else {
 				ps = "select *, COUNT(t.bookId) from transactions t INNER JOIN  books b on t.bookId = b.bookId and b.category =? group by t.bookId order by COUNT(t.bookId) DESC limit ?";
@@ -202,7 +202,7 @@ public class TransactionDao {
 				preparedStatement.setInt(2, topAmount);
 			}
 			
-			System.out.println("preparedStatement = " + preparedStatement);
+			// System.out.println("preparedStatement = " + preparedStatement);
 			
 			ResultSet rs = preparedStatement.executeQuery();
 			
@@ -235,7 +235,7 @@ public class TransactionDao {
 			while(rs.next()){
 				
 				totalSales = rs.getDouble("total");
-				System.out.println("Total Sales : " + totalSales);
+				// System.out.println("Total Sales : " + totalSales);
 			}
 		} catch (SQLException e){
 			e.printStackTrace();
@@ -258,7 +258,7 @@ public class TransactionDao {
 				mSale.setYear(rs.getString("year"));
 				System.out.print("Year: " + mSale.getYear() + " ");				
 				Double sales = Double.parseDouble(rs.getString("sum"));
-				System.out.println("Sum: " + mSale.getSales());
+				// System.out.println("Sum: " + mSale.getSales());
 				mSale.setSales(sales);
 				list.add(mSale);
 			}
@@ -303,7 +303,7 @@ public class TransactionDao {
 				System.out.print("Day: " + wSale.getDay() + " ");	
 				Double sales = Double.parseDouble(rs.getString("sum"));
 				wSale.setSales(sales);
-				System.out.println(" Sales: " + wSale.getSales());
+				// System.out.println(" Sales: " + wSale.getSales());
 				list.add(wSale);
 			}
 		} catch (SQLException e){
@@ -335,7 +335,7 @@ public class TransactionDao {
 	
 	public List<Transaction> getTransactionsBy(String sortByType){
 		List<Transaction> transactions = new ArrayList<Transaction>();
-		System.out.println("TransactionDao: Getting transactions by " + sortByType);
+		// System.out.println("TransactionDao: Getting transactions by " + sortByType);
 		return transactions;
 	}
 
@@ -347,10 +347,10 @@ public class TransactionDao {
 		} else {
 			arrowDirection = "<";
 		}
-		System.out.println("TransactionDao: Getting transactions " + thresholdParam + "("+arrowDirection+") $" + priceLimit);
+		// System.out.println("TransactionDao: Getting transactions " + thresholdParam + "("+arrowDirection+") $" + priceLimit);
 		try{
 			PreparedStatement preparedStatement = connection.prepareStatement("select * from transactions where transactionAmount" + arrowDirection + priceLimit + " ORDER BY sharedTransID DESC");
-			System.out.println("prepared statement: " + preparedStatement);
+			// System.out.println("prepared statement: " + preparedStatement);
 			ResultSet rs = preparedStatement.executeQuery();
 
 			while(rs.next()){

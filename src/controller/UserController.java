@@ -29,28 +29,28 @@ public class UserController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String forward="";
 		String action = request.getParameter("action");
-		System.out.println("UserController: doGet");
+		// System.out.println("UserController: doGet");
 		if (action.equalsIgnoreCase("delete")) {
-			System.out.println("UserController: DELETE");
+			// System.out.println("UserController: DELETE");
 			int userId = Integer.parseInt(request.getParameter("userId"));
 			dao.deleteUser(userId);
 			forward = LIST_USER;
 			request.setAttribute("users", dao.getAllUsers());
 		}
 		else if (action.equalsIgnoreCase("edit")){
-			System.out.println("UserController: EDIT");
+			// System.out.println("UserController: EDIT");
 			forward = INSERT_OR_EDIT;
 			int userId = Integer.parseInt(request.getParameter("userId"));
 			User user = dao.getUserById(userId);
 			request.setAttribute("user", user);
 		}
 		else if (action.equalsIgnoreCase("listUser")){
-			System.out.println("UserController: LIST USER");
+			// System.out.println("UserController: LIST USER");
 			forward = LIST_USER;
 			request.setAttribute("users", dao.getAllUsers());
 		}
 		else {
-			System.out.println("UserController: ELSE");
+			// System.out.println("UserController: ELSE");
 			forward = INSERT_OR_EDIT;
 		}
 		
@@ -65,11 +65,11 @@ public class UserController extends HttpServlet {
         user.setPassword(request.getParameter("password"));
         String forward= "";
     		String action = request.getParameter("action");
-        System.out.println("UserController: doPost");
+        // System.out.println("UserController: doPost");
         try {
             Date dob = new SimpleDateFormat("MM/dd/yyyy").parse(request.getParameter("dob"));
             user.setDob(dob);
-            System.out.println("UserController: doPost: setDob: " + user.toString());
+            // System.out.println("UserController: doPost: setDob: " + user.toString());
         } catch (ParseException e) {
             e.printStackTrace();
         }
@@ -82,11 +82,11 @@ public class UserController extends HttpServlet {
         else
         {
             user.setUserid(Integer.parseInt(userid));
-            System.out.println("UserController: doPost UPDATE for " + user.getFirstName());
+            // System.out.println("UserController: doPost UPDATE for " + user.getFirstName());
             dao.updateUser(user);
         }
         if(action != null && action.equalsIgnoreCase("update-settings")){
-        	System.out.println("USER IS CHANGING SETTINGS");
+        	// System.out.println("USER IS CHANGING SETTINGS");
 	        RequestDispatcher view = request.getRequestDispatcher(USER_PROFILE);
 	        request.setAttribute("loggedInUser", user);
 	        view.forward(request, response);

@@ -9,5 +9,5 @@
 	password_ck.setMaxAge(60*60*24);
 	response.addCookie(password_ck);
 	
-	System.out.println("All cookies created");
+	// System.out.println("All cookies created");
 %>

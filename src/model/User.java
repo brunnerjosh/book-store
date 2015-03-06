@@ -25,10 +25,10 @@ public class User {
     }
     public List<Integer> getBooksInBag(){
     	if(booksInBag != null){
-    		System.out.println("User: booksInBag: "+ booksInBag.size());
+    		// System.out.println("User: booksInBag: "+ booksInBag.size());
     		return this.booksInBag;
     	} else {
-    		System.out.println("booksInBag was NULL");
+    		// System.out.println("booksInBag was NULL");
     		return null;
     	}
     }
@@ -36,7 +36,7 @@ public class User {
     	// Check that we have a valid bookID
     	if(bookID >= 0){
     		this.booksInBag.add(bookID);
-    		System.out.println("ADDED book to bag: " + booksInBag.size());
+    		// System.out.println("ADDED book to bag: " + booksInBag.size());
     		return true;
     	}
     	return false; // Not a valid bookID
@@ -45,7 +45,7 @@ public class User {
     	// Check that we have a valid bookID
     	if(bookID >= 0){
     		this.booksInBag.remove(bookID);
-    		System.out.println("REMOVED book from bag: " + booksInBag.size());
+    		// System.out.println("REMOVED book from bag: " + booksInBag.size());
     		return true;
     	}
     	return false; // Not a valid bookID
@@ -87,7 +87,7 @@ public class User {
     	return password.equals(ADMIN_PASS);
     }
     public boolean isAdmin(){
-//    	System.out.println("uName: " + uName + " -- " + "uPass: " + uPass);
+//    	// System.out.println("uName: " + uName + " -- " + "uPass: " + uPass);
 //    	return isAdminName(uName) && isAdminPassword(uPass);
     	return this.isAdmin;
     }

@@ -5,14 +5,14 @@ customer = (model.User) session.getAttribute("loggedInUser");
 List<Integer> totalBooksInBag = null;
 
 if(customer != null) {
-	System.out.println("Found customer");
+	// System.out.println("Found customer");
 	totalBooksInBag = customer.getBooksInBag();
 } else {
-	System.out.println("Didn't find customer");
+	// System.out.println("Didn't find customer");
 }
 
 if(totalBooksInBag != null){
-	System.out.println("Shopping bag amount: " + totalBooksInBag.size());
+	// System.out.println("Shopping bag amount: " + totalBooksInBag.size());
 %>
 	<div class="bag-dropdown">
 		<span>You have <%=totalBooksInBag.size()%> item(s) in your cart</span>
@@ -28,7 +28,7 @@ if(totalBooksInBag != null){
 	</div>
 <%
 } else {
-	System.out.println("List was NULL - user is NOT SIGNED IN");
+	// System.out.println("List was NULL - user is NOT SIGNED IN");
 %>
 	<div class="bag-dropdown">
 		<span>You are not signed in</span>

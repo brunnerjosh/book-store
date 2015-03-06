@@ -25,11 +25,11 @@ public class UserDao {
 		connection = DbUtil.getConnection();
 		transDao = new TransactionDao();
 		ratingDao = new RatingDao();
-		System.out.println("CREATED A USER DAO");
+		// System.out.println("CREATED A USER DAO");
 	}
 		
 	public void addUser(User user){
-		System.out.println("UserDao: addUser: " + user.toString());
+		// System.out.println("UserDao: addUser: " + user.toString());
 		try {
             PreparedStatement preparedStatement = connection
                     .prepareStatement("insert into users(firstname,lastname,dob,email,password) values (?, ?, ?, ?, ? )");
@@ -47,7 +47,7 @@ public class UserDao {
 	}
 	
 	public void deleteUser(int userId){
-		System.out.println("UserDao: deleteUser: " + userId);
+		// System.out.println("UserDao: deleteUser: " + userId);
 		try {
             PreparedStatement preparedStatement = connection
                     .prepareStatement("delete from users where userid=?");
@@ -62,7 +62,7 @@ public class UserDao {
 	
 	public int countBooksPurchased(int userId){
 		if(userId > 0){
-			System.out.println("dao.UserDao: countBooksPurchased for " + userId);
+			// System.out.println("dao.UserDao: countBooksPurchased for " + userId);
 			List<Transaction> userTransactions = transDao.getAllTransByUserId(userId);
 			return userTransactions.size();
 		}
@@ -71,7 +71,7 @@ public class UserDao {
 	
 	public int countRatingsMade(int userId){
 		if(userId > 0){
-			System.out.println("dao.UserDao: countRatingsMade for " + userId);
+			// System.out.println("dao.UserDao: countRatingsMade for " + userId);
 			List<Rating> userRatings = ratingDao.getAllRatingsByUserId(userId);
 			return userRatings.size();
 		}
@@ -79,7 +79,7 @@ public class UserDao {
 	}
 	
 	public void updateUser(User user){
-		System.out.println("UserDao: updateUser: " + user.toString());
+		// System.out.println("UserDao: updateUser: " + user.toString());
 		try {
             PreparedStatement preparedStatement = connection
                     .prepareStatement("update users set firstname=?, lastname=?, dob=?, email=?, password=? " +
@@ -91,7 +91,7 @@ public class UserDao {
             preparedStatement.setString(4, user.getEmail());
             preparedStatement.setString(5, user.getPassword());
             preparedStatement.setInt(6, user.getUserid());
-            System.out.println("prepared statement: " + preparedStatement);
+            // System.out.println("prepared statement: " + preparedStatement);
             preparedStatement.executeUpdate();
 
         } catch (SQLException e) {
@@ -148,30 +148,30 @@ public class UserDao {
 	//	called to add the item to the user's cart.	
 	public boolean addToCart(User customer, int bookID){
 //		User customer = this.getUserById(userID); // Retrieve User object
-		System.out.println("customer: " + customer.getFirstName() + " " + customer.getLastName());
+		// System.out.println("customer: " + customer.getFirstName() + " " + customer.getLastName());
 		
 		// If the bookID was successfully added to the user's 
 		// shopping bag, return true		
 		if(customer.addBookToBag(bookID)){
-			System.out.println("Book added to shopping bag: SUCCESS: " + customer.getBooksInBag().size());
+			// System.out.println("Book added to shopping bag: SUCCESS: " + customer.getBooksInBag().size());
 			return true;
 		}
-		System.out.println("Book added to shopping bag: FAILED");
+		// System.out.println("Book added to shopping bag: FAILED");
 		return false; // Transaction failed
 	}
 	
 	// When a user clicks "Add to Cart" button, this function is 
 	//	called to add the item to the user's cart.	
 	public boolean removeFromCart(User customer, int bookID){
-		System.out.println("customer: " + customer.getFirstName() + " " + customer.getLastName());
+		// System.out.println("customer: " + customer.getFirstName() + " " + customer.getLastName());
 		
 		// If the bookID was successfully added to the user's 
 		// shopping bag, return true		
 		if(customer.removeBookFromBag(bookID)){
-			System.out.println("Book removed from shopping bag: SUCCESS: " + customer.getBooksInBag().size());
+			// System.out.println("Book removed from shopping bag: SUCCESS: " + customer.getBooksInBag().size());
 			return true;
 		}
-		System.out.println("Book removed from shopping bag: FAILED");
+		// System.out.println("Book removed from shopping bag: FAILED");
 		return false; // Transaction failed
 	}	
 	
@@ -187,13 +187,13 @@ public class UserDao {
 				
 				// Check credentials supplied against the DB
 				if(users.get(i).getEmail().equals(uEmail) && users.get(i).getPassword().equals(uPassword)){
-					System.out.println("User Found: " + users.get(i).getFirstName());
+					// System.out.println("User Found: " + users.get(i).getFirstName());
 					// User WAS FOUND, return that User
 					return users.get(i); 
 				}
 			}
 		}
-		System.out.println("User NOT FOUND: [u: " + uEmail + "] [p: " + uPassword + "]");
+		// System.out.println("User NOT FOUND: [u: " + uEmail + "] [p: " + uPassword + "]");
 		// User WAS NOT FOUND, return NULL
 		return null; 
 	}

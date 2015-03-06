@@ -33,7 +33,7 @@ public class BookController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String forward = "";
 		String action = request.getParameter("action");
-		System.out.println("GETTING ALL THE THINGS!!!: " + action);
+		// System.out.println("GETTING ALL THE THINGS!!!: " + action);
 		if (action.equalsIgnoreCase("delete")) {
 			int bookId = Integer.parseInt(request.getParameter("bookId"));
 			dao.deleteBook(bookId);
@@ -53,11 +53,11 @@ public class BookController extends HttpServlet {
 		else if (action.equalsIgnoreCase("bookDisplay")){
 			forward = BOOK_DISPLAY;
 			String category = request.getParameter("category");
-			System.out.println("category = " + category);
+			// System.out.println("category = " + category);
 			if (category.equalsIgnoreCase("all")) {
 				request.setAttribute("books", dao.getAllBooks());
 			} else if (category.equalsIgnoreCase("Search")) {
-				System.out.println("User searched something");
+				// System.out.println("User searched something");
 				String searchQuery = request.getParameter("query");
 				request.setAttribute("books", dao.getBooksBySearch(searchQuery));
 			} else if (category.equalsIgnoreCase("topRated")) {
@@ -69,10 +69,10 @@ public class BookController extends HttpServlet {
 		else if (action.equalsIgnoreCase("bookDetail")){
 			forward = BOOK_DETAIL;
 			int bookId = Integer.parseInt(request.getParameter("bookId"));
-			System.out.println("bookId = " + bookId);
+			// System.out.println("bookId = " + bookId);
 			Book book = dao.getBookById(bookId);
 			request.setAttribute("book", book);
-			System.out.println(book.toString());
+			// System.out.println(book.toString());
 		}
 		else {
 			forward = INSERT_OR_EDIT;
@@ -97,23 +97,23 @@ public class BookController extends HttpServlet {
 		}
 		String rating = request.getParameter("reviewRating");
 		if (rating == null || rating.isEmpty()){
-			System.out.println("Review was null or empty");
+			// System.out.println("Review was null or empty");
 			book.setReviewRating(0);
 		}
 		else{
 			int rate = Integer.parseInt(rating);
-			System.out.println("Setting a Book Rating <===");
+			// System.out.println("Setting a Book Rating <===");
 			book.setReviewRating(rate);
 		}
 
 		String priceFromForm = request.getParameter("price");
-		System.out.println("Price from form: " + priceFromForm);
+		// System.out.println("Price from form: " + priceFromForm);
 		if(priceFromForm == null || priceFromForm.isEmpty()){
-			System.out.println("Price was null for Book Add");
+			// System.out.println("Price was null for Book Add");
 			book.setPrice(0.0);
 		} else {
 			book.setPrice(Double.parseDouble(request.getParameter("price")));
-			System.out.println("Price was valid!");
+			// System.out.println("Price was valid!");
 		}
 		
 		book.setYearPublished(request.getParameter("publicationYear"));
@@ -130,7 +130,7 @@ public class BookController extends HttpServlet {
 			dao.updateBook(book);
 		}
 
-		System.out.println("Book OBJ: " + book.toString());
+		// System.out.println("Book OBJ: " + book.toString());
 		
 		RequestDispatcher view = request.getRequestDispatcher(LIST_BOOK);
 		request.setAttribute("books", dao.getAllBooks());
