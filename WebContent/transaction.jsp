@@ -1,6 +1,19 @@
 <jsp:useBean id="transDao" class="dao.TransactionDao"/>
  <!-- HEADER BAR -->
  <%@ include file = "/partials/header.jsp" %>
+ 
+ <%
+ 	String transId = request.getParameter("transactionId");
+ 	System.out.println("trsnID being edited: " + transId);
+ 	int formSharedTransId = 0;
+ 	if(transId != null){
+ 		int sharedTransId = transDao.getTransactionById(Integer.parseInt(transId)).getSharedTransID();
+ 		formSharedTransId = sharedTransId; 
+ 	} else {
+ 		formSharedTransId = transDao.getLastId()+1;
+ 	}  
+ 	
+ %>
 
  <sql:setDataSource
       url="jdbc:mysql://localhost:3306/Bookstore"
@@ -23,9 +36,9 @@
       });
   </script> -->
   <div id="add-user-details" class="add-entity as-user-entry">
-    <p class="as-header">Enter user details:</p>
+    <p class="as-header">Enter transaction details:</p>
       <form method="POST" action='TransactionController' name="frmAddTransaction">
-          <input type="text" placeholder="Shared Transaction ID" name="sharedTransID" value="<%= transDao.getLastId()+1 %>" />
+          <input type="text" placeholder="Shared Transaction ID" name="sharedTransID" value="<%=formSharedTransId %>" />
           <input type="hidden" placeholder="Transaction ID" readonly="readonly" name="transactionId" value="<c:out value="${transaction.transactionId}" />" /> <br />
           <input type="text" placeholder="Transaction Date (MM/DD/YYYY)" name="transactionDate" value="<fmt:formatDate pattern="MM/dd/yyyy" value="${transaction.transactionDate}" />" /> <br />
           <input type="text" placeholder="User ID" name="userId" value="<c:out value="${transaction.userId}" />" />
@@ -41,7 +54,8 @@
               </c:forEach>
          </select> * make sure this book exists<br /> <!-- Should I route the user info in here? -->
          <input type="text" placeholder="Transaction Amount" name="transactionAmount" value="<c:out value="${transaction.transactionAmount}" />" /> <br />
-    <input type="submit" value="Submit" />
+    	<button type="submit">Submit</button>
+    	<a href="TransactionController?action=listTransaction">Cancel</a>
   </form>
   </div>
 </div>

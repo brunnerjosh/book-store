@@ -45,7 +45,6 @@ public class TransactionDao {
 		try{
 			Statement statement = connection.createStatement();
 			ResultSet rs = statement.executeQuery("SELECT sharedTransID FROM transactions ORDER BY sharedTransID DESC LIMIT 1");
-			
 			while(rs.next()){
 				last = rs.getInt("sharedTransID");
 			}
