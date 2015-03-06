@@ -12,6 +12,7 @@ import model.Book;
 import model.Transaction;
 import model.MonthlySale;
 import model.WeeklySale;
+import model.UserPurchase;
 import util.DbUtil;
 
 public class TransactionDao {
@@ -126,6 +127,31 @@ public class TransactionDao {
 		
 	return transactions;
 
+	}
+	
+	public List<UserPurchase> getUserPurchaseData(){
+		System.out.println("dao.TransactionDao: getUserPurchaseData");
+		
+		List<UserPurchase> list = new ArrayList<UserPurchase>();
+		try{
+			PreparedStatement preparedStatement = connection.prepareStatement("Select u.firstName, u.lastName, t.transactionId,"
+					+ "b.title, b.category, count(b.category) as count from users as u join transactions as t "
+					+ "on u.userId = t.userId join books as b on b.bookId = t.bookId group by t.userId , b.category");
+			ResultSet rs = preparedStatement.executeQuery();
+			
+			while(rs.next()){
+				UserPurchase userPurchase = new UserPurchase();
+				userPurchase.setFirstName(rs.getString("firstName"));
+				userPurchase.setLastName(rs.getString("lastName"));
+				userPurchase.setTransactionId(rs.getInt("transactionId"));
+				userPurchase.setCategory(rs.getString("category"));
+				userPurchase.setCount(rs.getInt("count"));
+				list.add(userPurchase);
+			}
+		}catch(SQLException e){
+			e.printStackTrace();
+		}
+		return list;
 	}
 	public List<Transaction> getAllTransByUserId(int user){
 		System.out.println("dao.TransactionDao: getAllTransByUserId for " + user);
