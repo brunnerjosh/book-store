@@ -231,6 +231,37 @@ public class BookDao {
 	
 		return books;
 	}
+	
+	public List<Book> getTopRated() {
+		System.out.println("dao.BookDao: getAllBooks");
+		List<Book> books = new ArrayList<Book>();
+		try{
+			Statement statement = connection.createStatement();
+			ResultSet rs = statement.executeQuery("SELECT * FROM Bookstore.books ORDER BY reviewRating DESC");
+			
+			while(rs.next()){
+				Book book = new Book();
+				
+				book.setBookId(rs.getInt("bookId"));
+				book.setTitle(rs.getString("title"));
+				book.setAuthor(rs.getString("author"));
+				book.setInventory(rs.getInt("inventoryAmount"));
+				book.setPrice(rs.getDouble("price"));
+				book.setCategory(rs.getString("category"));
+				book.setPublisher(rs.getString("publisher"));
+				book.setYearPublished(rs.getString("publicationYear"));
+				book.setReviewRating(calculateRating(book.getBookId()));
+//				book.setReviewRating(rs.getInt("reviewRating"));
+				book.setPhoto(rs.getString("photo"));
+				books.add(book);
+			}
+		} catch(SQLException e){
+			e.printStackTrace();
+		}
+	
+		return books;
+	}
+	
 	public List<Book> getAllBooksByCategory(String category) {
 		System.out.println("dao.BookDao: getAllBooksByCategory");
 		List<Book> books = new ArrayList<Book>();

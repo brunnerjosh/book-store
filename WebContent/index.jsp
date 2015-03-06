@@ -32,7 +32,7 @@
 				</td>
 				<td>
 					<a href="BookController?action=bookDisplay&category=all">
-						<button class="cta-button view-books">View Books</button>
+						<button class="cta-button view-books">Browse Books</button>
 					</a>
 				</td>
 			</tr>

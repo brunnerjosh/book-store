@@ -462,6 +462,9 @@ button.s-blue:hover {
 .item-list-group div a.list-item {
   margin-right: 15px;
 }
+.item-list-group a.sort-link {
+  margin-right: 31px !important;
+}
 .item-list-group.as-row-listing ol {
   margin: 0;
 }
@@ -1107,13 +1110,13 @@ button.s-blue:hover {
 }
 .container.as-index-page button.sign-up {
   background: #228abd;
-  border: 2px solid #228abd;
+  border: 1px solid #228abd;
 }
 .container.as-index-page button.sign-in {
   background: #175c7f;
-  border: 2px solid #175c7f;
+  border: 1px solid #175c7f;
 }
 .container.as-index-page button.view-books {
   background: #0e394f;
-  border: 2px solid #0e394f;
+  border: 1px solid #0e394f;
 }

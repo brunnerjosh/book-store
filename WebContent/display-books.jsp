@@ -40,6 +40,9 @@
 					%>
 				</div>
 			</div>
+			<div class="side-right">
+				<a class="sort-link" href="BookController?action=bookDisplay&category=topRated">Browse All Top Rated</a>
+			</div>
 		</div>
 		<div class="products">
 			<c:forEach items="${books}" var="book">

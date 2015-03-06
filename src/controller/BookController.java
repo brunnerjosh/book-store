@@ -60,6 +60,8 @@ public class BookController extends HttpServlet {
 				System.out.println("User searched something");
 				String searchQuery = request.getParameter("query");
 				request.setAttribute("books", dao.getBooksBySearch(searchQuery));
+			} else if (category.equalsIgnoreCase("topRated")) {
+				request.setAttribute("books", dao.getTopRated());
 			} else {
 				request.setAttribute("books", dao.getAllBooksByCategory(category));
 			}
