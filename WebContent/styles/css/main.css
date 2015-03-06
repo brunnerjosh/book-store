@@ -954,6 +954,38 @@ button.s-blue:hover {
 .analytics-right-section .sales-column.as-weekly .sales-difference {
   left: 52px;
 }
+.analytics-right-section .sales-column.as-direct-market-data h2 {
+  border-bottom: 4px solid #000;
+}
+.analytics-right-section .sales-column.as-direct-market-data .header-row,
+.analytics-right-section .sales-column.as-direct-market-data .top-buyers {
+  margin-top: 20px;
+  font-size: 20px;
+  color: #bdbbbb;
+}
+.analytics-right-section .sales-column.as-direct-market-data .header-row .type,
+.analytics-right-section .sales-column.as-direct-market-data .top-buyers .type {
+  font-size: 24px;
+  color: #000;
+  letter-spacing: 2px;
+}
+.analytics-right-section .sales-column.as-direct-market-data .top-buyers {
+  position: absolute;
+  top: -18px;
+  right: 0;
+}
+.analytics-right-section .sales-column.as-direct-market-data li {
+  margin-left: 40px;
+  margin-right: 40px;
+}
+.analytics-right-section .sales-column.as-direct-market-data li .buyer-name {
+  font-size: 20px;
+  font-weight: bold;
+}
+.analytics-right-section .sales-column.as-direct-market-data li .buyer-purchase-count {
+  color: #bdbbbb;
+  line-height: 1;
+}
 .analytics-right-section .sales-column h3.header {
   margin: 0 0px 5px 0;
   padding-bottom: 4px;
