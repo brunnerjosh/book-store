@@ -16,39 +16,57 @@
 		<%@ include file = 'analytics-left-side.jsp' %>
 	</div>
 	<div class="pane-right">
-	<ul>
-	<%
-		String [] categories = bookDao.getBookCategories();
-		List<model.UserPurchase> userPurchases = transDao.getUserPurchaseData();
-		for (int i = 1; i < categories.length; i++){
-			String cat = categories[i];
-		
-	%>	
-	<div><%= cat %></div>
-		<%
-		int j = 0;
-		while (userPurchases.size() > j){
-			model.UserPurchase purchase = userPurchases.get(j);
-			if (purchase.getCategory().equalsIgnoreCase(cat) &&
-					purchase.getCount() >= 2){
-			%>
-				<li>firstName=<%=purchase.getFirstName() %>, 
-				 	lastName=<%=purchase.getLastName() %>,
-				 	transactionId=<%=purchase.getTransacitonId() %>, 
-				 	category=<%=purchase.getCategory() %>, 
-				 	count=<%=purchase.getCount() %></li>		
-			<%
-			}
-			j++;
-		}
-	%>
-		
-	
-	<%} %>
-	</ul>
-		<ul>
-	
-		</ul>
+		<div class="analytics-right-section">
+			<table class="stats-display width-100">
+				<tr>
+					<td>
+						<div class="sales-column as-direct-market-data">
+							<h2>Direct Market Data (By Category)</h2>
+							<ul>
+							<%
+								String [] categories = bookDao.getBookCategories();
+								int [][] mostPopular = new int[categories.length][2];
+								List<model.UserPurchase> userPurchases = transDao.getUserPurchaseData();
+								for (int i = 1; i < categories.length; i++){
+									String cat = categories[i];
+									%>
+										<div class="relative">
+											<div class="header-row relative">Category: 
+												<span class="type"><%=cat%></span>
+											</div>
+											<%
+												int j = 0;
+												System.out.println(cat+"purchase size: " + userPurchases.size());
+												while (userPurchases.size() > j){
+													model.UserPurchase purchase = userPurchases.get(j);
+													System.out.println("count: " + purchase.getCount());
+														if (purchase.getCategory().equalsIgnoreCase(cat) && purchase.getCount() >= 2){
+														%>
+															<li>
+															 	<div class="buyer-name"><%=purchase.getFirstName() %> <%=purchase.getLastName() %></div>
+															 	<div class="buyer-purchase-count">purchase count: <%=purchase.getCount() %></div>
+														 	</li>		
+														<%
+														mostPopular[i][0]++;
+														mostPopular[i][1] = 1;
+														} 
+													j++;
+												}
+												%>
+													<div class="top-buyers">Customers: <span class="type"><%=mostPopular[i][0] %></span></div>
+										</div>
+											<%
+											if(mostPopular[i][1] != 1){
+												out.print("<div class=\"s-red\">*This was not a popular category this month :(</div> ");
+											}
+										}
+									%>
+							</ul>
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
 	</div>
 </div>
 
