@@ -11,7 +11,7 @@
 		<h1 class="as-header">Sign up:</h1>
 		<form method="POST" action='UserController' name="frmAddUser">
 			<input type="hidden" name="frmSignUp" value="signUp" />
-		    <input type="text" readonly="readonly" name="userid" placeholder="User ID" value="<c:out value="${user.userid}" />" />
+		    <input type="hidden" readonly="readonly" name="userid" placeholder="User ID" value="<c:out value="${user.userid}" />" />
 		    <input type="text" name="firstName" placeholder="First Name" value="<c:out value="${user.firstName}" />" />
 		    <input type="text" name="lastName" placeholder="Last Name" value="<c:out value="${user.lastName}" />" />
 		    <input type="text" name="dob" placeholder="Date of Birth (MM/DD/YYYY)" value="<fmt:formatDate pattern="MM/dd/yyyy" value="${user.dob}" />" />

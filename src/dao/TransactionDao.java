@@ -124,21 +124,21 @@ public class TransactionDao {
 		} catch(SQLException e){
 		e.printStackTrace();
 		}
-		
+
 	return transactions;
 
 	}
-	
+
 	public List<UserPurchase> getUserPurchaseData(){
 		// System.out.println("dao.TransactionDao: getUserPurchaseData");
-		
+
 		List<UserPurchase> list = new ArrayList<UserPurchase>();
 		try{
 			PreparedStatement preparedStatement = connection.prepareStatement("Select u.firstName, u.lastName, t.transactionId,"
 					+ "b.title, b.category, count(b.category) as count from users as u join transactions as t "
 					+ "on u.userId = t.userId join books as b on b.bookId = t.bookId group by t.userId , b.category");
 			ResultSet rs = preparedStatement.executeQuery();
-			
+
 			while(rs.next()){
 				UserPurchase userPurchase = new UserPurchase();
 				userPurchase.setFirstName(rs.getString("firstName"));
@@ -174,7 +174,7 @@ public class TransactionDao {
 		} catch(SQLException e){
 		e.printStackTrace();
 		}
-		
+
 	return transactions;
 
 	}
@@ -183,29 +183,29 @@ public class TransactionDao {
 		List<Transaction> transactions = new ArrayList<Transaction>();
 		try{
 			//// System.out.println("In Dao, category = " + category + ", topAmount = " + topAmount);
-						
+
 			String ps = " ";
-			
+
 			if (category.equalsIgnoreCase("all")) {
 				// System.out.println("Looking for ALL categories");
 				ps = "select *, COUNT(t.bookId) from transactions t INNER JOIN  books b on t.bookId = b.bookId and (b.category in ('Fiction','Children','Poetry','Biography','Mystery','Horror','Romance')) where t.transactionDate > current_date()-7 group by t.bookId order by COUNT(t.bookId) DESC limit ?";
 			} else {
 				ps = "select *, COUNT(t.bookId) from transactions t INNER JOIN  books b on t.bookId = b.bookId and b.category =? group by t.bookId order by COUNT(t.bookId) DESC limit ?";
 			}
-			
+
 			PreparedStatement preparedStatement = connection.prepareStatement(ps);
-			
+
 			if (category.equalsIgnoreCase("all")) {
 				preparedStatement.setInt(1, topAmount);
 			} else {
 				preparedStatement.setString(1, category);
 				preparedStatement.setInt(2, topAmount);
 			}
-			
+
 			// System.out.println("preparedStatement = " + preparedStatement);
-			
+
 			ResultSet rs = preparedStatement.executeQuery();
-			
+
 			while(rs.next()){
 				Transaction transaction = new Transaction();
 				transaction.setTransactionId(rs.getInt("transactionId"));
@@ -218,29 +218,29 @@ public class TransactionDao {
 		} catch(SQLException e){
 		e.printStackTrace();
 		}
-		
+
 	return transactions;
 
 	}
-	
+
 	public double getTotalSales(){
 		double totalSales = 0.00;
-		
+
 		try{
 			String ps = " ";
 			ps = "     SELECT Sum(  transactionAmount ) as total FROM transactions ";
 			PreparedStatement preparedStatement = connection.prepareStatement(ps);
 			ResultSet rs = preparedStatement.executeQuery();
-			
+
 			while(rs.next()){
-				
+
 				totalSales = rs.getDouble("total");
 				// System.out.println("Total Sales : " + totalSales);
 			}
 		} catch (SQLException e){
 			e.printStackTrace();
 		}
-		
+
 		return totalSales;
 	}
 	public List<MonthlySale> getMonthlySales(){
@@ -250,13 +250,13 @@ public class TransactionDao {
 			ps = "select MONTHNAME(transactionDate) AS month, YEAR(transactionDate) as year, SUM(transactionAmount) AS sum FROM transactions GROUP BY YEAR(transactionDate), MONTH(transactionDate)";
 			PreparedStatement preparedStatement = connection.prepareStatement(ps);
 			ResultSet rs = preparedStatement.executeQuery();
-			
+
 			while(rs.next()){
 				MonthlySale mSale = new MonthlySale();
 				mSale.setMonth(rs.getString("month"));
-				System.out.print("Month: " + mSale.getMonth() + " ");
+				//System.out.print("Month: " + mSale.getMonth() + " ");
 				mSale.setYear(rs.getString("year"));
-				System.out.print("Year: " + mSale.getYear() + " ");				
+				//System.out.print("Year: " + mSale.getYear() + " ");
 				Double sales = Double.parseDouble(rs.getString("sum"));
 				// System.out.println("Sum: " + mSale.getSales());
 				mSale.setSales(sales);
@@ -283,24 +283,24 @@ public class TransactionDao {
 					+ "INTERVAL WEEK(transactionDate) WEEK), INTERVAL WEEKDAY( DATE_ADD(MAKEDATE(YEAR(transactionDate), 1), "
 					+ "INTERVAL WEEK(transactionDate) WEEK)) -7 DAY),'%m/%d') AS weekEnd_date "
 					+ "FROM transactions GROUP BY YEARWEEK(transactionDate)";
-				
+
 			PreparedStatement preparedStatement = connection.prepareStatement(ps);
 			ResultSet rs = preparedStatement.executeQuery();
-			
+
 			while(rs.next()){
 				WeeklySale wSale = new WeeklySale();
 				wSale.setWeek(rs.getString("week"));
-				System.out.print("Week: " + wSale.getWeek());
+				// System.out.print("Week: " + wSale.getWeek());
 				wSale.setYear(rs.getString("year"));
-				System.out.print("Year: " + wSale.getYear() + " ");	
+				// System.out.print("Year: " + wSale.getYear() + " ");
 				wSale.setMonth(rs.getString("month"));
-				System.out.print("Month: " + wSale.getMonth() + " ");	
+				// System.out.print("Month: " + wSale.getMonth() + " ");
 				wSale.setWeekStart(rs.getString("weekStart_date"));
-				System.out.print("weekStart_date: " + wSale.getWeekStart() + " ");
+				// System.out.print("weekStart_date: " + wSale.getWeekStart() + " ");
 				wSale.setWeekEnd(rs.getString("weekEnd_date"));
-				System.out.print("weekEnd_date: " + wSale.getWeekEnd() + " ");	
+				// System.out.print("weekEnd_date: " + wSale.getWeekEnd() + " ");
 				wSale.setDay(rs.getString("day"));
-				System.out.print("Day: " + wSale.getDay() + " ");	
+				// System.out.print("Day: " + wSale.getDay() + " ");
 				Double sales = Double.parseDouble(rs.getString("sum"));
 				wSale.setSales(sales);
 				// System.out.println(" Sales: " + wSale.getSales());
@@ -332,7 +332,7 @@ public class TransactionDao {
 		}
 		return transaction;
 	}
-	
+
 	public List<Transaction> getTransactionsBy(String sortByType){
 		List<Transaction> transactions = new ArrayList<Transaction>();
 		// System.out.println("TransactionDao: Getting transactions by " + sortByType);
@@ -368,5 +368,5 @@ public class TransactionDao {
 		}
 		return transactions;
 	}
-	
+
 }

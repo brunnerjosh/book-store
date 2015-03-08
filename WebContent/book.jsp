@@ -26,7 +26,7 @@
             </select>
  
 			<input type="text" placeholder="Price $" name="price" value="<c:out value="${book.price}" />" />
-			<input type="text" placeholder="Review Rating" name="reviewRating" value="<c:out value="${book.reviewRating}" />" />
+			<input type="hidden" placeholder="Review Rating" name="reviewRating" value="<c:out value="${book.reviewRating}" />" />
 			<c:if test="${not empty book }"> 
         		<input type="text" placeholder="Photo URL" readonly="readonly"  name="photo" value="<c:out value="${book.photo }" />"/>
         		<img class="bookCover" src="<c:out value="${book.photo }" />">
