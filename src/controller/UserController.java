@@ -19,6 +19,7 @@ public class UserController extends HttpServlet {
 	public static String INSERT_OR_EDIT = "/user.jsp"; // user.jsp
 	public static String LIST_USER = "/dashboard-user.jsp"; // listUser.jsp
 	public static String USER_PROFILE = "user-profile.jsp"; // listUser.jsp
+		
 	private UserDao dao;
 	
 	public UserController() {
