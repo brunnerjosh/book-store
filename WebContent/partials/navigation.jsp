@@ -26,6 +26,7 @@ boolean isAdmin = false;
 					<a href="admin.jsp" class="list-item">Admin</a>
 				</c:when>
 			</c:choose>
+			<a href="helpNavigation.jsp" class="list-item">Help</a>
 		</div>
 		<div class="side-right">
 			<a class="list-item" id="shopping-bag" onclick="viewShoppingBag()">Bag</a>
