@@ -47,13 +47,24 @@ This is a team project for my web development class at the University of Washing
 ## Landing Page
 ![Landing Page](https://raw.githubusercontent.com/brunnerjosh/book-store/master/images/welcome.png)
 ## Browse Books
+![Browse Books](https://raw.githubusercontent.com/brunnerjosh/book-store/master/images/browse-books.png)
 ## Book Detail
+![Book Detail](https://raw.githubusercontent.com/brunnerjosh/book-store/master/images/book-detail.png)
 ## Checkout Page
+![Checkout Page](https://raw.githubusercontent.com/brunnerjosh/book-store/master/images/checkout-page.png)
 ## User Profile
+![User Profile](https://raw.githubusercontent.com/brunnerjosh/book-store/master/images/user-profile.png)
 ## Admin Dashboard
+![Admin Dashboard](https://raw.githubusercontent.com/brunnerjosh/book-store/master/images/admin-dashboard.png)
 ## Top 10 Best Sellers
+![Top 10 Best Sellers](https://raw.githubusercontent.com/brunnerjosh/book-store/master/images/top-10.png)
 ## Top 5 Best Sellers (By Category)
+![Top 5 Best Sellers (By Category)](https://raw.githubusercontent.com/brunnerjosh/book-store/master/images/top-5.png)
 ## Top 20 Rated Books
+![Top 20 Rated Books](https://raw.githubusercontent.com/brunnerjosh/book-store/master/images/top-20.png)
 ## View Transactions By Price
+![View Transactions By Price](https://raw.githubusercontent.com/brunnerjosh/book-store/master/images/transactions-price.png)
 ## Sales Stats
+![Sales Stats](https://raw.githubusercontent.com/brunnerjosh/book-store/master/images/sales-stats.png)
 ## Direct Market Data (By Category)
+![Direct Market Data (By Category)](https://raw.githubusercontent.com/brunnerjosh/book-store/master/images/market-data.png)
