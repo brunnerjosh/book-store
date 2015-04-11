@@ -1,11 +1,11 @@
 # Short Overview
-This is a project for my web development class at the University of Washington.
+This is a team project for my web development class at the University of Washington.
 
 1. We’ve implemented a fully functional bookstore according to the specification provided
 2. Users may browse, search, view, purchase, and rate books
 3. Administrators may alter information on users, books, transactions, and ratings
 
-#Stakeholders
+# Stakeholders
 * Users - Customers looking to purchase a book
 * Administrators - Users with the ability to make system-level changes to the relation model’s data
 * Investors - People looking to have financial interest in Quest
@@ -24,6 +24,9 @@ This is a project for my web development class at the University of Washington.
 * Books & Transactions - Each unique book can have zero or many transactions for a book. When a user purchases a book, the bookId is placed into the transaction record.
 * Books & Rating - Each unique book can have zero or many ratings. When a user rates a book, the bookId is placed in the rating record.
 
+# Graphical Schema
+![Graphical Schema](https://raw.githubusercontent.com/brunnerjosh/book-store/master/images/schema.png)
+
 # Limitations
 * No differentiation between users and administrators
 * Not accessible on devices other than desktop computers
@@ -39,3 +42,18 @@ This is a project for my web development class at the University of Washington.
 * Add a responsive design allowing users to view and browse Quest on mobile and tablet devices
 * Make the user, books, transactions, and ratings pages look nicer and more helpful
 * An updated styling done in CSS
+
+# Screenshots
+## Landing Page
+![Landing Page](https://raw.githubusercontent.com/brunnerjosh/book-store/master/images/welcome.png)
+## Browse Books
+## Book Detail
+## Checkout Page
+## User Profile
+## Admin Dashboard
+## Top 10 Best Sellers
+## Top 5 Best Sellers (By Category)
+## Top 20 Rated Books
+## View Transactions By Price
+## Sales Stats
+## Direct Market Data (By Category)
