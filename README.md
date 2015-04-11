@@ -44,6 +44,7 @@ This is a team project for my web development class at the University of Washing
 * An updated styling done in CSS
 
 # Screenshots
+These are some screenshots of the interactions that can be found throughout the book store.
 ## Landing Page
 ![Landing Page](https://raw.githubusercontent.com/brunnerjosh/book-store/master/images/welcome.png)
 ## Browse Books
