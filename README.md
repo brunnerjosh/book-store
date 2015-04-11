@@ -1,5 +1,6 @@
 # Short Overview
 This is a project for my web development class at the University of Washington.
+
 1. We’ve implemented a fully functional bookstore according to the specification provided
 2. Users may browse, search, view, purchase, and rate books
 3. Administrators may alter information on users, books, transactions, and ratings
